@@ -1,0 +1,246 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap')
+
+// Variables
+@import 'variables'
+
+// Mixins
+@import 'mixins'
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+html
+    scroll-behavior: smooth
+    overflow-x: hidden
+
+body
+    overflow-x: hidden
+    background-color: #FFF
+    font-size: 18px
+    font-family: 'Roboto', sans-serif
+
+::-webkit-scrollbar-track
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+    background-color: #F5F5F5
+
+::-webkit-scrollbar
+    width: 10px
+    background-color: #F5F5F5
+
+::-webkit-scrollbar-thumb
+    background-color: $primary
+
+::-webkit-scrollbar-thumb:hover
+    background-color: #555
+
+@keyframes activeLink
+    from
+        width: 0%
+    to
+        width: 100%
+
+nav
+    position: fixed
+    padding: 8px
+    width: 100%
+    z-index: 999
+    transition: 1s color, 1s background-color
+    & .logo
+        float: left
+        padding: 8px 8px
+        margin-left: 46px
+        & a
+            color: rgba(0, 0, 0, 1)
+            text-transform: uppercase
+            font-size: 2em
+            text-decoration: none
+            -webkit-text-stroke-width: .9px
+            -webkit-text-stroke-color: #FFF
+    & ul
+        float: right
+        & li
+            display: inline-block
+            padding: 16px 0px
+            font-size: 1.1em
+            &:not(:first-child)
+                margin-left: 40px
+            &:last-child
+                margin-right: 60px
+            & a
+                display: inline-block
+                outline: none
+                color: #FFF
+                text-transform: uppercase
+                text-decoration: none
+                letter-spacing: 1.2px
+                font-weight: 400
+                &::after
+                    content: ''
+                    display: block
+                    width: 0
+                    height: 2px
+                    background-color: #FFF
+                    transition: width 1s
+                &.active::after
+                    animation: activeLink ease-in 1s
+                &.active::after
+                    width: 100%
+                &:hover::after
+                    width: 100%
+                    translation: width 1s
+    &.gray
+        // background-color: #333
+        background-color: $primary
+        & .logo
+            & a
+                color: $primary
+        & ul li a
+            color: #FFF
+            &::after
+                background-color: #FFF
+    &.gray-ww
+        background-color: $primary
+
+#nav:checked+.nav-btn
+    transform: rotate(45deg)
+    & i
+        background: #FFF
+        transition: transform 0.2s ease
+        &:nth-child(1)
+            transform: translateY(6px) rotate(180deg)
+        &:nth-child(2)
+            opacity: 0
+        &:nth-child(3)
+            transform: translateY(-6px) rotate(90deg)
+
+#nav:checked~.nav-wrapper
+    z-index: 9990
+    opacity: 1
+    & ul li a
+        opacity: 1
+        transform: translateX(0)
+
+.hidden
+    display: none
+
+    a
+    text-decoration: none
+    color: #FFF
+
+button, a.button
+    display: block
+    border: 0
+    color: #FFF
+    text-transform: uppercase
+    padding: 18px 45px
+    background-color: $primary
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4)
+    text-align: center
+    font-size: 1.5em
+    outline: none
+    margin: 0 auto
+    transition: .6s box-shadow, .6s background-color
+    & a
+        color: #FFF
+        text-decoration: none
+    &:hover
+        cursor: pointer
+        background-color: #363636
+        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.6)
+
+button.disabled
+    color: #FFF
+    background-color: $secondary
+    border: 1px solid #333
+    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4)
+    transition: .6s box-shadow, .6s background-color
+    &:hover
+        cursor: default
+        background-color: $secondary
+        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4)
+
+button.danger
+    transition: .6s background-color, .6s border-color, .6s box-shadow
+    &:hover
+        background-color: #FF2E00
+        border-color: #FF0000
+        box-shadow: 0px 5px 7px rgba(255, 0, 0, 7)
+
+.welcome
+    width: 100%
+    height: 100vh
+    @include background-cover('./img/home.jpg')
+    background-position: center
+    @include flex-center
+    flex-direction: column
+    & h4
+        font-size: 2.3em
+        font-weight: 400
+        color: #fff
+        margin-bottom: 25px
+        text-transform: uppercase
+    & button
+    & .fa-arrow-circle-down
+        position: absolute
+        bottom: 5%
+        left: 50%
+        color: $primary
+        transform: translateX(-50%)
+        font-size: 4em
+        transition: .6s color
+        &:hover
+            color: #444
+            cursor: pointer
+
+.words
+    width: 100%
+    height: auto
+    padding: 50px
+    & .search
+        @include flex-center
+        & form
+            display: block
+            & input
+                width: 270px
+                height: 70px
+                background-color: #c4c4c4
+                padding: 21px 33px
+                text-transform: uppercase
+                color: $primary
+                border: 0
+                outline: none
+                float: left
+                font-size: 1.2em
+            & button
+                display: inline
+                width: 70px
+                height: 70px
+                padding: 18px
+                font-size: 1.2em
+                box-shadow: none
+                float: left
+    & .all-words
+        margin-top: 40px
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-wrap: wrap
+        & .single-word
+            background-color: #c4c4c4
+            margin: 10px
+            padding: 33px 50px
+            & h3
+                text-align: center
+                font-weight: 400
+                text-transform: uppercase
+                font-size: 1.5rem
+                margin-bottom: 10px
+            & p
+                color: #fff
+
+
+
