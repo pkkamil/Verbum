@@ -49,3 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('nav').classList.add('gray')
     }
 })
+
+if (window.location.hash == '#slownik') {
+    window.location.hash = ''
+    $('.down').click()
+}

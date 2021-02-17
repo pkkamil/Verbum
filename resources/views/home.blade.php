@@ -1,5 +1,6 @@
 <?php
     $active = '';
+    $lazy = True;
 ?>
 
 @extends('layouts.app')

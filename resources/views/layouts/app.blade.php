@@ -30,8 +30,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/script.js') }}" defer></script>
-    <script src="{{ asset('js/scroll.js') }}" defer></script>
-
+    @if ($active == '')
+        <script src="{{ asset('js/scroll.js') }}" defer></script>
+    @endif
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/95a2d2c3f2.js" crossorigin="anonymous"></script>
 
@@ -48,5 +49,15 @@
         @include('partials.navbar')
         @yield('content')
         @include('partials.footer')
+        @if ($lazy ?? '' == True)
+            <div class="loader-wrapper">
+                <span class="loader"><span class="loader-inner"></span></span>
+            </div>
+            <script>
+                $(window).on("load",function(){
+                $(".loader-wrapper").fadeOut(700);
+                });
+            </script>
+        @endif
     </body>
 </html>

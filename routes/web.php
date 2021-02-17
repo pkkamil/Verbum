@@ -22,3 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/add-word', 'WordController@index');
+    Route::get('/exercises', 'ExerciseController@index');
+});

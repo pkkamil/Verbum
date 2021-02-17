@@ -1,4 +1,4 @@
-<nav>
+<nav @if ($active != '') class="gray" @endif>
     <input type='checkbox' id="nav" class="hidden">
     <label for="nav" class="nav-btn">
         <i></i>
@@ -10,9 +10,13 @@
     </div>
     <div class="nav-wrapper">
         <ul>
-            <li><a class="down" href="">Słownik</a></li>
-            <li><a href="/exercises">ćwiczenia</a></li>
-            <li><a href="/add">Dodaj słowo</a></li>
+            @if ($active == '')
+                <li><a class="down" href="">Słownik</a></li>
+            @else
+                <li><a class="down" href="/#slownik">Słownik</a></li>
+            @endif
+            <li><a href="/exercises" @if ($active == 'exercises') class="active" @endif>ćwiczenia</a></li>
+            <li><a href="/add-word" @if ($active == 'add') class="active" @endif>Dodaj słowo</a></li>
             @guest
                 @if ($active == 'register')
                     <li><a @if ($active =='register' ) class="active" @endif href="{{ route('register') }}">Rejestracja</a></li>
