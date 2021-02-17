@@ -289,6 +289,7 @@ button.danger
                 font-size: 1.5rem
                 margin-bottom: 10px
             & p
+                text-align: center
                 color: #fff
 
 .auth
@@ -461,3 +462,64 @@ button.danger
             position: relative
             width: 60%
             height: 100vh
+
+.adding-words
+    width: 100%
+    height: 100vh
+    display: flex
+    flex-direction: row
+    & .left-part
+        width: 40%
+        @include flex-center
+        flex-direction: column
+        & h1
+            font-size: 2rem
+            font-weight: 400
+            text-transform: uppercase
+            margin-bottom: 15px
+        & .group
+            display: block
+            margin-top: 20px
+            & label
+                @include flex-center
+                width: 60px
+                height: 60px
+                background-color: $primary
+                float: left
+                cursor: pointer
+                margin: 0
+                color: #FFF
+                font-size: 1.6rem
+            & input
+                width: 370px
+                height: 60px
+                outline: none
+                font-size: 1.2rem
+                font-weight: 400
+                padding: 21px 25px
+                margin: 0
+                background-color: #c4c4c4
+                border: 1px solid $primary
+                text-transform: uppercase
+                &#word
+                    width: 250px
+        & button
+            margin-left: 0
+            margin-top: 30px
+            &:last-child
+                margin-top: 20px
+        & a
+            text-align: center
+            display: block
+            font-size: 1rem
+            color: $primary
+            margin-bottom: 15px
+            text-decoration: none
+            text-transform: uppercase
+            text-shadow: 0px 4px 4px rgba(51, 51, 51, 0.5)
+    & .right-part
+        @include background-cover('./img/bg-add_word.jpg')
+        background-position: center
+        position: relative
+        width: 60%
+        height: 100vh

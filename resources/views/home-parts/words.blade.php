@@ -6,10 +6,10 @@
         </form>
     </section>
     <section class="all-words">
-        @foreach (range(0, 30) as $item)
+        @foreach ($words as $word)
             <section class="single-word">
-                <h3>Apply</h3>
-                <p>Dotyczyć, zastosować</p>
+                <h3>{{ $word -> word}}</h3>
+                <p>{{ $word -> translation }}</p>
             </section>
         @endforeach
     </section>

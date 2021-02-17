@@ -13,17 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 // Auth
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/add-word', 'WordController@index');
+    Route::post('/add', 'WordController@add')->name('addWord');
     Route::get('/exercises', 'ExerciseController@index');
 });
