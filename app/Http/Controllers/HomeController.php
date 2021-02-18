@@ -24,7 +24,5 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $words = Word::all();
-        return view('home')->with('words', $words);
     }
 }

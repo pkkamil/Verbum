@@ -22,7 +22,7 @@ if (arrow != null) {
     })
 
     document.addEventListener('scroll', () => {
-        if (window.scrollY < document.querySelector('.words').offsetTop - $('nav').height() - 16) {
+        if (window.scrollY < document.querySelector('.words').offsetTop - $('nav').height() - 17) {
             changeActivePage('unactive')
         } else {
             changeActivePage('active')

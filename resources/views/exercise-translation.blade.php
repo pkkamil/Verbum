@@ -1,6 +1,7 @@
 <?php
     $active = 'exercises';
     $title = 'Verbum - Ćwiczenia | Tłumaczenie';
+    $lazy = True;
 ?>
 
 @extends('layouts.app')

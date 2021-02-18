@@ -1,6 +1,7 @@
 <?php
     $active = 'add';
     $title = 'Verbum - Dodawanie nowych słów';
+    $lazy = True;
 ?>
 
 @extends('layouts.app')

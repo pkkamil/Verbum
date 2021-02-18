@@ -2,10 +2,10 @@
     <section class="welcome-text">
         @guest
             <h4>Dołącz do nas i ucz się słownictwa!</h4>
-            <button><a href="{{ route('login') }}">Dołącz</a></button>
+            <a href="{{ route('login') }}"><button>Dołącz</button></a>
         @else
             <h4>Kontunuuj swoją naukę angielskiego!</h4>
-            <button><a href="{{ url('/exercises') }}">Ćwicz</a></button>
+            <a href="{{ url('/exercises') }}"><button>Ćwicz</button></a>
         @endif
     </section>
     <i class="fas fa-arrow-circle-down down"></i>
