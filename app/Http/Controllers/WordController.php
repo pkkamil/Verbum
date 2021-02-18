@@ -12,7 +12,7 @@ class WordController extends Controller
 
     public function add(Request $req) {
         if ($req -> action == 'exit')
-            return view('home');
+            return redirect('/');
         else
             return view('addWord');
     }

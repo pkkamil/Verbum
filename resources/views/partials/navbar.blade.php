@@ -24,6 +24,7 @@
                     <li><a @if ($active =='login' ) class="active" @endif href="{{ route('login') }}">Logowanie</a></li>
                 @endif
             @else
+                <li><a href="/profile" @if ($active == 'profile') class="active" @endif>Profil</a></li>
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Wyloguj') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
