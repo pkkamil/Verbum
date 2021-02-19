@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Word;
 
 class ExerciseController extends Controller
 {
@@ -11,7 +12,8 @@ class ExerciseController extends Controller
     }
 
     public function translation() {
-        return view('exercise-translation');
+        $word = Word::all()->random();
+        return view('exercise-translation')->with('word', $word);
     }
 
     public function matching() {
@@ -19,10 +21,18 @@ class ExerciseController extends Controller
     }
 
     public function writing() {
-        return view('exercise-writing');
+        $word = Word::all()->random();
+        return view('exercise-writing')->with('word', $word);
     }
 
     public function rememberWord(Request $req) {
 
+    }
+
+    public function checkAnswer(Request $req) {
+        if (strtolower($req -> answer) == $req -> word)
+            dd('Gratulacje!');
+        else
+            dd('Niestety nie udalo sie!');
     }
 }

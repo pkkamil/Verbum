@@ -513,10 +513,52 @@ button.danger
             font-size: 2.6rem
             font-weight: 500
         & h3
+            text-align: center
             font-size: 2rem
             font-weight: 400
             color: #c4c4c4
             margin-bottom: 30px
+    &.writing
+        @include background-cover('./img/bg-exercise_3.jpg')
+        & h4
+            font-size: 2rem
+            font-weight: 400
+            margin-bottom: 130px
+        & h3
+            text-align: center
+            font-size: 2rem
+            font-weight: 400
+            color: #c4c4c4
+            margin-bottom: 30px
+        & .group
+            display: flex
+            justify-content: center
+            margin-bottom: 20px
+            & label
+                @include flex-center
+                width: 60px
+                height: 60px
+                background-color: #c4c4c4
+                float: left
+                cursor: pointer
+                margin: 0
+                & i
+                    color: $primary
+                    font-size: 1.6rem
+            & input
+                width: 270px
+                height: 60px
+                outline: none
+                font-size: 1.2rem
+                font-weight: 400
+                padding: 21px 25px
+                color: #FFF
+                background-color: $primary
+                border: 0
+                text-transform: uppercase
+        & button
+            margin-top: 30px
+            margin-bottom: 20px
 
 .adding-words
     width: 100%

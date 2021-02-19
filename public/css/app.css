@@ -793,10 +793,72 @@ button.danger:hover {
 }
 
 .exercise.translation h3 {
+  text-align: center;
   font-size: 2rem;
   font-weight: 400;
   color: #c4c4c4;
   margin-bottom: 30px;
+}
+
+.exercise.writing {
+  background-image: url(/images/bg-exercise_3.jpg?794ed95d7288b1d860f1e117dc4b18d0);
+  background-position: center;
+  background-size: cover;
+}
+
+.exercise.writing h4 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 130px;
+}
+
+.exercise.writing h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #c4c4c4;
+  margin-bottom: 30px;
+}
+
+.exercise.writing .group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.exercise.writing .group label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #c4c4c4;
+  float: left;
+  cursor: pointer;
+  margin: 0;
+}
+
+.exercise.writing .group label i {
+  color: #333;
+  font-size: 1.6rem;
+}
+
+.exercise.writing .group input {
+  width: 270px;
+  height: 60px;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 21px 25px;
+  color: #FFF;
+  background-color: #333;
+  border: 0;
+  text-transform: uppercase;
+}
+
+.exercise.writing button {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .adding-words {

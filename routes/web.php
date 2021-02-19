@@ -30,4 +30,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exercises/writing', 'ExerciseController@writing');
 
     Route::post('/exercises/remember/word', 'ExerciseController@rememberWord')->name('rememberWord');
+
+    Route::post('/exercises/writing/check', 'ExerciseController@checkAnswer')->name('checkWord');
 });
