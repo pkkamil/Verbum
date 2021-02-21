@@ -21,8 +21,11 @@ class ExerciseController extends Controller
     }
 
     public function writing() {
-        $word = Word::all()->random();
-        return view('exercise-writing')->with('word', $word);
+        $randomWord = Word::all()->random();
+        $word = $randomWord -> word;
+        $translation = $randomWord -> translation;
+        // dd($word -> word, $word -> translation);
+        return view('exercise-writing', compact('word', 'translation'));
     }
 
     public function rememberWord(Request $req) {
@@ -30,9 +33,15 @@ class ExerciseController extends Controller
     }
 
     public function checkAnswer(Request $req) {
-        if (strtolower($req -> answer) == $req -> word)
-            dd('Gratulacje!');
-        else
-            dd('Niestety nie udalo sie!');
+        $word = $req -> word;
+        $translation = $req -> translation;
+        if (strtolower($req -> answer) == $req -> word) {
+            $result = 'correct';
+            return view('exercise-writing', compact('word', 'translation', 'result'));
+        }
+        else {
+            $result = 'incorrect';
+            return view('exercise-writing', compact('word', 'translation', 'result'));
+        }
     }
 }

@@ -31,5 +31,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/exercises/remember/word', 'ExerciseController@rememberWord')->name('rememberWord');
 
-    Route::post('/exercises/writing/check', 'ExerciseController@checkAnswer')->name('checkWord');
+    Route::post('/exercises/writing', 'ExerciseController@checkAnswer')->name('checkWord');
 });
