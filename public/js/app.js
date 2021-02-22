@@ -49900,8 +49900,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/kamilk/GitHub/Laravel-Dictionary/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/kamilk/GitHub/Laravel-Dictionary/resources/sass/app.sass */"./resources/sass/app.sass");
+__webpack_require__(/*! C:\Users\kamil\OneDrive\Dokumenty\GitHub\Laravel-Dictionary\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\kamil\OneDrive\Dokumenty\GitHub\Laravel-Dictionary\resources\sass\app.sass */"./resources/sass/app.sass");
 
 
 /***/ })

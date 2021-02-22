@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'WordController@index')->name('home');
+Route::post('/', 'WordController@search')->name('searchWords');
+
 
 // Auth
 
@@ -27,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/exercises/translation', 'ExerciseController@translation');
     Route::get('/exercises/matching', 'ExerciseController@matching');
+    Route::post('/exrcises/matching', 'ExerciseController@checkAnswer')->name('checkAnswers');
     Route::get('/exercises/writing', 'ExerciseController@writing');
 
     Route::post('/exercises/remember/word', 'ExerciseController@rememberWord')->name('rememberWord');

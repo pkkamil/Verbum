@@ -304,6 +304,9 @@ nav.gray-ww {
 
 .hidden {
   display: none;
+}
+
+a {
   text-decoration: none;
   color: #FFF;
 }
@@ -847,6 +850,63 @@ button.danger:hover {
   font-weight: 400;
   color: #c4c4c4;
   margin-bottom: 30px;
+}
+
+.exercise.matching {
+  background-image: url(/images/bg-exercise_2.jpg?a55ea229c726d67ad3a1717bbab0f911);
+  background-position: center;
+  background-size: cover;
+}
+
+.exercise.matching .parts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.exercise.matching .parts h2 {
+  width: 100%;
+  margin-top: 50px;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-right: 100px;
+}
+
+.exercise.matching .parts h2:first-child {
+  margin-top: 0;
+}
+
+.exercise.matching .parts h2 span {
+  display: inline-block;
+  transition: 1s transform;
+  cursor: pointer;
+}
+
+.exercise.matching .parts h3 {
+  width: 100%;
+  display: block;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.exercise.matching .parts h3:first-child {
+  margin-top: 0;
+}
+
+.exercise.matching .parts h3 span {
+  display: inline-block;
+  transition: 1s transform;
+  cursor: pointer;
+}
+
+.exercise.matching .parts section {
+  width: 50%;
+}
+
+.exercise.matching button {
+  margin-top: 60px;
 }
 
 .exercise.writing {

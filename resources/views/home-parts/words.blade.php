@@ -1,7 +1,8 @@
 <article class="words">
     <section class="search">
-        <form action="search" method="GET">
-            <input type="text" name="search" id="search" placeholder="wyszukaj słowo">
+        <form action="{{route('searchWords')}}" method="POST">
+            @csrf
+            <input type="text" name="q" id="search" placeholder="wyszukaj słowo">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
     </section>

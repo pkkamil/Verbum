@@ -17,7 +17,28 @@ class ExerciseController extends Controller
     }
 
     public function matching() {
-        return view('exercise-matching');
+        $words = Word::all()->random(5);
+        $readyWords = [];
+        $translation = [];
+        $word = [];
+
+        foreach($words as $w) {
+            array_push($translation, $w -> translation);
+            array_push($word, $w -> word);
+        }
+
+        $readyWords = array_combine($word, $translation);
+
+        //randomize
+        $keys = array_keys($readyWords);
+        shuffle($keys);
+        $values = array_values(($readyWords));
+        $shuffled = array_combine($keys, $values);
+
+        // shuffle($readyWords);
+        // dd($shuffled, $readyWords);
+        $words = $shuffled;
+        return view('exercise-matching', compact('words'));
     }
 
     public function writing() {
@@ -33,15 +54,19 @@ class ExerciseController extends Controller
     }
 
     public function checkAnswer(Request $req) {
-        $word = $req -> word;
-        $translation = $req -> translation;
-        if (strtolower($req -> answer) == $req -> word) {
-            $result = 'correct';
-            return view('exercise-writing', compact('word', 'translation', 'result'));
-        }
-        else {
-            $result = 'incorrect';
-            return view('exercise-writing', compact('word', 'translation', 'result'));
+        if ($req -> answers) {
+
+        } else {
+            $word = $req -> word;
+            $translation = $req -> translation;
+            if (strtolower($req -> answer) == $req -> word) {
+                $result = 'correct';
+                return view('exercise-writing', compact('word', 'translation', 'result'));
+            }
+            else {
+                $result = 'incorrect';
+                return view('exercise-writing', compact('word', 'translation', 'result'));
+            }
         }
     }
 }

@@ -179,7 +179,7 @@ nav
 .hidden
     display: none
 
-    a
+a
     text-decoration: none
     color: #FFF
 
@@ -550,6 +550,39 @@ button.danger
             font-weight: 400
             color: #c4c4c4
             margin-bottom: 30px
+    &.matching
+        @include background-cover('./img/bg-exercise_2.jpg')
+        & .parts
+            @include flex-center
+            flex-direction: row
+            & h2
+                width: 100%
+                margin-top: 50px
+                font-size: 2rem
+                font-weight: 400
+                margin-right: 100px
+                &:first-child
+                    margin-top: 0
+                & span
+                    display: inline-block
+                    transition: 1s transform
+                    cursor: pointer
+            & h3
+                width: 100%
+                display: block
+                margin-top: 50px
+                font-size: 1.5rem
+                font-weight: 400
+                &:first-child
+                    margin-top: 0
+                & span
+                    display: inline-block
+                    transition: 1s transform
+                    cursor: pointer
+            & section
+                width: 50%
+        & button
+            margin-top: 60px
     &.writing
         @include background-cover('./img/bg-exercise_3.jpg')
         & h4
