@@ -14,7 +14,8 @@ class WordController extends Controller
 
     public function search(Request $req) {
         $words = Word::where('word', 'like', '%'.$req -> q.'%')->orWhere('translation', 'like', '%'.$req -> q.'%')->get();
-        return view('home')->with('words', $words);
+        $q = $req -> q;
+        return view('home', compact('words', 'q'));
     }
 
     public function addPage() {

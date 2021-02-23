@@ -342,6 +342,7 @@ a.button:hover {
 
 button.reverse-color,
 a.button.reverse-color {
+  display: inline-block;
   color: #333;
   background-color: #fff;
   box-shadow: 0px 5px 4px rgba(255, 255, 255, 0.4);
@@ -811,9 +812,43 @@ button.danger:hover {
   margin-top: 30px;
 }
 
-.dimmer .result-box button {
+.dimmer .result-box a {
+  display: inline-block;
   margin-top: 40px !important;
   margin-bottom: 0 !important;
+}
+
+.dimmer .result-box a button {
+  display: inline-block;
+  margin-top: 0;
+}
+
+.dimmer .result-box h3 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.dimmer .result-box h4 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.dimmer .result-box h4:last-child {
+  margin-bottom: 0;
+}
+
+.dimmer .result-box h4.correct {
+  text-decoration: underline;
+  -webkit-text-decoration-color: #0eaf09;
+          text-decoration-color: #0eaf09;
+}
+
+.dimmer .result-box h4.incorrect {
+  text-decoration: underline;
+  -webkit-text-decoration-color: #bb0909;
+          text-decoration-color: #bb0909;
 }
 
 .exercise {
@@ -903,6 +938,40 @@ button.danger:hover {
 
 .exercise.matching .parts section {
   width: 50%;
+}
+
+.exercise.matching .parts span.clicked {
+  transform: scale(1.1);
+}
+
+.exercise.matching .parts span.a {
+  text-decoration: underline;
+  -webkit-text-decoration-color: red;
+          text-decoration-color: red;
+}
+
+.exercise.matching .parts span.b {
+  text-decoration: underline;
+  -webkit-text-decoration-color: blue;
+          text-decoration-color: blue;
+}
+
+.exercise.matching .parts span.c {
+  text-decoration: underline;
+  -webkit-text-decoration-color: green;
+          text-decoration-color: green;
+}
+
+.exercise.matching .parts span.d {
+  text-decoration: underline;
+  -webkit-text-decoration-color: yellow;
+          text-decoration-color: yellow;
+}
+
+.exercise.matching .parts span.e {
+  text-decoration: underline;
+  -webkit-text-decoration-color: purple;
+          text-decoration-color: purple;
 }
 
 .exercise.matching button {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Word;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ExerciseController extends Controller
 {
@@ -50,12 +52,43 @@ class ExerciseController extends Controller
     }
 
     public function rememberWord(Request $req) {
-
+        DB::table('word_user')->insert(
+            ['word_id' => $req -> word, 'user_id' => Auth::id()]
+        );
+        return redirect()->back();
     }
 
     public function checkAnswer(Request $req) {
-        if ($req -> answers) {
-
+        if ($req -> A1) {
+            $points = 0;
+            $results = [];
+            $keys = [];
+            $values = [];
+            // dd($req -> _token);
+            foreach($req -> request as $i) {
+                if ($i != $req -> _token) {
+                    $word = explode(' | ', $i)[0];
+                    $translation = explode(' | ', $i)[1];
+                    // print($word.' - '.$translation.' [] ');
+                    $correct = Word::where('word', $word) -> first();
+                    if ($correct -> translation == $translation) {
+                        $points++;
+                        $singleRecord = [];
+                        $singleRecord = array('score' => 'correct', 'word' => $word, 'translation' => $translation);
+                        array_push($results, $singleRecord);
+                    } else {
+                        $singleRecord = [];
+                        $singleRecord = array('score' => 'incorrect', 'word' => $word, 'translation' => $translation);
+                        array_push($results, $singleRecord);
+                    }
+                    array_push($keys, $correct -> word);
+                    array_push($values, $correct -> translation);
+                }
+            }
+            // dd($results);
+            $words = array_combine($keys, $values);
+            // dd('Uzyskano '.$points.' punktów');
+            return view('exercise-matching', compact('results', 'words'));
         } else {
             $word = $req -> word;
             $translation = $req -> translation;

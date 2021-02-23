@@ -2,7 +2,7 @@
     <section class="search">
         <form action="{{route('searchWords')}}" method="POST">
             @csrf
-            <input type="text" name="q" id="search" placeholder="wyszukaj słowo">
+            <input type="text" name="q" id="search" placeholder="wyszukaj słowo" @if (isset($q)) value="{{ $q }}" @endif>
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
     </section>

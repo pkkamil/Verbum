@@ -204,6 +204,7 @@ button, a.button
         background-color: #363636
         box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.6)
     &.reverse-color
+        display: inline-block
         color: $primary
         background-color: #fff
         box-shadow: 0px 5px 4px rgba(255, 255, 255, 0.4)
@@ -524,9 +525,30 @@ button.danger
         & p
             font-size: 1.5rem
             margin-top: 30px
-        & button
+
+        & a
+            display: inline-block
             margin-top: 40px!important
             margin-bottom: 0!important
+            & button
+                display: inline-block
+                margin-top: 0
+        & h3
+            font-size: 2.2rem
+            font-weight: 300
+            margin-bottom: 40px
+        & h4
+            font-size: 1.8rem
+            font-weight: 400
+            margin-bottom: 10px
+            &:last-child
+                margin-bottom: 0
+            &.correct
+                text-decoration: underline
+                text-decoration-color: #0eaf09
+            &.incorrect
+                text-decoration: underline
+                text-decoration-color: #bb0909
 
 .exercise
     width: 100%
@@ -581,6 +603,24 @@ button.danger
                     cursor: pointer
             & section
                 width: 50%
+            & span
+                &.clicked
+                    transform: scale(1.1)
+                &.a
+                    text-decoration: underline
+                    text-decoration-color: red
+                &.b
+                    text-decoration: underline
+                    text-decoration-color: blue
+                &.c
+                    text-decoration: underline
+                    text-decoration-color: green
+                &.d
+                    text-decoration: underline
+                    text-decoration-color: yellow
+                &.e
+                    text-decoration: underline
+                    text-decoration-color: purple
         & button
             margin-top: 60px
     &.writing

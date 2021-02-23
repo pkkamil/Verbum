@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function remembered_words() {
+        return $this->hasMany('App\Word');
+    }
+
+    public function exrcises() {
+        return $this->hasMany('App\Exercise');
+    }
 }
