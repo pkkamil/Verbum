@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Word;
+use App\Suggestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WordController extends Controller
 {
@@ -27,10 +29,12 @@ class WordController extends Controller
             'word' => 'required|string|unique:words',
             'translation' => 'required|string',
         ]);
-        // create word
-        $word = new Word();
+
+        // create Suggestion
+        $word = new Suggestion();
         $word -> word = $req -> word;
         $word -> translation = $req -> translation;
+        $word -> user_id = Auth::id();
         $word -> save();
         if ($req -> action == 'exit')
             return redirect('/');

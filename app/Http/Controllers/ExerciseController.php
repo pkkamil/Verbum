@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Word;
+use App\Exercise;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
+use function PHPUnit\Framework\isNan;
 
 class ExerciseController extends Controller
 {
@@ -14,7 +17,29 @@ class ExerciseController extends Controller
     }
 
     public function translation() {
-        $word = Word::all()->random();
+        $words = Word::all();
+        $rightWords = [];
+        foreach($words as $w) {
+            if (count($w -> remembered_by) == 0) {
+                array_push($rightWords, $w);
+            } else {
+                if ($w -> remembered_by[0] -> id != Auth::id())
+                    array_push($rightWords, $w);
+            }
+        }
+        // randomize word
+        $word = $rightWords[array_rand($rightWords)];
+        $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'translation']])->first();
+        if (!$exercise) {
+            Exercise::create([
+                'type' => 'translation',
+                'score' => 0,
+                'user_id' => Auth::id()
+            ]);
+            $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'translation']])->first();
+        }
+        $exercise -> score = $exercise -> score + 1;
+        $exercise -> save();
         return view('exercise-translation')->with('word', $word);
     }
 
@@ -87,12 +112,34 @@ class ExerciseController extends Controller
             }
             // dd($results);
             $words = array_combine($keys, $values);
+            $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'matching']])->first();
+            if (is_null($exercise)) {
+                Exercise::create([
+                    'type' => 'matching',
+                    'score' => 0,
+                    'user_id' => Auth::id()
+                ]);
+                $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'matching']])->first();
+            }
+            $exercise -> score = $exercise -> score + $points;
+            $exercise -> save();
             // dd('Uzyskano '.$points.' punktów');
             return view('exercise-matching', compact('results', 'words'));
         } else {
             $word = $req -> word;
             $translation = $req -> translation;
             if (strtolower($req -> answer) == $req -> word) {
+                $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'writing']])->first();
+                if (!$exercise) {
+                    Exercise::create([
+                        'type' => 'writing',
+                        'score' => 0,
+                        'user_id' => Auth::id()
+                    ]);
+                    $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'writing']])->first();
+                }
+                $exercise -> score = $exercise -> score + 1;
+                $exercise -> save();
                 $result = 'correct';
                 return view('exercise-writing', compact('word', 'translation', 'result'));
             }

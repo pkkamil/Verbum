@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableExercises extends Migration
+class CreateSuggestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTableExercises extends Migration
      */
     public function up()
     {
-        Schema::create('exercises', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->enum('type', ['translation', 'matching', 'writing']);
-            $table->integer('score');
+        Schema::create('suggestions', function (Blueprint $table) {
+            $table->id();
+            $table->string('word');
+            $table->string('translation');
             $table->bigInteger('user_id');
+            $table->timestamp('added_at');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateTableExercises extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercises');
+        Schema::dropIfExists('suggestions');
     }
 }

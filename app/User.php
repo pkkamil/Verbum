@@ -38,10 +38,14 @@ class User extends Authenticatable
     ];
 
     public function remembered_words() {
-        return $this->hasMany('App\Word');
+        return $this->belongsToMany('App\Word');
     }
 
-    public function exrcises() {
+    public function suggestions() {
+        return $this->hasMany('App\Suggestion');
+    }
+
+    public function exercises() {
         return $this->hasMany('App\Exercise');
     }
 }

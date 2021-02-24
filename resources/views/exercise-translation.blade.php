@@ -8,11 +8,11 @@
 @section('content')
     <article class="exercise translation">
         <h4>Pozostały czas: <span class="timer">10</span></h4>
-        <h2>{{ $word -> word }}</h2>
-        <h3 class="tn">{{ $word -> translation }}</h3>
+        <h2>{{ $word['word'] }}</h2>
+        <h3 class="tn">{{ $word['translation'] }}</h3>
         <form action="{{ route('rememberWord') }}" method="POST">
             @csrf
-            <input type="hidden" name="word" value="{{ $word -> id }}">
+            <input type="hidden" name="word" value="{{ $word['id'] }}">
             <button type="submit">Znam to słowo</button>
         </form>
     </article>
