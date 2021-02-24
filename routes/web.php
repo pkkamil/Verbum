@@ -31,7 +31,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exercises/matching', 'ExerciseController@matching')->name('matching');
     Route::get('/exercises/writing', 'ExerciseController@writing');
 
-    Route::post('/exercises//translation', 'ExerciseController@rememberWord')->name('rememberWord');
-    Route::post('/exrcises/matching/x', 'ExerciseController@checkAnswer')->name('checkAnswers');
+    Route::post('/exercises/translation', 'ExerciseController@rememberWord')->name('rememberWord');
+    Route::post('/exrcises/matching', 'ExerciseController@checkAnswer')->name('checkAnswers');
     Route::post('/exercises/writing', 'ExerciseController@checkAnswer')->name('checkWord');
+
+    Route::post('/profile/name', 'UserController@changeName')->name('changeName');
+    Route::post('/profile/password', 'UserController@changePassword')->name('changePassword');
+    Route::post('/profile/report', 'UserController@reportAnError')->name('reportAnError');
+    Route::post('/profile/delete', 'UserController@destroy')->name('deleteAccount');
 });

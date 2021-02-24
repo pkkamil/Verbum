@@ -725,3 +725,54 @@ button.danger
         width: 60%
         height: 100vh
 
+.profile
+    width: 100%
+    height: 100vh
+    display: flex
+    flex-direction: column
+    & .top-part
+        height: 50%
+    & .bottom-part
+        display: flex
+        justify-content: flex-start
+        gap: 83px
+        margin-left: 60px
+        & .single-form
+            & h4
+                text-transform: uppercase
+                font-size: 1.3rem
+                font-weight: 400
+            & .group
+                display: block
+                margin-top: 20px
+                &.danger
+                    & label
+                        background-color: #AA1A1A
+                & label
+                    @include flex-center
+                    width: 60px
+                    height: 60px
+                    background-color: $primary
+                    float: left
+                    cursor: pointer
+                    margin: 0
+                    color: #FFF
+                    font-size: 1.6rem
+                & input
+                    width: 320px
+                    height: 60px
+                    outline: none
+                    font-size: 1.2rem
+                    font-weight: 400
+                    padding: 21px 25px
+                    margin: 0
+                    background-color: #c4c4c4
+                    border: 1px solid $primary
+                    text-transform: uppercase
+                    &#word
+                        width: 250px
+            & button
+                margin-left: 0
+                margin-top: 20px
+                &.danger
+                    background-color: #AA1A1A
