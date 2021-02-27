@@ -11,7 +11,7 @@ class UserController extends Controller
     }
 
     public function changeName(Request $req) {
-        dd('nosz kurw*');
+
     }
 
     public function changePassword(Request $req) {

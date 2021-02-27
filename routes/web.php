@@ -39,4 +39,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/password', 'UserController@changePassword')->name('changePassword');
     Route::post('/profile/report', 'UserController@reportAnError')->name('reportAnError');
     Route::post('/profile/delete', 'UserController@destroy')->name('deleteAccount');
+
 });
+
+Route::view('/charts', 'charts');
+
+Route::get('/charts/profile/{id}', 'ChartController@profiles');

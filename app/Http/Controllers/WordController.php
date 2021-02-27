@@ -26,7 +26,8 @@ class WordController extends Controller
 
     public function add(Request $req) {
         $req->validate([
-            'word' => 'required|string|unique:words',
+            // 'word' => 'required|string|unique:word',
+            'word' => 'required|string',
             'translation' => 'required|string',
         ]);
 

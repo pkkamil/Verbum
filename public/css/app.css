@@ -414,6 +414,40 @@ button.danger:hover {
   cursor: pointer;
 }
 
+.not-found {
+  width: 100%;
+  height: 100vh;
+  padding: 200px 60px;
+  background-image: url(/images/404.jpg?d2ccc79b15c3db2921bffb4b4a164a7f);
+  background-position: center;
+  background-size: cover;
+  background-position: 50% 65%;
+}
+
+.not-found .info {
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.not-found .info h2 {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.not-found .info a {
+  padding: 10px 20px;
+  font-weight: 400;
+  font-size: 2rem;
+  transition: 0.6s;
+}
+
+.not-found .info a:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
 .words {
   width: 100%;
   height: auto;
@@ -1130,18 +1164,54 @@ button.danger:hover {
   width: 100%;
   height: 100vh;
   display: flex;
+  padding: 110px 60px;
   flex-direction: column;
 }
 
+.profile h2 {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
 .profile .top-part {
-  height: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile .top-part .single-chart {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.profile .top-part .single-chart h4 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile .top-part .single-chart p {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  color: #999;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.profile .top-part .single-chart a {
+  width: 200px;
 }
 
 .profile .bottom-part {
+  margin-top: 60px;
   display: flex;
   justify-content: flex-start;
   gap: 83px;
-  margin-left: 60px;
 }
 
 .profile .bottom-part .single-form h4 {
