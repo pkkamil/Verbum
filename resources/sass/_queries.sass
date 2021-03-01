@@ -1,0 +1,269 @@
+@media only screen and (max-width: 1800px)
+    .profile
+        & h2
+            font-size: 1.9rem
+        & .top-part
+            & .single-chart
+                padding: 0 20px
+                & h4
+                    font-size: 1.2rem
+                & a
+                    padding: 18px 35px
+                    width: 180px
+        & .bottom-part
+            & .single-form
+                & .group
+                    & input
+                        max-width: 270px
+        & a.button, button
+            font-size: 1.2rem
+
+@media only screen and (max-width: 1700px)
+    html
+        font-size: 87.5%
+    nav
+        & .logo
+            padding: 9px 8px
+    .profile
+        & h2
+            font-size: 1.8rem
+        & .top-part
+            & .single-chart
+                & h4
+                    font-size: 1.1rem
+                & a
+                    padding: 18px 25px
+                    width: 160px
+        & .bottom-part
+            & .single-form
+                & .group
+                    & input
+                        max-width: 270px
+        & a.button, button
+            font-size: 1.2rem
+
+@media only screen and (max-width: 1500px)
+    .profile
+        & .top-part
+            flex-wrap: wrap
+            & .single-chart
+                width: 50%
+                &:last-child
+                    margin: 0 auto
+                    margin-top: 50px
+        & .bottom-part
+            padding: 0 250px
+            & .single-form:nth-of-type(3), .single-form:nth-child(4)
+                margin-top: 50px
+
+@media only screen and (max-width: 1410px)
+    .profile
+        & h2
+            font-size: 1.6rem
+        & .bottom-part
+            padding: 0 180px
+
+@media only screen and (max-width: 1200px)
+    .profile
+        & .bottom-part
+            padding: 0 120px
+
+
+@media only screen and (max-width: 1100px)
+    .profile
+        & .bottom-part
+            padding: 0 80px
+
+@media only screen and (max-width: 1000px)
+    .profile
+        & .bottom-part
+            padding: 0 30px
+
+
+@media only screen and (max-width: 900px)
+    .profile
+        & .top-part
+            flex-wrap: wrap
+            & .single-chart
+                width: 100%
+                margin-top: 50px
+                padding: 0 50px
+                &:first-child
+                    margin-top: 0
+                & h4
+                    font-size: 1.3rem
+        & .bottom-part
+            padding: 0 0
+
+@media only screen and (max-width: 800px)
+    .profile
+        & .bottom-part
+            padding: 0 100px
+            & .single-form
+                margin-top: 50px
+                &:first-child
+                    margin-top: 0
+
+@media only screen and (max-width: 700px)
+    .profile
+        & .bottom-part
+            padding: 0 60px
+            & .single-form
+                margin-top: 40px
+                &:first-child
+                    margin-top: 0
+
+@media only screen and (max-width: 600px)
+    .profile
+        & h2
+            font-size: 1.3rem
+            margin-bottom: 20px
+            font-weight: 600
+        & .top-part
+            & .single-chart
+                padding: 0 30px
+                & h4
+                    font-size: 1.2rem
+        & .bottom-part
+            margin-top: 40px
+            padding: 0 0
+            & .single-form, .single-form:nth-of-type(3), .single-form:nth-of-type(4)
+                margin-top: 30px
+                &:first-child
+                    margin-top: 0
+
+@media only screen and (max-width: 500px)
+    .profile
+        & .top-part
+            & .single-chart, & .single-chart:last-child
+                margin-top: 30px
+                padding: 0 0
+                &:first-child
+                    margin-top: 0
+                & h4
+                    font-size: 1rem
+                & a
+                    width: 120px
+        & .bottom-part
+            & .single-form
+                margin-right: auto
+                & h4
+                    font-size: 1.1rem
+                & .group
+                    margin-top: 15px
+                    & label
+                        width: 50px
+                        height: 50px
+                        font-size: 1.2rem
+                    & input
+                        max-width: 230px
+                        height: 50px
+                        padding: 21px 25px
+                        font-size: 1rem
+                & button
+                    padding: 14px 28px
+        & a.button, button
+            font-size: 1rem
+        & .toHide
+            display: none
+
+@media only screen and (max-width: 355px)
+    .profile
+        & .bottom-part
+            & .single-form
+                & .group
+                    & input
+                        max-width: 190px
+                        height: 50px
+                        padding: 17px 21px
+                        font-size: 1rem
+
+@media only screen and (max-width: 319px)
+    .profile
+        & .bottom-part
+                & a.button
+                    padding: 14px 28px
+                & .single-form
+                    & .group
+                        margin-top: 13px
+                        & label
+                            width: 40px
+                            height: 40px
+                            font-size: 1rem
+                        & input
+                            max-width: 150px
+                            height: 40px
+                            font-size: .9rem
+
+@media screen and (max-width: 976px)
+    nav .logo
+        margin-left: 26px
+    .nav-wrapper
+        display: none
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 100vh
+        z-index: 1
+        background: $primary
+        opacity: 0
+        transition: all 0.2s ease
+        & ul
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
+            width: 100%
+            & li
+                display: block
+                float: none
+                width: 100%
+                text-align: right
+                margin-bottom: 10px
+                &:nth-child(1) a
+                    transition: 0.2s
+                &:nth-child(2) a
+                    transition: 0.3s
+                &:nth-child(3) a
+                    transition: 0.4s
+                &:nth-child(4) a
+                    transition: 0.5s
+                &:not(first-child)
+                    margin-left: 0
+                & a
+                    padding: 10px 24px
+                    opacity: 0
+                    color: #FFF
+                    font-weight: 600
+                    letter-spacing: 1.2px
+                    transform: translateX(-20px)
+                    transition: all 0.2s ease
+    .nav-btn
+        position: fixed
+        background-color: $primary
+        right: 20px
+        top: 11px
+        font-size: 1.5em
+        display: block
+        width: 48px
+        height: 48px
+        cursor: pointer
+        z-index: 9999
+        border-radius: 50%
+        & i
+            display: block
+            width: 20px
+            height: 2px
+            background: #FFF
+            border-radius: 2px
+            margin-left: 14px
+            transform: translateY(1px)
+            &:nth-child(1)
+                margin-top: 16px
+            &:nth-child(2)
+                margin-top: 4px
+                opacity: 1
+            &:nth-child(3)
+                margin-top: 4px
+    .profile
+        padding: 100px 40px 40px 40px
