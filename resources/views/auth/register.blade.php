@@ -1,6 +1,7 @@
 <?php
     $active = 'register';
     $title = 'Verbum - Rejestracja';
+    $lazy = true;
 ?>
 
 @extends('layouts.app')
@@ -36,8 +37,10 @@
                     <input type="password" id="confirm-password"  name="password_confirmation" required autocomplete="new-password" placeholder="Potwierdzenie hasła">
                 </div>
                 <button type="submit">Zarejestruj</button>
-                <a href="{{ route('login') }}">Masz już konto?</a>
-                <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>
+                <div class="flex">
+                    <a href="{{ route('login') }}">Masz już konto?</a>
+                    <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>
+                </div>
             </form>
         </section>
     </article>

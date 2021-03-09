@@ -1,6 +1,7 @@
 <?php
     $active = 'login';
     $title = 'Verbum - Logowanie';
+    $lazy = true;
 ?>
 
 @extends('layouts.app')
@@ -26,8 +27,10 @@
                     <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Hasło">
                 </div>
                 <button type="submit">Zaloguj</button>
-                <a href="{{ route('register') }}">Nie masz jeszcze konta?</a>
-                <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>
+                <div class="flex">
+                    <a href="{{ route('register') }}">Nie masz jeszcze konta?</a>
+                    <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>
+                </div>
             </form>
         </section>
         <section class="right-part">

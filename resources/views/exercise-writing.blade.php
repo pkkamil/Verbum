@@ -23,10 +23,10 @@
         <article class="dimmer">
             <section class="result-box">
                 @if ($result == 'correct')
-                    <h2><span style="color: #0eaf09">Gratulacje!</span></h2>
+                    <h2 class="text"><span style="color: #0eaf09">Gratulacje!</span></h2>
                     <p><span style="text-decoration: underline;">{{ $word }}</span> to poprawna odpowiedź.</p>
                 @else
-                    <h2><span style="color: #bb0909">Niestety!</span></h2>
+                    <h2 class="text"><span style="color: #bb0909">Niestety!</span></h2>
                     <p><span style="text-decoration: underline;">{{ $word }}</span> to poprawna odpowiedź.</p>
                 @endif
                 <a href="{{ url('/exercises/writing') }}"><button class="next reverse-color">Dalej</button></a>

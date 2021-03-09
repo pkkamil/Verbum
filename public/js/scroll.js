@@ -16,8 +16,9 @@ if (arrow != null) {
         if (window.innerWidth > 976) {
             window.scrollTo(0, document.querySelector('.words').offsetTop - $('nav').height() - 16)
         } else {
-            document.querySelector('.nav-btn').click()
-            window.scrollTo(0, document.querySelector('.words').offsetTop - $('nav').height())
+            if (e.target.classList[0] == 'link')
+                document.querySelector('.nav-btn').click()
+            window.scrollTo(0, document.querySelector('.words').offsetTop - $('nav').height() - 16)
         }
     })
 

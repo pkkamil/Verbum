@@ -8,7 +8,7 @@
 @section('content')
     <article class="not-found">
         <section class="info">
-            <h2>Strona, której szukasz nie istnieje</h2>
+            <h2><span class="long">Strona, której szukasz nie istnieje</span><span class="short">Zaginąłeś!</span></h2>
             <a href="{{ url('/') }}">Wróć na właściwą ścieżkę</a>
         </section>
     </article>

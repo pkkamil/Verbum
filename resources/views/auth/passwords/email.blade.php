@@ -1,6 +1,7 @@
 <?php
     $active = 'login';
     $title = 'Verbum - Przypomnienie hasła';
+    $lazy = true;
 ?>
 
 @extends('layouts.app')
@@ -24,8 +25,10 @@
                     <input type="email" id="email" name="email" placeholder="Adres email">
                 </div>
                 <button type="submit">Przypomnij</button>
-                <a href="{{ route('register') }}">Nie maasz jeszcze konta?</a>
-                <a href="{{ route('login') }}">Masz już konto?</a>
+                <div class="flex">
+                    <a href="{{ route('register') }}">Nie maasz jeszcze konta?</a>
+                    <a href="{{ route('login') }}">Masz już konto?</a>
+                </div>
             </form>
         </section>
     </article>

@@ -11,7 +11,7 @@
     <div class="nav-wrapper">
         <ul>
             @if ($active == '')
-                <li><a class="down" href="">Słownik</a></li>
+                <li><a class="link down" href="">Słownik</a></li>
             @else
                 <li><a class="down" href="/#slownik">Słownik</a></li>
             @endif

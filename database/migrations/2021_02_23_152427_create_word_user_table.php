@@ -13,7 +13,7 @@ class CreateWordUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('word_user', function (Blueprint $table) {
+        Schema::create('user_word', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->bigInteger('word_id');
             $table->bigInteger('user_id');

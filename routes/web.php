@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/exercises/writing', 'ExerciseController@writing');
 
     Route::post('/exercises/translation', 'ExerciseController@rememberWord')->name('rememberWord');
-    Route::post('/exrcises/matching', 'ExerciseController@checkAnswer')->name('checkAnswers');
+    Route::post('/exercises/matching', 'ExerciseController@checkAnswer')->name('checkAnswers');
     Route::post('/exercises/writing', 'ExerciseController@checkAnswer')->name('checkWord');
 
     Route::post('/profile/name', 'UserController@changeName')->name('changeName');

@@ -77,7 +77,7 @@ class ExerciseController extends Controller
     }
 
     public function rememberWord(Request $req) {
-        DB::table('word_user')->insert(
+        DB::table('user_word')->insert(
             ['word_id' => $req -> word, 'user_id' => Auth::id()]
         );
         return redirect()->back();

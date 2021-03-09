@@ -57,13 +57,136 @@
                 margin-top: 50px
 
 @media only screen and (max-width: 1410px)
+    .not-found
+        padding: 150px 60px
+        & .info
+            & h2
+                font-size: 1.8rem
+            & a
+                font-size: 1.8rem
+
+    .exercises
+        & .part
+            & .images
+                padding: 0 60px
+            & h2
+                font-size: 2rem
+            & p
+                font-size: 1.1rem
+
+    .dimmer
+        & .result-box
+            padding: 50px 130px
+            & h2.text
+                font-size: 1.9rem
+            & a
+                margin-top: 30px!important
+            & h3
+                font-size: 2.1rem
+                margin-bottom: 30px
+            & h4
+                font-size: 1.7rem
+            & p
+                font-size: 1.4rem
+
+    .exercise
+        &.translation
+            & h4
+                font-size: 1.9rem
+            & h2
+                font-size: 2.5rem
+            & h3
+                font-size: 1.9rem
+                padding: 0 60px
+        &.matching
+            padding: 119px 60px 50px 60px
+            & .parts
+                & h2
+                    margin-top: 40px
+                    font-size: 1.8rem
+                    margin-right: 80px
+                    &:first-child
+                        margin-top: 0
+                & h3
+                    margin-top: 40px
+                    font-size: 1.4rem
+                    &:first-child
+                        margin-top: 0
+        &.writing
+            & h4
+                font-size: 1.9rem
+            & h2
+                font-size: 2.5rem
+            & h3
+                font-size: 1.9rem
+                padding: 0 60px
+            & .group
+                & label
+                    width: 50px
+                    height: 50px
+                    & i
+                        font-size: 1.5rem
+                & input
+                    width: 250px
+                    height: 50px
+
+    .adding-words
+        & .left-part
+            width: 50%
+            & .group
+                & input
+                    width: 300px
+        & .right-part
+            width: 50%
     .profile
         & h2
             font-size: 1.6rem
         & .bottom-part
             padding: 0 180px
 
+    .auth
+        &.login
+            & .left-part
+                width: 50%
+                & .group
+                    & input
+                        width: 350px
+            & .right-part
+                width: 50%
+        &.register
+            & .right-part
+                width: 50%
+                & .group
+                    & input
+                        width: 350px
+            & .left-part
+                width: 50%
+        &.remember
+            & .right-part
+                width: 50%
+                & .group
+                    & input
+                        width: 350px
+            & .left-part
+                width: 50%
+
+
 @media only screen and (max-width: 1200px)
+    .exercises
+        padding-top: 68px
+        flex-direction: column
+        & .part
+            width: 100%
+            & .images
+                width: 100%
+                height: calc((100vh - 68px) / 3)
+                min-height: 166px
+                padding: 0 160px
+            & h2
+                font-size: 1.9rem
+            & p
+                font-size: 1.2rem
+
     .profile
         & .bottom-part
             padding: 0 120px
@@ -78,122 +201,6 @@
     .profile
         & .bottom-part
             padding: 0 30px
-
-
-@media only screen and (max-width: 900px)
-    .profile
-        & .top-part
-            flex-wrap: wrap
-            & .single-chart
-                width: 100%
-                margin-top: 50px
-                padding: 0 50px
-                &:first-child
-                    margin-top: 0
-                & h4
-                    font-size: 1.3rem
-        & .bottom-part
-            padding: 0 0
-
-@media only screen and (max-width: 800px)
-    .profile
-        & .bottom-part
-            padding: 0 100px
-            & .single-form
-                margin-top: 50px
-                &:first-child
-                    margin-top: 0
-
-@media only screen and (max-width: 700px)
-    .profile
-        & .bottom-part
-            padding: 0 60px
-            & .single-form
-                margin-top: 40px
-                &:first-child
-                    margin-top: 0
-
-@media only screen and (max-width: 600px)
-    .profile
-        & h2
-            font-size: 1.3rem
-            margin-bottom: 20px
-            font-weight: 600
-        & .top-part
-            & .single-chart
-                padding: 0 30px
-                & h4
-                    font-size: 1.2rem
-        & .bottom-part
-            margin-top: 40px
-            padding: 0 0
-            & .single-form, .single-form:nth-of-type(3), .single-form:nth-of-type(4)
-                margin-top: 30px
-                &:first-child
-                    margin-top: 0
-
-@media only screen and (max-width: 500px)
-    .profile
-        & .top-part
-            & .single-chart, & .single-chart:last-child
-                margin-top: 30px
-                padding: 0 0
-                &:first-child
-                    margin-top: 0
-                & h4
-                    font-size: 1rem
-                & a
-                    width: 120px
-        & .bottom-part
-            & .single-form
-                margin-right: auto
-                & h4
-                    font-size: 1.1rem
-                & .group
-                    margin-top: 15px
-                    & label
-                        width: 50px
-                        height: 50px
-                        font-size: 1.2rem
-                    & input
-                        max-width: 230px
-                        height: 50px
-                        padding: 21px 25px
-                        font-size: 1rem
-                & button
-                    padding: 14px 28px
-        & a.button, button
-            font-size: 1rem
-        & .toHide
-            display: none
-
-@media only screen and (max-width: 355px)
-    .profile
-        & .bottom-part
-            & .single-form
-                & .group
-                    & input
-                        max-width: 190px
-                        height: 50px
-                        padding: 17px 21px
-                        font-size: 1rem
-
-@media only screen and (max-width: 319px)
-    .profile
-        & .bottom-part
-                & a.button
-                    padding: 14px 28px
-                & .single-form
-                    & .group
-                        margin-top: 13px
-                        & label
-                            width: 40px
-                            height: 40px
-                            font-size: 1rem
-                        & input
-                            max-width: 150px
-                            height: 40px
-                            font-size: .9rem
 
 @media screen and (max-width: 976px)
     nav .logo
@@ -234,14 +241,14 @@
                     padding: 10px 24px
                     opacity: 0
                     color: #FFF
-                    font-weight: 600
+                    font-weight: 400
                     letter-spacing: 1.2px
                     transform: translateX(-20px)
-                    transition: all 0.2s ease
+                    transition: all 0.8s ease
     .nav-btn
         position: fixed
         background-color: $primary
-        right: 20px
+        right: 30px
         top: 11px
         font-size: 1.5em
         display: block
@@ -265,5 +272,720 @@
                 opacity: 1
             &:nth-child(3)
                 margin-top: 4px
+
+    .not-found
+        padding: 150px 60px
+        background-position: 70% 65%
+        & .info
+            & h2
+                font-size: 1.7rem
+            & a
+                font-size: 1.7rem
+
+    .words
+        padding: 50px 40px
+
+    .dimmer
+        padding: 0 40px
+        & .result-box
+            padding: 50px 100px
+            & h2.text
+                font-size: 1.7rem
+            & h3
+                font-size: 1.9rem
+            & h4
+                font-size: 1.5rem
+
+    .exercise
+        &.matching
+            padding: 119px 40px 50px 40px
+            & .parts
+                flex-direction: column
+                text-align: center
+                & h2
+                    margin-top: 20px
+                    font-size: 1.7rem
+                    margin-right: 0
+                    &:first-child
+                        margin-top: 0
+                & h3
+                    margin-top: 20px
+                    font-size: 1.4rem
+                    &:first-child
+                        margin-top: 50px
+                & section
+                    width: 100%
+
+    .adding-words
+        @include flex-center
+        height: 100vh
+        & .left-part
+            width: 100%
+            & .group
+                & input
+                    width: 330px
+        & .right-part
+            display: none
+
     .profile
         padding: 100px 40px 40px 40px
+
+    .auth
+        padding: 0 40px
+        @include flex-center
+        height: 100vh
+        &.login
+            & .left-part
+                width: 100%
+                & .group
+                    & input
+                        width: 370px
+            & .right-part
+                display: none
+        &.register
+            padding: 60px 40px 0px 40px
+            & .right-part
+                width: 100%
+                & .group
+                    & input
+                        width: 370px
+            & .left-part
+                display: none
+        &.remember
+            & .right-part
+                width: 100%
+                & .group
+                    & input
+                        width: 370px
+            & .left-part
+                display: none
+
+@media only screen and (max-width: 900px)
+    .profile
+        & .top-part
+            flex-wrap: wrap
+            & .single-chart
+                width: 100%
+                margin-top: 50px
+                padding: 0 50px
+                &:first-child
+                    margin-top: 0
+                & h4
+                    font-size: 1.3rem
+        & .bottom-part
+            padding: 0 0
+
+@media only screen and (max-width: 800px)
+    .not-found
+        padding: 150px 40px
+        background-position: 20% 65%
+        & .info
+            text-align: center
+            display: flex
+            justify-content: flex-end
+            align-items: center
+            flex-direction: column
+            width: 100%
+            height: 100%
+            & h2
+                font-size: 1.6rem
+                color: #000
+                background-color: #fff
+                padding: 10px 20px
+            & a
+                font-size: 1.6rem
+                color: #000
+                background-color: #fff
+                padding: 10px 20px
+                &:hover
+                    color: #fff
+                    background-color: #000
+
+    .welcome
+        & h4
+            font-size: 1.6rem
+
+    .dimmer
+        & .result-box
+            padding: 40px 80px
+            & h2.text
+                font-size: 1.6rem
+            & h3
+                font-size: 1.7rem
+            & h4
+                font-size: 1.3rem
+            & p
+                font-size: 1.3rem
+                margin-top: 20px
+
+    .profile
+        & .bottom-part
+            padding: 0 100px
+            & .single-form
+                margin-top: 50px
+                &:first-child
+                    margin-top: 0
+
+    a.button, button
+        font-size: 1.2rem
+        padding: 16px 35px
+
+    .auth
+        &.login
+            & .left-part
+                & .group
+                    & input
+                        width: 340px
+        &.register
+            & .right-part
+                & .group
+                    & input
+                        width: 340px
+        &.remember
+            & .right-part
+                & .group
+                    & input
+                        width: 340px
+
+@media only screen and (max-width: 700px)
+    .not-found
+        & .info
+            & h2
+                font-size: 1.5rem
+            & a
+                font-size: 1.5rem
+
+    .welcome
+        padding: 0 40px
+        & h4
+            font-size: 1.5rem
+        & a
+            width: 160px
+
+    .exercises
+        & .part
+            & .images
+                padding: 0 80px
+            & h2
+                font-size: 1.8rem
+            & p
+                font-size: 1.1rem
+
+    .exercise
+        &.matching
+            & .parts
+                & h2
+                    font-size: 1.6rem
+                & h3
+                    font-size: 1.4rem
+        &.writing
+            & h4
+                font-size: 1.7rem
+            & h2
+                font-size: 2.3rem
+            & h3
+                font-size: 1.7rem
+
+    .profile
+        & .bottom-part
+            padding: 0 60px
+            & .single-form
+                margin-top: 40px
+                &:first-child
+                    margin-top: 0
+
+@media only screen and (max-width: 600px)
+    .not-found
+        background-position: 30% 65%
+        & .info
+            & h2
+                font-size: 1.4rem
+            & a
+                font-size: 1.4rem
+
+    .dimmer
+        & .result-box
+            padding: 40px
+            & h2.text
+                font-size: 1.5rem
+            & h3
+                font-size: 1.5rem
+                margin-bottom: 20px
+            & h4
+                font-size: 1.2rem
+            & a
+                margin-top: 20px!important
+            & p
+                font-size: 1.2rem
+
+    .profile
+        & h2
+            font-size: 1.3rem
+            margin-bottom: 20px
+            font-weight: 600
+        & .top-part
+            & .single-chart
+                padding: 0 30px
+                & h4
+                    font-size: 1.2rem
+        & .bottom-part
+            margin-top: 40px
+            padding: 0 0
+            & .single-form, .single-form:nth-of-type(3), .single-form:nth-of-type(4)
+                margin-top: 30px
+                &:first-child
+                    margin-top: 0
+
+@media only screen and (max-width: 500px)
+    .not-found
+        background-position: 35% 65%
+        & .info
+            align-items: flex-start
+            & h2
+                font-size: 1.3rem
+                padding: 8px 16px
+            & a
+                font-size: 1.3rem
+                padding: 8px 16px
+
+    .words
+        & .search
+            & form
+                & input
+                    width: 220px
+                    height: 50px
+                    padding: 17px 28px
+                    font-size: 1.1rem
+                    border-radius: 0
+                & button
+                    width: 50px
+                    height: 50px
+                    padding: 16px
+                    font-size: 1.1rem
+                    border-radius: 0
+        & .all-words
+            & .single-word
+                margin: 7px
+                padding: 33px 40px
+                width: 100%
+                & h3
+                    font-size: 1.4rem
+                    margin-bottom: 8px
+
+    .exercises
+        & .part
+            & .images
+                padding: 0 40px
+            & h2
+                font-size: 1.7rem
+            & p
+                font-size: 1rem
+
+    .exercise
+        &.translation
+            & h4
+                font-size: 1.7rem
+                margin-bottom: 100px
+            & h2
+                font-size: 2.3rem
+            & h3
+                font-size: 1.5rem
+                padding: 0 40px
+        &.writing
+            & h4
+                font-size: 1.7rem
+                margin-bottom: 100px
+            & h2
+                font-size: 2.2rem
+            & h3
+                font-size: 1.5rem
+                padding: 0 40px
+            & .group
+                & input
+                    width: 230px
+                    font-size: 1.1rem
+
+    .adding-words
+        padding: 0 40px
+        & .left-part
+            & .group
+                & input
+                    width: 280px!important
+                    height: 50px
+                    font-size: 1.1rem
+                    padding: 17px 21px
+                & label
+                    height: 50px
+                    width: 50px
+                    font-size: 1.3rem
+            & button
+                padding: 14px 28px
+                font-size: 1rem
+                margin-top: 20px
+                &:last-child
+                    padding: 14px 28px
+                    margin-top: 10px
+            & form
+                margin-right: auto
+            & h1
+                margin-right: auto
+                font-size: 1.5rem
+                margin-bottom: 5px
+
+    .profile
+        & .top-part
+            & .single-chart, & .single-chart:last-child
+                margin-top: 30px
+                padding: 0 0
+                &:first-child
+                    margin-top: 0
+                & h4
+                    font-size: 1rem
+                & a
+                    width: 120px
+        & .bottom-part
+            & .single-form
+                margin-right: auto
+                & h4
+                    font-size: 1.1rem
+                & .group
+                    margin-top: 15px
+                    & label
+                        width: 50px
+                        height: 50px
+                        font-size: 1.2rem
+                    & input
+                        max-width: 230px
+                        height: 50px
+                        padding: 21px 25px
+                        font-size: 1rem
+                & button
+                    padding: 14px 28px
+        & a.button, button
+            font-size: 1rem
+        & .toHide
+            display: none
+
+    .auth
+        &.login
+            & .left-part
+                & h1
+                    font-size: 1.8rem
+                & form
+                    width: 100%
+                & .group
+                    & label
+                        width: 50px
+                        height: 50px
+                        & i
+                            font-size: 1.3rem
+                    & input
+                        width: calc(100% - 50px)
+                        height: 50px
+        &.register
+            & .right-part
+                & form
+                    width: 100%
+                & h1
+                    font-size: 1.8rem
+                & .group
+                    & label
+                        width: 50px
+                        height: 50px
+                        & i
+                            font-size: 1.3rem
+                    & input
+                        width: calc(100% - 50px)
+                        height: 50px
+        &.remember
+            & .right-part
+                & form
+                    width: 100%
+                & h1
+                    font-size: 1.8rem
+                & .group
+                    & label
+                        width: 50px
+                        height: 50px
+                        & i
+                            font-size: 1.3rem
+                    & input
+                        width: calc(100% - 50px)
+                        height: 50px
+
+@media only screen and (max-width: 470px)
+    .not-found
+        & .info
+            & h2
+                font-size: 1.2rem
+                padding: 6px 12px
+                & .long
+                    display: none
+                & .short
+                    display: block
+            & a
+                font-size: 1.2rem
+                padding: 6px 12px
+
+    .auth
+        &.login
+            & .left-part
+                & h1
+                    font-size: 1.7rem
+                & .group
+                    & input
+                        font-size: 1.1rem
+        &.register
+            & .right-part
+                & h1
+                    font-size: 1.7rem
+                & .group
+                    & input
+                        font-size: 1.1rem
+        &.remember
+            & .right-part
+                & h1
+                    font-size: 1.7rem
+                & .group
+                    & input
+                        font-size: 1.1rem
+
+@media only screen and (max-width: 400px)
+    .welcome
+        & h4
+            font-size: 1.3rem
+        & a
+            width: 120px
+            padding: 14px 28px
+            font-size: 1rem
+    .words
+        & .search
+            & form
+                & input
+                    width: 190px
+                    height: 50px
+                    padding: 14px 28px
+                    font-size: 1rem
+        & .all-words
+            & .single-word
+                margin: 6px
+                padding: 25px 33px
+                width: 100%
+                & h3
+                    font-size: 1.3rem
+
+    .exercise
+        &.translation
+            & h4
+                font-size: 1.6rem
+                margin-bottom: 80px
+            & h2
+                font-size: 2.1rem
+            & h3
+                font-size: 1.4rem
+        &.writing
+            & h4
+                font-size: 1.6rem
+                margin-bottom: 80px
+            & h2
+                font-size: 2.1rem
+            & h3
+                font-size: 1.4rem
+            & .group
+                & label
+                    width: 40px
+                    height: 40px
+                    & i
+                        font-size: 1.3rem
+                & input
+                    width: 210px
+                    padding: 15px 18px
+                    height: 40px
+                    font-size: 1.1rem
+
+    .adding-words
+        & .left-part
+            & .group
+                & input
+                    width: 240px!important
+                    height: 40px
+                    font-size: 1rem
+                    padding: 15px 18px
+                & label
+                    height: 40px
+                    width: 40px
+                    font-size: 1.1rem
+            & h1
+                font-size: 1.4rem
+
+    .auth
+        &.login
+            & .left-part
+                & h1
+                    font-size: 1.6rem
+                & .group
+                    margin-top: 15px
+                    & label
+                        height: 40px
+                        width: 40px
+                        & i
+                            font-size: 1rem
+                    & input
+                        font-size: 1.1rem
+                        width: calc(100% - 40px)
+                        height: 40px
+                        padding: 15px 18px
+        &.register
+            & .right-part
+                & h1
+                    font-size: 1.6rem
+                & .group
+                    margin-top: 15px
+                    & label
+                        height: 40px
+                        width: 40px
+                        & i
+                            font-size: 1rem
+                    & input
+                        font-size: 1.1rem
+                        width: calc(100% - 40px)
+                        height: 40px
+                        padding: 15px 18px
+        &.remember
+            & .right-part
+                & h1
+                    font-size: 1.6rem
+                & .group
+                    margin-top: 15px
+                    & label
+                        height: 40px
+                        width: 40px
+                        & i
+                            font-size: 1rem
+                    & input
+                        font-size: 1.1rem
+                        width: calc(100% - 40px)
+                        height: 40px
+                        padding: 15px 18px
+
+@media only screen and (max-width: 355px)
+    .not-found
+        & .info
+            & h2
+                font-size: 1.1rem
+                padding: 6px 12px
+            & a
+                font-size: 1.1rem
+                padding: 6px 12px
+
+    .exercises
+        & .part
+            & h2
+                font-size: 1.6rem
+
+    .dimmer
+        padding: 30px 0 0 0
+        & .result-box
+            padding: 30px
+            & h2.text
+                font-size: 1.4rem
+            & h3
+                font-size: 1.4rem
+            & h4
+                font-size: 1.1rem
+            & p
+                font-size: 1.1rem
+                margin-top: 15px
+
+    .exercise
+        &.translation
+            & h4
+                font-size: 1.5rem
+            & h2
+                font-size: 1.8rem
+            & h3
+                font-size: 1.2rem
+        &.matching
+            & .parts
+                & h2
+                    font-size: 1.4rem
+                    margin-top: 15px
+                    &:first-child
+                        margin-top: 0
+                & h3
+                    font-size: 1.3rem
+                    margin-top: 15px
+                    &:first-child
+                        margin-top: 50px
+        &.writing
+            & h4
+                font-size: 1.5rem
+            & h2
+                font-size: 1.8rem
+            & h3
+                font-size: 1.2rem
+            & .group
+                & input
+                    width: 200px
+                    font-size: 1rem
+
+    .adding-words
+        & .left-part
+            & .group
+                & input
+                    width: 200px!important
+                    font-size: .9rem
+            & h1
+                font-size: 1.3rem
+
+    .profile
+        & .bottom-part
+            & .single-form
+                & .group
+                    & input
+                        max-width: 190px
+                        height: 50px
+                        padding: 17px 21px
+                        font-size: 1rem
+
+    .auth
+        & .errors
+            padding-top: 50px
+        &.login
+            & .left-part
+                & h1
+                    font-size: 1.5rem
+                & .group
+                    & input
+                        font-size: .9rem
+        &.register
+            & .right-part
+                & h1
+                    font-size: 1.5rem
+                & .group
+                    & input
+                        font-size: .9rem
+        &.remember
+            & .right-part
+                & h1
+                    font-size: 1.5rem
+                & .group
+                    & input
+                        font-size: .9rem
+
+@media only screen and (max-width: 319px)
+    .profile
+        & .bottom-part
+                & a.button
+                    padding: 14px 28px
+                & .single-form
+                    & .group
+                        margin-top: 13px
+                        & label
+                            width: 40px
+                            height: 40px
+                            font-size: 1rem
+                        & input
+                            max-width: 150px
+                            height: 40px
+                            font-size: .9rem
