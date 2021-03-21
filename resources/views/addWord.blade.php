@@ -16,7 +16,7 @@
             </div>
         @endif
         <h1>{{ __('Dodawanie nowego słowa') }}</h1>
-        <form method="POST" action="{{ route('addWord') }}" autocomplete="on">
+        <form method="POST" action="{{ route('addSuggestion') }}" autocomplete="on">
             @csrf
             <input type="hidden" id="action" name="action" value="">
             <div class="word-group group">

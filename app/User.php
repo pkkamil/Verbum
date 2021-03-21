@@ -46,6 +46,6 @@ class User extends Authenticatable
     }
 
     public function exercises() {
-        return $this->hasMany('App\Exercise');
+        return $this->hasOne('App\Exercise');
     }
 }

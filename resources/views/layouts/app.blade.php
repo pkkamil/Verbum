@@ -46,7 +46,9 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        @include('partials.navbar')
+        @if ($navbar ?? true)
+            @include('partials.navbar')
+        @endif
         @yield('content')
         @include('partials.footer')
         @if ($lazy ?? '' == True)

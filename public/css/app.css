@@ -399,7 +399,7 @@ a.button {
   text-transform: uppercase;
   padding: 18px 45px;
   background-color: #333;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4);
   text-align: center;
   font-size: 1.4rem;
   outline: none;
@@ -417,7 +417,7 @@ button:hover,
 a.button:hover {
   cursor: pointer;
   background-color: #363636;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.6);
 }
 
 button.reverse-color,
@@ -425,14 +425,14 @@ a.button.reverse-color {
   display: inline-block;
   color: #333;
   background-color: #fff;
-  box-shadow: 0px 5px 4px rgba(255, 255, 255, 0.4);
+  box-shadow: 5px 5px 4px rgba(255, 255, 255, 0.4);
 }
 
 button.reverse-color:hover,
 a.button.reverse-color:hover {
   cursor: pointer;
   background-color: #ddd;
-  box-shadow: 0px 5px 4px rgba(255, 255, 255, 0.6);
+  box-shadow: 5px 5px 4px rgba(255, 255, 255, 0.6);
 }
 
 button:disabled,
@@ -445,24 +445,55 @@ button.disabled {
   color: #FFF;
   background-color: #555;
   border: 1px solid #333;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4);
   transition: 0.6s box-shadow, 0.6s background-color;
 }
 
 button.disabled:hover {
   cursor: default;
   background-color: #555;
-  box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4);
 }
 
-button.danger {
+button.danger,
+a.danger {
+  background-color: #AA1A1A;
+  border: 0;
+  box-shadow: 5px 5px 4px rgba(255, 0, 0, 0.4);
   transition: 0.6s background-color, 0.6s border-color, 0.6s box-shadow;
 }
 
-button.danger:hover {
-  background-color: #FF2E00;
-  border-color: #FF0000;
-  box-shadow: 0px 5px 7px red;
+button.danger:hover,
+a.danger:hover {
+  background-color: #c21919;
+  box-shadow: 5px 5px 4px rgba(255, 0, 0, 0.6);
+}
+
+button.success,
+a.success {
+  background-color: #1e6e22;
+  border: 0;
+  box-shadow: 5px 5px 4px rgba(27, 116, 32, 0.4);
+  transition: 0.6s background-color, 0.6s border-color, 0.6s box-shadow;
+}
+
+button.success:hover,
+a.success:hover {
+  background-color: #1c8321;
+  box-shadow: 5px 5px 4px rgba(27, 116, 32, 0.6);
+}
+
+.danger-small,
+.success-small {
+  transition: 0.6s color;
+}
+
+.danger-small:hover {
+  color: #AA1A1A;
+}
+
+.success-small:hover {
+  color: #1e6e22;
 }
 
 .not-found {
@@ -472,7 +503,7 @@ button.danger:hover {
   background-image: url(/images/404.jpg?d2ccc79b15c3db2921bffb4b4a164a7f);
   background-position: center;
   background-size: cover;
-  background-position: 50% 65%;
+  background-position: 50% 75%;
 }
 
 .not-found .info {
@@ -1197,14 +1228,18 @@ button.danger:hover {
   margin-bottom: 20px;
 }
 
-.adding-words {
+.adding-words,
+.word-edit,
+.suggestion-edit {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.adding-words .left-part {
+.adding-words .left-part,
+.word-edit .left-part,
+.suggestion-edit .left-part {
   width: 40%;
   display: flex;
   align-items: center;
@@ -1212,19 +1247,25 @@ button.danger:hover {
   flex-direction: column;
 }
 
-.adding-words .left-part h1 {
+.adding-words .left-part h1,
+.word-edit .left-part h1,
+.suggestion-edit .left-part h1 {
   font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
   margin-bottom: 15px;
 }
 
-.adding-words .left-part .group {
+.adding-words .left-part .group,
+.word-edit .left-part .group,
+.suggestion-edit .left-part .group {
   display: block;
   margin-top: 20px;
 }
 
-.adding-words .left-part .group label {
+.adding-words .left-part .group label,
+.word-edit .left-part .group label,
+.suggestion-edit .left-part .group label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1235,10 +1276,12 @@ button.danger:hover {
   cursor: pointer;
   margin: 0;
   color: #FFF;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 
-.adding-words .left-part .group input {
+.adding-words .left-part .group input,
+.word-edit .left-part .group input,
+.suggestion-edit .left-part .group input {
   width: 370px;
   height: 60px;
   outline: none;
@@ -1251,31 +1294,28 @@ button.danger:hover {
   text-transform: uppercase;
 }
 
-.adding-words .left-part .group input#word {
+.adding-words .left-part .group input#word,
+.word-edit .left-part .group input#word,
+.suggestion-edit .left-part .group input#word {
   width: 250px;
 }
 
-.adding-words .left-part button {
+.adding-words .left-part button,
+.word-edit .left-part button,
+.suggestion-edit .left-part button {
   margin-left: 0;
   margin-top: 30px;
 }
 
-.adding-words .left-part button:last-child {
+.adding-words .left-part button:last-child,
+.word-edit .left-part button:last-child,
+.suggestion-edit .left-part button:last-child {
   margin-top: 20px;
 }
 
-.adding-words .left-part a {
-  text-align: center;
-  display: block;
-  font-size: 1rem;
-  color: #333;
-  margin-bottom: 15px;
-  text-decoration: none;
-  text-transform: uppercase;
-  text-shadow: 0px 4px 4px rgba(51, 51, 51, 0.5);
-}
-
-.adding-words .right-part {
+.adding-words .right-part,
+.word-edit .right-part,
+.suggestion-edit .right-part {
   background-image: url(/images/bg-add_word.jpg?88744a6c4e9a743887c3a4fdc793fd0f);
   background-position: center;
   background-size: cover;
@@ -1284,11 +1324,57 @@ button.danger:hover {
   height: 100vh;
 }
 
+.word-edit .left-part .operations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.word-edit .left-part .operations a {
+  margin-left: 20px;
+}
+
+.word-edit .left-part .operations button,
+.word-edit .left-part .operations a {
+  margin-top: 0;
+  max-height: 59px;
+  margin-right: 0;
+}
+
+.word-edit .right-part {
+  background-image: url(/images/bg-edit_word.jpg?0ce2c3b0288e7c6f046a231f42369e5a);
+}
+
+.suggestion-edit .left-part .operations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.suggestion-edit .left-part .operations a {
+  margin-left: 20px;
+}
+
+.suggestion-edit .left-part .operations button,
+.suggestion-edit .left-part .operations a {
+  margin-top: 0;
+  max-height: 59px;
+  margin-right: 0;
+}
+
+.suggestion-edit .right-part {
+  background-image: url(/images/bg-edit_suggestion.jpg?ae52a6609fc0e33cefe1fa284870d38c);
+}
+
 .profile {
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 110px 60px 60px 60px;
+  padding: 110px 60px 50px 60px;
   flex-direction: column;
 }
 
@@ -1389,16 +1475,418 @@ button.danger:hover {
   margin-top: 20px;
 }
 
-.profile .bottom-part .single-form button.danger {
-  background-color: #AA1A1A;
-}
-
 .profile .bottom-part .single-form a.button {
   margin-top: 20px;
 }
 
 .profile .bottom-part .divider {
   display: inline;
+}
+
+.ranking {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.ranking .left-part {
+  padding: 110px 40px 0px 60px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking .left-part h2 {
+  font-size: 1.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.ranking .left-part table {
+  border-collapse: collapse;
+  font-size: 1.5rem;
+}
+
+.ranking .left-part table tr {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.ranking .left-part table tr td {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.ranking .right-part {
+  position: relative;
+  width: 60%;
+  height: 100vh;
+}
+
+.ranking.add .right-part {
+  background-image: url(/images/bg-ranking_add.jpg?6f244a2d97bde0f5d69777a55e66f13a);
+  background-position: center;
+  background-size: cover;
+}
+
+.ranking.exercising .right-part {
+  background-image: url(/images/bg-ranking_exercise.jpg?6b14ddc74f00cfea9e381b7792e3cf9d);
+  background-position: center;
+  background-size: cover;
+}
+
+.ranking.repeat .right-part {
+  background-image: url(/images/bg-ranking_repeat.jpg?53395607765eae580b7f7bccf32ce399);
+  background-position: center;
+  background-size: cover;
+}
+
+.list nav {
+  position: relative;
+}
+
+.list nav ul li:not(:first-child) {
+  margin-left: 20px;
+}
+
+.list nav ul li a {
+  font-size: 1.4rem;
+}
+
+.list nav ul li span {
+  font-size: 1.4rem;
+}
+
+.list .pagination {
+  margin-top: 10px;
+  float: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list .pagination .icon {
+  display: inline;
+  background: #262626;
+  width: 32px;
+  height: 32px;
+}
+
+.list .pagination .icon.disabled {
+  color: #555;
+}
+
+.list .pagination .icon.disabled:hover {
+  color: #555;
+}
+
+.list .pagination .icon:not(.disabled):hover {
+  color: #fff;
+}
+
+.list .pagination .arrow i {
+  transform: translateY(-2px);
+}
+
+.list .pagination a {
+  color: #888;
+}
+
+.list .pagination.active {
+  color: #FFF;
+}
+
+.users-list {
+  width: 100%;
+  height: 100%;
+  padding: 90px 60px 30px 60px;
+}
+
+.users-list table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-spacing: 0 15px;
+}
+
+.users-list table thead {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+
+.users-list table thead th {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: left;
+}
+
+.users-list table tbody tr {
+  background-color: #c4c4c4;
+}
+
+.users-list table tbody tr td {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.users-list table tbody tr td a {
+  color: #333;
+  transition: 0.6s color;
+}
+
+.users-list table tbody tr td a:hover {
+  color: #555;
+}
+
+.words-list {
+  width: 100%;
+  height: 100%;
+  padding: 90px 60px 30px 60px;
+}
+
+.words-list table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-spacing: 0 15px;
+}
+
+.words-list table thead {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+
+.words-list table thead th {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: left;
+}
+
+.words-list table tbody tr {
+  background-color: #c4c4c4;
+}
+
+.words-list table tbody tr td {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.words-list table tbody tr td i {
+  font-weight: 600;
+}
+
+.words-list table tbody tr td a {
+  color: #333;
+  transition: 0.6s color;
+  margin-left: 10px;
+}
+
+.words-list table tbody tr td a:first-child {
+  margin-left: 0;
+}
+
+.words-list table tbody tr td a:hover {
+  color: #555;
+}
+
+.word-details {
+  width: 100%;
+  height: 100%;
+  padding: 200px 60px 30px 60px;
+}
+
+.word-details .box {
+  width: 100%;
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.word-details .box h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.word-details .box p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
+}
+
+.word-details .box .down {
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.word-details .box .down h4 {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.word-details .box .operations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+}
+
+.word-details .box .operations a {
+  margin-left: 20px;
+}
+
+.word-details .box .operations a:first-child {
+  margin-left: 0;
+}
+
+.suggestions-list {
+  width: 100%;
+  height: 100%;
+  padding: 90px 60px 30px 60px;
+}
+
+.suggestions-list table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-spacing: 0 15px;
+}
+
+.suggestions-list table thead {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+
+.suggestions-list table thead th {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: left;
+}
+
+.suggestions-list table tbody tr {
+  background-color: #c4c4c4;
+}
+
+.suggestions-list table tbody tr td {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.suggestions-list table tbody tr td i {
+  font-weight: 600;
+}
+
+.suggestions-list table tbody tr td a {
+  color: #333;
+  transition: 0.6s color;
+  margin-left: 10px;
+}
+
+.suggestions-list table tbody tr td a:first-child {
+  margin-left: 0;
+}
+
+.suggestions-list table tbody tr td a:hover {
+  color: #555;
+}
+
+.suggestions-list table tbody tr td p {
+  display: inline-block;
+  color: #777;
+  margin-left: 10px;
+}
+
+.suggestion-details {
+  width: 100%;
+  height: 100%;
+  padding: 200px 60px 30px 60px;
+}
+
+.suggestion-details .box {
+  width: 100%;
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.suggestion-details .box h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.suggestion-details .box p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
+}
+
+.suggestion-details .box .down {
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.suggestion-details .box .down h4 {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.suggestion-details .box .operations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+}
+
+.suggestion-details .box .operations a {
+  margin-left: 20px;
+}
+
+.suggestion-details .box .operations a:first-child {
+  margin-left: 0;
+}
+
+.suggestion-details .duplicate {
+  margin-bottom: 25px;
+}
+
+.suggestion-details .duplicate h2 {
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 @media only screen and (max-width: 1800px) {
@@ -1598,15 +2086,21 @@ button.danger:hover {
     height: 50px;
   }
 
-  .adding-words .left-part {
+  .adding-words .left-part,
+  .word-edit .left-part,
+  .suggestion-edit .left-part {
     width: 50%;
   }
 
-  .adding-words .left-part .group input {
+  .adding-words .left-part .group input,
+  .word-edit .left-part .group input,
+  .suggestion-edit .left-part .group input {
     width: 300px;
   }
 
-  .adding-words .right-part {
+  .adding-words .right-part,
+  .word-edit .right-part,
+  .suggestion-edit .right-part {
     width: 50%;
   }
 
@@ -1866,22 +2360,30 @@ button.danger:hover {
     width: 100%;
   }
 
-  .adding-words {
+  .adding-words,
+  .word-edit,
+  .suggestion-edit {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
   }
 
-  .adding-words .left-part {
+  .adding-words .left-part,
+  .word-edit .left-part,
+  .suggestion-edit .left-part {
     width: 100%;
   }
 
-  .adding-words .left-part .group input {
-    width: 330px;
+  .adding-words .left-part .group input,
+  .word-edit .left-part .group input,
+  .suggestion-edit .left-part .group input {
+    width: 430px;
   }
 
-  .adding-words .right-part {
+  .adding-words .right-part,
+  .word-edit .right-part,
+  .suggestion-edit .right-part {
     display: none;
   }
 
@@ -2157,6 +2659,27 @@ button.danger:hover {
     font-size: 1.2rem;
   }
 
+  .adding-words,
+  .word-edit,
+  .suggestion-edit {
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .adding-words .left-part form,
+  .word-edit .left-part form,
+  .suggestion-edit .left-part form {
+    width: 100%;
+  }
+
+  .adding-words .left-part .group input,
+  .word-edit .left-part .group input,
+  .suggestion-edit .left-part .group input {
+    width: calc(100% - 60px);
+  }
+
   .profile h2 {
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -2280,42 +2803,73 @@ button.danger:hover {
     font-size: 1.1rem;
   }
 
-  .adding-words {
+  .adding-words,
+  .word-edit,
+  .suggestion-edit {
     padding: 0 40px;
   }
 
-  .adding-words .left-part .group input {
-    width: 280px !important;
+  .adding-words .left-part .group input,
+  .word-edit .left-part .group input,
+  .suggestion-edit .left-part .group input {
+    width: calc(100% - 50px);
     height: 50px;
     font-size: 1.1rem;
     padding: 17px 21px;
   }
 
-  .adding-words .left-part .group label {
+  .adding-words .left-part .group label,
+  .word-edit .left-part .group label,
+  .suggestion-edit .left-part .group label {
     height: 50px;
     width: 50px;
     font-size: 1.3rem;
   }
 
-  .adding-words .left-part button {
+  .adding-words .left-part button,
+  .adding-words .left-part a,
+  .word-edit .left-part button,
+  .word-edit .left-part a,
+  .suggestion-edit .left-part button,
+  .suggestion-edit .left-part a {
     padding: 14px 28px;
     font-size: 1rem;
     margin-top: 20px;
   }
 
-  .adding-words .left-part button:last-child {
-    padding: 14px 28px;
+  .adding-words .left-part button:last-child,
+  .adding-words .left-part a:last-child,
+  .word-edit .left-part button:last-child,
+  .word-edit .left-part a:last-child,
+  .suggestion-edit .left-part button:last-child,
+  .suggestion-edit .left-part a:last-child {
     margin-top: 10px;
   }
 
-  .adding-words .left-part form {
+  .adding-words .left-part form,
+  .word-edit .left-part form,
+  .suggestion-edit .left-part form {
     margin-right: auto;
   }
 
-  .adding-words .left-part h1 {
+  .adding-words .left-part h1,
+  .word-edit .left-part h1,
+  .suggestion-edit .left-part h1 {
     margin-right: auto;
     font-size: 1.5rem;
     margin-bottom: 5px;
+  }
+
+  .word-edit .left-part .operations a,
+  .suggestion-edit .left-part .operations a {
+    max-height: 44px;
+  }
+
+  .word-edit .left-part .operations button,
+  .word-edit .left-part .operations a,
+  .suggestion-edit .left-part .operations button,
+  .suggestion-edit .left-part .operations a {
+    margin-top: 0;
   }
 
   .profile .top-part .single-chart,
@@ -2558,20 +3112,32 @@ button.danger:hover {
     font-size: 1.1rem;
   }
 
-  .adding-words .left-part .group input {
-    width: 240px !important;
+  .adding-words .left-part .group input,
+  .word-edit .left-part .group input,
+  .suggestion-edit .left-part .group input {
+    width: calc(100% - 40px);
     height: 40px;
     font-size: 1rem;
     padding: 15px 18px;
   }
 
-  .adding-words .left-part .group label {
+  .adding-words .left-part .group input#word,
+  .word-edit .left-part .group input#word,
+  .suggestion-edit .left-part .group input#word {
+    width: calc(100% - 40px);
+  }
+
+  .adding-words .left-part .group label,
+  .word-edit .left-part .group label,
+  .suggestion-edit .left-part .group label {
     height: 40px;
     width: 40px;
     font-size: 1.1rem;
   }
 
-  .adding-words .left-part h1 {
+  .adding-words .left-part h1,
+  .word-edit .left-part h1,
+  .suggestion-edit .left-part h1 {
     font-size: 1.4rem;
   }
 
@@ -2735,13 +3301,28 @@ button.danger:hover {
     font-size: 1rem;
   }
 
-  .adding-words .left-part .group input {
-    width: 200px !important;
+  .adding-words .left-part .group input,
+  .word-edit .left-part .group input,
+  .suggestion-edit .left-part .group input {
     font-size: 0.9rem;
   }
 
-  .adding-words .left-part h1 {
+  .adding-words .left-part h1,
+  .word-edit .left-part h1,
+  .suggestion-edit .left-part h1 {
     font-size: 1.3rem;
+  }
+
+  .word-edit .left-part .operations,
+  .suggestion-edit .left-part .operations {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .word-edit .left-part .operations a,
+  .suggestion-edit .left-part .operations a {
+    margin-left: 0;
+    margin-top: 15px;
   }
 
   .profile .bottom-part .single-form .group input {

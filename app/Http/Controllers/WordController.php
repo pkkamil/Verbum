@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Word;
-use App\Suggestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,22 +23,43 @@ class WordController extends Controller
         return view('addWord');
     }
 
-    public function add(Request $req) {
+    public function list() {
+        $words = Word::paginate(9);
+        return view('words-list')->with('words', $words);
+    }
+
+    public function details($id) {
+        $word = word::find($id);
+        if (!$word) {
+            return redirect(url()->previous());
+        }
+        return view('word-details')->with('word', $word);
+    }
+
+    public function edit($id) {
+        $word = word::find($id);
+        if (!$word) {
+            return redirect(url()->previous());
+        }
+        return view('word-edit')->with('word', $word);
+    }
+
+    public function editWordDetails(Request $req) {
         $req->validate([
-            // 'word' => 'required|string|unique:word',
             'word' => 'required|string',
             'translation' => 'required|string',
         ]);
 
-        // create Suggestion
-        $word = new Suggestion();
-        $word -> word = $req -> word;
-        $word -> translation = $req -> translation;
-        $word -> user_id = Auth::id();
+        // edit word
+        $word = Word::find($req -> word_id);
+        $word -> word = mb_strtolower($req -> word);
+        $word -> translation = mb_strtolower($req -> translation);
         $word -> save();
-        if ($req -> action == 'exit')
-            return redirect('/');
-        else
-            return view('addWord');
+        return redirect('/admin/words/'.$req -> word_id);
+    }
+
+    public function delete($id) {
+        Word::destroy($id);
+        return redirect('/admin/words');
     }
 }

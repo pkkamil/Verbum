@@ -10,19 +10,19 @@
     <h2>Cześć, {{ explode(" ", Auth::user() -> name)[0] }}!</h2>
     <section class="top-part">
         <div class="single-chart">
-            <h4>Dodałeś łącznie: 329 słów <span class="gray" style="color: #c4c4c4">(51%)</span></h4>
+            <h4>Dodałeś łącznie: {{ Auth::user() -> words }} słów <span class="gray" style="color: #c4c4c4">({{ floor(Auth::user() -> words / count(\App\Word::all())*100) }}%)</span></h4>
             <div id="chart1"></div>
             <p>Ostatnie 3 tygodnie</p>
             <a href="{{ url('/ranking/add') }}" class="button">Ranking</a>
         </div>
         <div class="single-chart">
-            <h4>Wykonałeś łącznie: 25 ćwiczeń</h4>
+            <h4>Uzyskałeś łącznie: {{ Auth::user() -> exercises -> matching + Auth::user() -> exercises -> writing }} punktów z ćwiczeń</h4>
             <div id="chart2"></div>
             <p>Ostatnie 3 tygodnie</p>
             <a href="{{ url('/ranking/exercise') }}" class="button">Ranking</a>
         </div>
         <div class="single-chart">
-            <h4>Powtórzyłeś łącznie: 341 słów <span class="gray" style="color: #c4c4c4">(53%)</span></h4>
+            <h4>Powtórzyłeś łącznie: {{ Auth::user() -> exercises -> translation }} słów <span class="gray" style="color: #c4c4c4">({{ floor(Auth::user() -> exercises -> translation / count(\App\Word::all())*100) }}%)</span></h4>
             <div id="chart3"></div>
             <p>Ostatnie 3 tygodnie</p>
             <a href="{{ url('/ranking/repeat') }}" class="button">Ranking</a>

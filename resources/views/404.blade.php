@@ -2,6 +2,7 @@
     $active = '404';
     $title = 'Verbum - Zagubiono';
     $lazy = true;
+    $navbar = false;
 ?>
 
 @extends('layouts.app')

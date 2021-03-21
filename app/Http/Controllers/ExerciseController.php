@@ -29,16 +29,14 @@ class ExerciseController extends Controller
         }
         // randomize word
         $word = $rightWords[array_rand($rightWords)];
-        $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'translation']])->first();
+        $exercise = Exercise::where('user_id', Auth::id())->first();
         if (!$exercise) {
             Exercise::create([
-                'type' => 'translation',
-                'score' => 0,
                 'user_id' => Auth::id()
             ]);
-            $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'translation']])->first();
+            $exercise = Exercise::where('user_id', Auth::id())->first();
         }
-        $exercise -> score = $exercise -> score + 1;
+        $exercise -> translation = $exercise -> translation + 1;
         $exercise -> save();
         return view('exercise-translation')->with('word', $word);
     }
@@ -112,16 +110,14 @@ class ExerciseController extends Controller
             }
             // dd($results);
             $words = array_combine($keys, $values);
-            $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'matching']])->first();
+            $exercise = Exercise::where('user_id', Auth::id())->first();
             if (is_null($exercise)) {
                 Exercise::create([
-                    'type' => 'matching',
-                    'score' => 0,
                     'user_id' => Auth::id()
                 ]);
-                $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'matching']])->first();
+                $exercise = Exercise::where('user_id', Auth::id())->first();
             }
-            $exercise -> score = $exercise -> score + $points;
+            $exercise -> matching = $exercise -> matching + $points;
             $exercise -> save();
             // dd('Uzyskano '.$points.' punktów');
             return view('exercise-matching', compact('results', 'words'));
@@ -129,16 +125,14 @@ class ExerciseController extends Controller
             $word = $req -> word;
             $translation = $req -> translation;
             if (strtolower($req -> answer) == $req -> word) {
-                $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'writing']])->first();
+                $exercise = Exercise::where('user_id', Auth::id())->first();
                 if (!$exercise) {
                     Exercise::create([
-                        'type' => 'writing',
-                        'score' => 0,
                         'user_id' => Auth::id()
                     ]);
-                    $exercise = Exercise::where([['user_id', '=', Auth::id()], ['type', '=', 'writing']])->first();
+                    $exercise = Exercise::where('user_id', Auth::id())->first();
                 }
-                $exercise -> score = $exercise -> score + 1;
+                $exercise -> writing = $exercise -> writing + 1;
                 $exercise -> save();
                 $result = 'correct';
                 return view('exercise-writing', compact('word', 'translation', 'result'));

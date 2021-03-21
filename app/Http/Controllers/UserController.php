@@ -2,17 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Exercise;
 use App\Rules\MatchOldPassword;
 use App\Report;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use stdClass;
 
 class UserController extends Controller
 {
     public function index() {
         return view('profile');
+    }
+
+    public function showRanking($type) {
+        if ($type == 'add') {
+            $ranking = User::all()->sortBy('words')->reverse();
+            return view('ranking-add')->with('ranking', $ranking);
+        } else if ($type == 'exercise') {
+            $ranks = Exercise::all();
+            $keys = [];
+            $values = [];
+            foreach($ranks as $rank) {
+                array_push($keys, $rank -> user_id);
+                array_push($values, $rank -> writing + $rank -> matching);
+            }
+            $ranking = array_combine($keys, $values);
+            arsort($ranking);
+            return view('ranking-exercise')->with('ranking', $ranking);
+        } else if ($type == 'repeat') {
+            $ranking = Exercise::orderBy('translation', 'desc')->get();
+            return view('ranking-repeat')->with('ranking', $ranking);
+        } else {
+            return view('404');
+        }
+    }
+
+    public function list() {
+        $users = User::paginate(9);
+        return view('users-list')->with('users', $users);
     }
 
     public function changeName(Request $req) {
@@ -51,5 +81,21 @@ class UserController extends Controller
             return redirect('/');
         }
         return redirect()->back();
+    }
+
+    public function details($id) {
+        $user = user::find($id);
+        if (!$user) {
+            return redirect(url()->previous());
+        }
+        return view('user-details')->with('user', $user);
+    }
+
+    public function edit($id) {
+
+    }
+
+    public function delete($id) {
+
     }
 }

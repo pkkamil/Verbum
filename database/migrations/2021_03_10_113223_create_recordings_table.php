@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableExercises extends Migration
+class CreateRecordingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateTableExercises extends Migration
      */
     public function up()
     {
-        Schema::create('exercises', function (Blueprint $table) {
+        Schema::create('records', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->integer('translation');
-            $table->integer('matching');
-            $table->integer('writing');
+            $table->integer('words')->default(0);
+            $table->integer('exercises')->default(0);
+            $table->integer('repeats')->default(0);
             $table->bigInteger('user_id');
+            $table->timestamp('date');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateTableExercises extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exercises');
+        Schema::dropIfExists('recordings');
     }
 }

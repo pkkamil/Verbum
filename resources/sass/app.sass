@@ -232,7 +232,7 @@ button, a.button
     text-transform: uppercase
     padding: 18px 45px
     background-color: $primary
-    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4)
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, .4)
     text-align: center
     font-size: 1.4rem
     outline: none
@@ -244,16 +244,16 @@ button, a.button
     &:hover
         cursor: pointer
         background-color: #363636
-        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.6)
+        box-shadow: 5px 5px 4px rgba(0, 0, 0, .6)
     &.reverse-color
         display: inline-block
         color: $primary
         background-color: #fff
-        box-shadow: 0px 5px 4px rgba(255, 255, 255, 0.4)
+        box-shadow: 5px 5px 4px rgba(255, 255, 255, .4)
         &:hover
             cursor: pointer
             background-color: #ddd
-            box-shadow: 0px 5px 4px rgba(255, 255, 255, 0.6)
+            box-shadow: 5px 5px 4px rgba(255, 255, 255, .6)
     &:disabled
         background-color: #555
         cursor: default
@@ -262,26 +262,46 @@ button.disabled
     color: #FFF
     background-color: $secondary
     border: 1px solid #333
-    box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4)
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, .4)
     transition: .6s box-shadow, .6s background-color
     &:hover
         cursor: default
         background-color: $secondary
-        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.4)
+        box-shadow: 5px 5px 4px rgba(0, 0, 0, .4)
 
-button.danger
+button.danger, a.danger
+    background-color: #AA1A1A
+    border: 0
+    box-shadow: 5px 5px 4px rgba(255, 0, 0, .4)
     transition: .6s background-color, .6s border-color, .6s box-shadow
     &:hover
-        background-color: #FF2E00
-        border-color: #FF0000
-        box-shadow: 0px 5px 7px rgba(255, 0, 0, 7)
+        background-color: #c21919
+        box-shadow: 5px 5px 4px rgba(255, 0, 0, .6)
+
+button.success, a.success
+    background-color: #1e6e22
+    border: 0
+    box-shadow: 5px 5px 4px rgba(27, 116, 32, .4)
+    transition: .6s background-color, .6s border-color, .6s box-shadow
+    &:hover
+        background-color: #1c8321
+        box-shadow: 5px 5px 4px rgba(27, 116, 32, .6)
+
+.danger-small, .success-small
+    transition: .6s color
+
+.danger-small:hover
+    color: #AA1A1A
+
+.success-small:hover
+    color: #1e6e22
 
 .not-found
     width: 100%
     height: 100vh
     padding: 200px 60px
     @include background-cover('./img/404.jpg')
-    background-position: 50% 65%
+    background-position: 50% 75%
     & .info
         color: #FFF
         text-transform: uppercase
@@ -756,7 +776,7 @@ button.danger
             margin-top: 30px
             margin-bottom: 20px
 
-.adding-words
+.adding-words, .word-edit, .suggestion-edit
     width: 100%
     height: 100%
     display: flex
@@ -782,7 +802,7 @@ button.danger
                 cursor: pointer
                 margin: 0
                 color: #FFF
-                font-size: 1.6rem
+                font-size: 1.5rem
             & input
                 width: 370px
                 height: 60px
@@ -801,26 +821,47 @@ button.danger
             margin-top: 30px
             &:last-child
                 margin-top: 20px
-        & a
-            text-align: center
-            display: block
-            font-size: 1rem
-            color: $primary
-            margin-bottom: 15px
-            text-decoration: none
-            text-transform: uppercase
-            text-shadow: 0px 4px 4px rgba(51, 51, 51, 0.5)
     & .right-part
         @include background-cover('./img/bg-add_word.jpg')
         position: relative
         width: 60%
         height: 100vh
 
+.word-edit
+    & .left-part
+        & .operations
+            @include flex-center
+            justify-content: flex-start
+            margin-top: 20px
+            & a
+                margin-left: 20px
+            & button, & a
+                margin-top: 0
+                max-height: 59px
+                margin-right: 0
+    & .right-part
+        background-image: url('./img/bg-edit_word.jpg')
+
+.suggestion-edit
+    & .left-part
+        & .operations
+            @include flex-center
+            justify-content: flex-start
+            margin-top: 20px
+            & a
+                margin-left: 20px
+            & button, & a
+                margin-top: 0
+                max-height: 59px
+                margin-right: 0
+    & .right-part
+        background-image: url('./img/bg-edit_suggestion.jpg')
+
 .profile
     width: 100%
     height: 100%
     display: flex
-    padding: 110px 60px 60px 60px
+    padding: 110px 60px 50px 60px
     flex-direction: column
     & h2
         font-size: 2rem
@@ -891,12 +932,270 @@ button.danger
             & button
                 margin-left: 0
                 margin-top: 20px
-                &.danger
-                    background-color: #AA1A1A
             & a.button
                 margin-top: 20px
         & .divider
             display: inline
 
-// Mixins
+.ranking
+    width: 100%
+    height: 100%
+    display: flex
+    flex-direction: row
+    & .left-part
+        padding: 110px 40px 0px 60px
+        width: 40%
+        display: flex
+        flex-direction: column
+        & h2
+            font-size: 1.9rem
+            font-weight: 400
+            text-transform: uppercase
+            margin-bottom: 20px
+            text-align: left
+        & table
+            border-collapse: collapse
+            font-size: 1.5rem
+            & tr
+                border-bottom: 1px solid #c4c4c4
+                & td
+                    padding-top: 10px
+                    padding-bottom: 5px
+    & .right-part
+        position: relative
+        width: 60%
+        height: 100vh
+    &.add
+        & .right-part
+            @include background-cover('./img/bg-ranking_add.jpg')
+    &.exercising
+        & .right-part
+            @include background-cover('./img/bg-ranking_exercise.jpg')
+    &.repeat
+        & .right-part
+            @include background-cover('./img/bg-ranking_repeat.jpg')
+
+.list
+    & nav
+        position: relative
+        & ul li
+            &:not(:first-child)
+                margin-left: 20px
+            & a
+                font-size: 1.4rem
+            & span
+                font-size: 1.4rem
+    & .pagination
+        margin-top: 10px
+        float: none
+        @include flex-center
+        & .icon
+            display: inline
+            background: #262626
+            width: 32px
+            height: 32px
+            &.disabled
+                color: #555
+                &:hover
+                    color: #555
+            &:not(.disabled):hover
+                color: #fff
+        & .arrow i
+            transform: translateY(-2px)
+        & a
+            color: #888
+        &.active
+            color: #FFF
+
+.users-list
+    width: 100%
+    height: 100%
+    padding: 90px 60px 30px 60px
+    & table
+        width: 100%
+        font-size: 1.3rem
+        border-spacing: 0 15px
+        & thead
+            width: 100%
+            height: 60px
+            background-color: $primary
+            color: #fff
+            & th
+                padding: 16px 60px
+                text-transform: uppercase
+                font-weight: 400
+                text-align: left
+        & tbody
+            & tr
+                background-color: #c4c4c4
+                & td
+                    padding: 16px 60px
+                    text-transform: uppercase
+                    font-weight: 400
+                    & a
+                        color: #333
+                        transition: .6s color
+                        &:hover
+                            color: #555
+
+
+.words-list
+    width: 100%
+    height: 100%
+    padding: 90px 60px 30px 60px
+    & table
+        width: 100%
+        font-size: 1.3rem
+        border-spacing: 0 15px
+        & thead
+            width: 100%
+            height: 60px
+            background-color: $primary
+            color: #fff
+            & th
+                padding: 16px 60px
+                text-transform: uppercase
+                font-weight: 400
+                text-align: left
+        & tbody
+            & tr
+                background-color: #c4c4c4
+                & td
+                    padding: 16px 60px
+                    text-transform: uppercase
+                    font-weight: 400
+                    overflow: hidden
+                    white-space: nowrap
+                    text-overflow: ellipsis
+                    & i
+                        font-weight: 600
+                    & a
+                        color: #333
+                        transition: .6s color
+                        margin-left: 10px
+                        &:first-child
+                            margin-left: 0
+                        &:hover
+                            color: #555
+
+.word-details
+    width: 100%
+    height: 100%
+    padding: 200px 60px 30px 60px
+    & .box
+        width: 100%
+        padding: 10px 60px
+        @include flex-center
+        flex-direction: column
+        & h3
+            font-size: 2rem
+            font-weight: 500
+            text-transform: uppercase
+            text-align: center
+        & p
+            font-size: 1.5rem
+            font-weight: 400
+            text-align: center
+            color: #555
+            margin-top: 10px
+        & .down
+            width: 70%
+            margin-top: 20px
+            margin-bottom: 25px
+            @include flex-center
+            justify-content: space-between
+            & h4
+                font-size: 1.4rem
+                font-weight: 400
+        & .operations
+            @include flex-center
+            justify-content: center
+            & a
+                margin-left: 20px
+                &:first-child
+                    margin-left: 0
+
+.suggestions-list
+    width: 100%
+    height: 100%
+    padding: 90px 60px 30px 60px
+    & table
+        width: 100%
+        font-size: 1.3rem
+        border-spacing: 0 15px
+        & thead
+            width: 100%
+            height: 60px
+            background-color: $primary
+            color: #fff
+            & th
+                padding: 16px 60px
+                text-transform: uppercase
+                font-weight: 400
+                text-align: left
+        & tbody
+            & tr
+                background-color: #c4c4c4
+                & td
+                    padding: 16px 60px
+                    text-transform: uppercase
+                    font-weight: 400
+                    & i
+                        font-weight: 600
+                    & a
+                        color: #333
+                        transition: .6s color
+                        margin-left: 10px
+                        &:first-child
+                            margin-left: 0
+                        &:hover
+                            color: #555
+                    & p
+                        display: inline-block
+                        color: #777
+                        margin-left: 10px
+
+.suggestion-details
+    width: 100%
+    height: 100%
+    padding: 200px 60px 30px 60px
+    & .box
+        width: 100%
+        padding: 10px 60px
+        @include flex-center
+        flex-direction: column
+        & h3
+            font-size: 2rem
+            font-weight: 500
+            text-transform: uppercase
+            text-align: center
+        & p
+            font-size: 1.5rem
+            font-weight: 400
+            text-align: center
+            color: #555
+            margin-top: 10px
+        & .down
+            width: 70%
+            margin-top: 20px
+            margin-bottom: 25px
+            @include flex-center
+            justify-content: space-between
+            & h4
+                font-size: 1.4rem
+                font-weight: 400
+        & .operations
+            @include flex-center
+            justify-content: center
+            & a
+                margin-left: 20px
+                &:first-child
+                    margin-left: 0
+    & .duplicate
+        margin-bottom: 25px
+        & h2
+            font-weight: 400
+            text-transform: uppercase
+
+// Queries
 @import 'queries'
