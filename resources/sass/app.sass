@@ -86,17 +86,25 @@ a
 
 input
     border-radius: 0
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill::first-line
+        font-size: 1.2rem
+        border: 1px solid $primary
+        -webkit-text-fill-color: #000
+        transition: background-color 5000s ease-in-out 0s
 
 nav
     position: fixed
-    padding: 8px
+    padding: 8px 0
     width: 100%
     z-index: 999
     transition: 1s color, 1s background-color
     & .logo
         float: left
-        padding: 8px 8px
-        margin-left: 46px
+        padding: 8px 0px
+        margin-left: 60px
         & a
             color: rgba(0, 0, 0, 1)
             text-transform: uppercase
@@ -776,6 +784,11 @@ button.success, a.success
             margin-top: 30px
             margin-bottom: 20px
 
+.back
+    position: absolute
+    top: 100px
+    right: 65px
+
 .adding-words, .word-edit, .suggestion-edit
     width: 100%
     height: 100%
@@ -989,6 +1002,10 @@ button.success, a.success
         margin-top: 10px
         float: none
         @include flex-center
+        & li
+            padding: 0
+            &:last-child
+                margin-right: 0
         & .icon
             display: inline
             background: #262626
@@ -1010,11 +1027,11 @@ button.success, a.success
 .users-list
     width: 100%
     height: 100%
-    padding: 90px 60px 30px 60px
+    padding: 80px 60px 20px 60px
     & table
         width: 100%
         font-size: 1.3rem
-        border-spacing: 0 15px
+        border-spacing: 0 14px
         & thead
             width: 100%
             height: 60px
@@ -1038,15 +1055,92 @@ button.success, a.success
                         &:hover
                             color: #555
 
+.user-details
+    width: 100%
+    height: 100%
+    padding: 110px 60px 30px 60px
+    & .informations
+        margin-bottom: 40px
+    & h3
+        font-size: 1.3rem
+        text-transform: uppercase
+        font-weight: 400
+    & .top-part
+        display: flex
+        flex-direction: row
+        & .single-chart
+            width: 100%
+            padding: 0 30px
+            & h4
+                font-size: 1.3rem
+                text-transform: uppercase
+                font-weight: 400
+                text-align: center
+                margin-bottom: 20px
+            & p
+                font-size: 1rem
+                text-transform: uppercase
+                font-weight: 400
+                text-align: center
+                color: #999
+                margin-top: 15px
+                margin-bottom: 20px
+            & a
+                width: 200px
+    & .bottom-part
+        margin-top: 20px
+        display: flex
+        justify-content: space-evenly
+        flex-wrap: wrap
+        & .single-form
+            & h4
+                text-transform: uppercase
+                font-size: 1.3rem
+                font-weight: 400
+            & .group
+                display: block
+                margin-top: 20px
+                &.danger
+                    & label
+                        background-color: #AA1A1A
+                & label
+                    @include flex-center
+                    width: 60px
+                    height: 60px
+                    background-color: $primary
+                    float: left
+                    cursor: pointer
+                    margin: 0
+                    color: #FFF
+                    font-size: 1.6rem
+                & input
+                    max-width: 320px
+                    width: 320px
+                    height: 60px
+                    outline: none
+                    font-size: 1.2rem
+                    font-weight: 400
+                    padding: 21px 25px
+                    margin: 0
+                    background-color: #c4c4c4
+                    border: 1px solid $primary
+                    text-transform: uppercase
+                    &#word
+                        width: 250px
+            & button
+                margin-left: 0
+                margin-top: 20px
+            & a.button
+                margin-top: 20px
 
 .words-list
     width: 100%
     height: 100%
-    padding: 90px 60px 30px 60px
+    padding: 80px 60px 20px 60px
     & table
         width: 100%
         font-size: 1.3rem
-        border-spacing: 0 15px
+        border-spacing: 0 14px
         & thead
             width: 100%
             height: 60px
@@ -1064,9 +1158,6 @@ button.success, a.success
                     padding: 16px 60px
                     text-transform: uppercase
                     font-weight: 400
-                    overflow: hidden
-                    white-space: nowrap
-                    text-overflow: ellipsis
                     & i
                         font-weight: 600
                     & a
@@ -1118,11 +1209,11 @@ button.success, a.success
 .suggestions-list
     width: 100%
     height: 100%
-    padding: 90px 60px 30px 60px
+    padding: 80px 60px 20px 60px
     & table
         width: 100%
         font-size: 1.3rem
-        border-spacing: 0 15px
+        border-spacing: 0 14px
         & thead
             width: 100%
             height: 60px
@@ -1154,6 +1245,20 @@ button.success, a.success
                         display: inline-block
                         color: #777
                         margin-left: 10px
+    & .no-suggestions
+        margin-top: 100px
+        @include flex-center
+        flex-direction: column
+        text-align: center
+        & h2
+            font-size: 1.5rem
+            font-weight: 600
+            text-transform: uppercase
+            margin-bottom: 5px
+        & p
+            text-transform: uppercase
+            font-size: 1.1rem
+            margin-bottom: 20px
 
 .suggestion-details
     width: 100%
@@ -1184,6 +1289,7 @@ button.success, a.success
             & h4
                 font-size: 1.4rem
                 font-weight: 400
+                text-transform: uppercase
         & .operations
             @include flex-center
             justify-content: center

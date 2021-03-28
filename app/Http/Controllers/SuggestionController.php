@@ -30,7 +30,7 @@ class SuggestionController extends Controller
     }
 
     public function list() {
-        $suggestions = Suggestion::paginate(9);
+        $suggestions = Suggestion::paginate(10);
         return view('suggestions-list')->with('suggestions', $suggestions);
     }
 
@@ -83,13 +83,12 @@ class SuggestionController extends Controller
         $word -> word = $suggestion -> word;
         $word -> translation = $suggestion -> translation;
         $word -> save();
-        return redirect('/admin/words/'.$word -> id);
+        return redirect('/admin/suggestions/');
     }
 
     public function replace($id_suggestion) {
         $suggestion = Suggestion::find($id_suggestion);
         $word = Word::where('word', $suggestion -> word)->first();
-        Word::destroy($word -> id);
 
         $user = User::find($suggestion -> user_id);
         $user -> words = $user -> words + 1;
@@ -97,8 +96,8 @@ class SuggestionController extends Controller
 
         Suggestion::destroy($id_suggestion);
 
-        // create Word
-        $word = new Word();
+        // Replace Word
+        $word = Word::find($word -> id);
         $word -> word = $suggestion -> word;
         $word -> translation = $suggestion -> translation;
         $word -> save();

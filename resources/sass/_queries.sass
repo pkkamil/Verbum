@@ -1,5 +1,5 @@
 @media only screen and (max-width: 1800px)
-    .profile
+    .profile, .user-details
         & h2
             font-size: 1.9rem
         & .top-part
@@ -23,8 +23,8 @@
         font-size: 87.5%
     nav
         & .logo
-            padding: 9px 8px
-    .profile
+            padding: 9px 0
+    .profile, .user-details
         & h2
             font-size: 1.8rem
         & .top-part
@@ -43,7 +43,7 @@
             font-size: 1.2rem
 
 @media only screen and (max-width: 1500px)
-    .profile
+    .profile, .user-details
         & .top-part
             flex-wrap: wrap
             & .single-chart
@@ -138,7 +138,7 @@
                     width: 300px
         & .right-part
             width: 50%
-    .profile
+    .profile, .user-details
         & h2
             font-size: 1.6rem
         & .bottom-part
@@ -170,6 +170,23 @@
             & .left-part
                 width: 50%
 
+    .users-list, .words-list, .suggestions-list
+        padding: 80px 60px 20px 60px
+        & table
+            font-size: 1.2rem
+            border-spacing: 0 11px
+            & thead
+                height: 45px
+                & th
+                    padding: 12px 40px
+            & tbody
+                & tr
+                    & td
+                        padding: 12px 40px
+
+    .list
+        & .pagination
+            margin-top: 5px
 
 @media only screen and (max-width: 1200px)
     .exercises
@@ -187,24 +204,73 @@
             & p
                 font-size: 1.2rem
 
-    .profile
+    .profile, .user-details
         & .bottom-part
             padding: 0 120px
+            & .single-form
+                & button
+                    margin-top: 10px
 
+    .users-list
+        & table
+            & thead
+                & th:last-child
+                    display: none
+            & tbody
+                & tr
+                    & td:last-child
+                        display: none
+
+    .suggestions-list
+        & table
+            & thead
+                & th:nth-child(4)
+                    display: none
+            & tbody
+                & tr
+                    & td:nth-child(4)
+                        display: none
+
+    .word-details, .suggestion-details
+        & .box
+            & h3
+                font-size: 1.9rem
+            & p
+                font-size: 1.4rem
+            & .down
+                text-align: center
+                width: 100%
+                justify-content: center
+                flex-direction: column
+                & h4
+                    display: block
+                    &:first-child
+                        margin-bottom: 10px
 
 @media only screen and (max-width: 1100px)
-    .profile
+    .profile, .user-details
         & .bottom-part
             padding: 0 80px
 
+    .user-details
+        padding: 100px 60px 30px 60px
+        & .informations
+            margin-top: 35px
+        & .back
+            position: relative
+            top: inherit
+            right: inherit
+            display: block
+            width: 150px
+
 @media only screen and (max-width: 1000px)
-    .profile
+    .profile, .user-details
         & .bottom-part
             padding: 0 30px
 
 @media screen and (max-width: 976px)
     nav .logo
-        margin-left: 26px
+        margin-left: 40px
     .nav-wrapper
         display: none
         position: fixed
@@ -327,7 +393,7 @@
         & .right-part
             display: none
 
-    .profile
+    .profile, .user-details
         padding: 100px 40px 40px 40px
 
     .auth
@@ -360,8 +426,34 @@
             & .left-part
                 display: none
 
+    .users-list, .words-list, .suggestions-list
+        padding: 80px 40px 20px 40px
+        & table
+            font-size: 1.1rem
+            border-spacing: 0 10px
+            & thead
+                height: 45px
+                & th
+                    padding: 12px 40px
+            & tbody
+                & tr
+                    & td
+                        padding: 12px 40px
+
+    .word-details, .suggestion-details
+        padding: 150px 40px 30px 40px
+        & .box
+            padding: 0
+            & h3
+                font-size: 1.8rem
+            & p
+                font-size: 1.3rem
+            & .down
+                & h4
+                    font-size: 1.3rem
+
 @media only screen and (max-width: 900px)
-    .profile
+    .profile, .user-details
         & .top-part
             flex-wrap: wrap
             & .single-chart
@@ -374,6 +466,50 @@
                     font-size: 1.3rem
         & .bottom-part
             padding: 0 0
+
+    .user-details
+        & .top-part
+            & .single-chart:not(:first-child)
+                margin-top: 30px
+
+    .list
+        nav
+            & .pagination
+                & li:not(:first-child)
+                    margin-left: 10px
+                & a
+                    font-size: 1.3rem
+                & span
+                    font-size: 1.3rem
+
+    table
+        border: 0
+        & thead
+            border: none
+            clip: rect(0 0 0 0)
+            height: 1px
+            margin: -1px
+            overflow: hidden
+            padding: 0
+            position: absolute
+            width: 1px
+        & tr
+            border-bottom: 3px solid $primary
+            display: block
+            margin-bottom: 12px
+        & td
+            border-bottom: 1px solid $primary
+            display: block
+            font-size: 1.1rem
+            text-align: right
+            &:before
+                content: attr(data-label)
+                float: left
+                font-weight: bold
+                text-transform: uppercase
+                padding-right: 20px
+            &:last-child
+                border-bottom: 0
 
 @media only screen and (max-width: 800px)
     .not-found
@@ -418,7 +554,7 @@
                 font-size: 1.3rem
                 margin-top: 20px
 
-    .profile
+    .profile, .user-details
         & .bottom-part
             padding: 0 100px
             & .single-form
@@ -486,13 +622,25 @@
             & h3
                 font-size: 1.7rem
 
-    .profile
+    .profile, .user-details
         & .bottom-part
             padding: 0 60px
             & .single-form
                 margin-top: 40px
                 &:first-child
                     margin-top: 0
+
+@media only screen and (max-width: 670px)
+    .suggestion-details
+        & .box
+            & .operations
+                flex-direction: column
+                & a
+                    margin-left: auto
+                    margin-top: 15px
+                    &:first-child
+                        margin-top: 0
+                        margin-left: auto
 
 @media only screen and (max-width: 600px)
     .not-found
@@ -528,7 +676,7 @@
                 & input
                     width: calc(100% - 60px)
 
-    .profile
+    .profile, .user-details
         & h2
             font-size: 1.3rem
             margin-bottom: 20px
@@ -545,6 +693,47 @@
                 margin-top: 30px
                 &:first-child
                     margin-top: 0
+
+    .user-details
+        & h3
+            font-size: 1.3rem
+
+    .users-list, .words-list, .suggestions-list
+        padding: 70px 40px 20px 40px
+        & table
+            & thead
+                & th
+                    padding: 12px 30px
+            & tbody
+                & tr
+                    & td
+                        padding: 12px 30px
+
+    .suggestions-list
+        & .no-suggestions
+            & h2
+                font-size: 1.3rem
+            & p
+                font-size: 1rem
+
+    .word-details, .suggestion-details
+        & .box
+            & h3
+                font-size: 1.7rem
+            & p
+                font-size: 1.2rem
+            & .down
+                & h4
+                    font-size: 1.2rem
+            & .operations
+                flex-direction: column
+                & a
+                    margin-left: auto
+                    margin-top: 15px
+                    &:first-child
+                        margin-top: 0
+                        margin-left: auto
+
 
 @media only screen and (max-width: 500px)
     .not-found
@@ -649,7 +838,7 @@
                 & button, & a
                     margin-top: 0
 
-    .profile
+    .profile, .user-details
         & .top-part
             & .single-chart, & .single-chart:last-child
                 margin-top: 30px
@@ -730,6 +919,44 @@
                         width: calc(100% - 50px)
                         height: 50px
 
+    .users-list, .words-list, .suggestions-list
+        & table
+            & thead
+                & th
+                    padding: 12px 20px
+            & tbody
+                & tr
+                    & td
+                        padding: 12px 20px
+
+    .list
+        nav
+            & .pagination
+                & li:not(:first-child)
+                    margin-left: 8px
+                & a
+                    font-size: 1rem
+                & span
+                    font-size: 1rem
+
+    table
+        & td
+            font-size: 1rem
+
+    .word-details, .suggestion-details
+        padding: 120px 40px 30px 40px
+        & .box
+            & h3
+                font-size: 1.6rem
+            & p
+                font-size: 1.1rem
+            & .down
+                & h4
+                    font-size: 1.1rem
+                    margin-bottom: 5px
+                    &:last-child
+                        margin-bottom: 0
+
 @media only screen and (max-width: 470px)
     .not-found
         & .info
@@ -766,6 +993,26 @@
                 & .group
                     & input
                         font-size: 1.1rem
+
+    table
+        & td
+            font-size: .9rem
+
+    .list
+        nav
+            & .pagination
+                padding: 0 20px
+                flex-wrap: wrap
+                & li:not(:first-child)
+                    margin-left: 8px
+                & a
+                    font-size: 1rem
+                & span
+                    font-size: 1rem
+
+    .user-details
+        & h3
+            font-size: 1.2rem
 
 @media only screen and (max-width: 400px)
     .welcome
@@ -887,6 +1134,15 @@
                         height: 40px
                         padding: 15px 18px
 
+    table
+        & td
+            &:before
+                display: none
+
+    .user-details
+        & h3
+            font-size: 1.1rem
+
 @media only screen and (max-width: 355px)
     .not-found
         & .info
@@ -965,7 +1221,7 @@
                     margin-left: 0
                     margin-top: 15px
 
-    .profile
+    .profile, .user-details
         & .bottom-part
             & .single-form
                 & .group
@@ -1000,8 +1256,13 @@
                     & input
                         font-size: .9rem
 
+    .user-details
+        & h3
+            font-size: 1rem
+
+
 @media only screen and (max-width: 319px)
-    .profile
+    .profile, .user-details
         & .bottom-part
                 & a.button
                     padding: 14px 28px

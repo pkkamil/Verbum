@@ -138,9 +138,20 @@ input {
   border-radius: 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill::first-line {
+  font-size: 1.2rem;
+  border: 1px solid #333;
+  -webkit-text-fill-color: #000;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 nav {
   position: fixed;
-  padding: 8px;
+  padding: 8px 0;
   width: 100%;
   z-index: 999;
   transition: 1s color, 1s background-color;
@@ -148,8 +159,8 @@ nav {
 
 nav .logo {
   float: left;
-  padding: 8px 8px;
-  margin-left: 46px;
+  padding: 8px 0px;
+  margin-left: 60px;
 }
 
 nav .logo a {
@@ -1228,6 +1239,12 @@ a.success:hover {
   margin-bottom: 20px;
 }
 
+.back {
+  position: absolute;
+  top: 100px;
+  right: 65px;
+}
+
 .adding-words,
 .word-edit,
 .suggestion-edit {
@@ -1567,6 +1584,14 @@ a.success:hover {
   justify-content: center;
 }
 
+.list .pagination li {
+  padding: 0;
+}
+
+.list .pagination li:last-child {
+  margin-right: 0;
+}
+
 .list .pagination .icon {
   display: inline;
   background: #262626;
@@ -1601,13 +1626,13 @@ a.success:hover {
 .users-list {
   width: 100%;
   height: 100%;
-  padding: 90px 60px 30px 60px;
+  padding: 80px 60px 20px 60px;
 }
 
 .users-list table {
   width: 100%;
   font-size: 1.3rem;
-  border-spacing: 0 15px;
+  border-spacing: 0 14px;
 }
 
 .users-list table thead {
@@ -1643,16 +1668,127 @@ a.success:hover {
   color: #555;
 }
 
+.user-details {
+  width: 100%;
+  height: 100%;
+  padding: 110px 60px 30px 60px;
+}
+
+.user-details .informations {
+  margin-bottom: 40px;
+}
+
+.user-details h3 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.user-details .top-part {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-details .top-part .single-chart {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.user-details .top-part .single-chart h4 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-details .top-part .single-chart p {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  color: #999;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.user-details .top-part .single-chart a {
+  width: 200px;
+}
+
+.user-details .bottom-part {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.user-details .bottom-part .single-form h4 {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.user-details .bottom-part .single-form .group {
+  display: block;
+  margin-top: 20px;
+}
+
+.user-details .bottom-part .single-form .group.danger label {
+  background-color: #AA1A1A;
+}
+
+.user-details .bottom-part .single-form .group label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #333;
+  float: left;
+  cursor: pointer;
+  margin: 0;
+  color: #FFF;
+  font-size: 1.6rem;
+}
+
+.user-details .bottom-part .single-form .group input {
+  max-width: 320px;
+  width: 320px;
+  height: 60px;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 21px 25px;
+  margin: 0;
+  background-color: #c4c4c4;
+  border: 1px solid #333;
+  text-transform: uppercase;
+}
+
+.user-details .bottom-part .single-form .group input#word {
+  width: 250px;
+}
+
+.user-details .bottom-part .single-form button {
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+.user-details .bottom-part .single-form a.button {
+  margin-top: 20px;
+}
+
 .words-list {
   width: 100%;
   height: 100%;
-  padding: 90px 60px 30px 60px;
+  padding: 80px 60px 20px 60px;
 }
 
 .words-list table {
   width: 100%;
   font-size: 1.3rem;
-  border-spacing: 0 15px;
+  border-spacing: 0 14px;
 }
 
 .words-list table thead {
@@ -1677,9 +1813,6 @@ a.success:hover {
   padding: 16px 60px;
   text-transform: uppercase;
   font-weight: 400;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .words-list table tbody tr td i {
@@ -1763,13 +1896,13 @@ a.success:hover {
 .suggestions-list {
   width: 100%;
   height: 100%;
-  padding: 90px 60px 30px 60px;
+  padding: 80px 60px 20px 60px;
 }
 
 .suggestions-list table {
   width: 100%;
   font-size: 1.3rem;
-  border-spacing: 0 15px;
+  border-spacing: 0 14px;
 }
 
 .suggestions-list table thead {
@@ -1820,6 +1953,28 @@ a.success:hover {
   margin-left: 10px;
 }
 
+.suggestions-list .no-suggestions {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.suggestions-list .no-suggestions h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.suggestions-list .no-suggestions p {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
 .suggestion-details {
   width: 100%;
   height: 100%;
@@ -1863,6 +2018,7 @@ a.success:hover {
 .suggestion-details .box .down h4 {
   font-size: 1.4rem;
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 .suggestion-details .box .operations {
@@ -1890,29 +2046,36 @@ a.success:hover {
 }
 
 @media only screen and (max-width: 1800px) {
-  .profile h2 {
+  .profile h2,
+  .user-details h2 {
     font-size: 1.9rem;
   }
 
-  .profile .top-part .single-chart {
+  .profile .top-part .single-chart,
+  .user-details .top-part .single-chart {
     padding: 0 20px;
   }
 
-  .profile .top-part .single-chart h4 {
+  .profile .top-part .single-chart h4,
+  .user-details .top-part .single-chart h4 {
     font-size: 1.2rem;
   }
 
-  .profile .top-part .single-chart a {
+  .profile .top-part .single-chart a,
+  .user-details .top-part .single-chart a {
     padding: 18px 35px;
     width: 180px;
   }
 
-  .profile .bottom-part .single-form .group input {
+  .profile .bottom-part .single-form .group input,
+  .user-details .bottom-part .single-form .group input {
     max-width: 270px;
   }
 
   .profile a.button,
-  .profile button {
+  .profile button,
+  .user-details a.button,
+  .user-details button {
     font-size: 1.2rem;
   }
 }
@@ -1923,52 +2086,64 @@ a.success:hover {
   }
 
   nav .logo {
-    padding: 9px 8px;
+    padding: 9px 0;
   }
 
-  .profile h2 {
+  .profile h2,
+  .user-details h2 {
     font-size: 1.8rem;
   }
 
-  .profile .top-part .single-chart h4 {
+  .profile .top-part .single-chart h4,
+  .user-details .top-part .single-chart h4 {
     font-size: 1.1rem;
   }
 
-  .profile .top-part .single-chart a {
+  .profile .top-part .single-chart a,
+  .user-details .top-part .single-chart a {
     padding: 18px 25px;
     width: 160px;
   }
 
-  .profile .bottom-part .single-form .group input {
+  .profile .bottom-part .single-form .group input,
+  .user-details .bottom-part .single-form .group input {
     max-width: 270px;
   }
 
   .profile a.button,
-  .profile button {
+  .profile button,
+  .user-details a.button,
+  .user-details button {
     font-size: 1.2rem;
   }
 }
 
 @media only screen and (max-width: 1500px) {
-  .profile .top-part {
+  .profile .top-part,
+  .user-details .top-part {
     flex-wrap: wrap;
   }
 
-  .profile .top-part .single-chart {
+  .profile .top-part .single-chart,
+  .user-details .top-part .single-chart {
     width: 50%;
   }
 
-  .profile .top-part .single-chart:last-child {
+  .profile .top-part .single-chart:last-child,
+  .user-details .top-part .single-chart:last-child {
     margin: 0 auto;
     margin-top: 50px;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 250px;
   }
 
   .profile .bottom-part .single-form:nth-of-type(3),
-  .profile .bottom-part .single-form:nth-child(4) {
+  .profile .bottom-part .single-form:nth-child(4),
+  .user-details .bottom-part .single-form:nth-of-type(3),
+  .user-details .bottom-part .single-form:nth-child(4) {
     margin-top: 50px;
   }
 }
@@ -2104,11 +2279,13 @@ a.success:hover {
     width: 50%;
   }
 
-  .profile h2 {
+  .profile h2,
+  .user-details h2 {
     font-size: 1.6rem;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 180px;
   }
 
@@ -2147,6 +2324,41 @@ a.success:hover {
   .auth.remember .left-part {
     width: 50%;
   }
+
+  .users-list,
+  .words-list,
+  .suggestions-list {
+    padding: 80px 60px 20px 60px;
+  }
+
+  .users-list table,
+  .words-list table,
+  .suggestions-list table {
+    font-size: 1.2rem;
+    border-spacing: 0 11px;
+  }
+
+  .users-list table thead,
+  .words-list table thead,
+  .suggestions-list table thead {
+    height: 45px;
+  }
+
+  .users-list table thead th,
+  .words-list table thead th,
+  .suggestions-list table thead th {
+    padding: 12px 40px;
+  }
+
+  .users-list table tbody tr td,
+  .words-list table tbody tr td,
+  .suggestions-list table tbody tr td {
+    padding: 12px 40px;
+  }
+
+  .list .pagination {
+    margin-top: 5px;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -2174,26 +2386,94 @@ a.success:hover {
     font-size: 1.2rem;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 120px;
+  }
+
+  .profile .bottom-part .single-form button,
+  .user-details .bottom-part .single-form button {
+    margin-top: 10px;
+  }
+
+  .users-list table thead th:last-child {
+    display: none;
+  }
+
+  .users-list table tbody tr td:last-child {
+    display: none;
+  }
+
+  .suggestions-list table thead th:nth-child(4) {
+    display: none;
+  }
+
+  .suggestions-list table tbody tr td:nth-child(4) {
+    display: none;
+  }
+
+  .word-details .box h3,
+  .suggestion-details .box h3 {
+    font-size: 1.9rem;
+  }
+
+  .word-details .box p,
+  .suggestion-details .box p {
+    font-size: 1.4rem;
+  }
+
+  .word-details .box .down,
+  .suggestion-details .box .down {
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .word-details .box .down h4,
+  .suggestion-details .box .down h4 {
+    display: block;
+  }
+
+  .word-details .box .down h4:first-child,
+  .suggestion-details .box .down h4:first-child {
+    margin-bottom: 10px;
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 80px;
+  }
+
+  .user-details {
+    padding: 100px 60px 30px 60px;
+  }
+
+  .user-details .informations {
+    margin-top: 35px;
+  }
+
+  .user-details .back {
+    position: relative;
+    top: inherit;
+    right: inherit;
+    display: block;
+    width: 150px;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 30px;
   }
 }
 
 @media screen and (max-width: 976px) {
   nav .logo {
-    margin-left: 26px;
+    margin-left: 40px;
   }
 
   .nav-wrapper {
@@ -2387,7 +2667,8 @@ a.success:hover {
     display: none;
   }
 
-  .profile {
+  .profile,
+  .user-details {
     padding: 100px 40px 40px 40px;
   }
 
@@ -2438,29 +2719,146 @@ a.success:hover {
   .auth.remember .left-part {
     display: none;
   }
+
+  .users-list,
+  .words-list,
+  .suggestions-list {
+    padding: 80px 40px 20px 40px;
+  }
+
+  .users-list table,
+  .words-list table,
+  .suggestions-list table {
+    font-size: 1.1rem;
+    border-spacing: 0 10px;
+  }
+
+  .users-list table thead,
+  .words-list table thead,
+  .suggestions-list table thead {
+    height: 45px;
+  }
+
+  .users-list table thead th,
+  .words-list table thead th,
+  .suggestions-list table thead th {
+    padding: 12px 40px;
+  }
+
+  .users-list table tbody tr td,
+  .words-list table tbody tr td,
+  .suggestions-list table tbody tr td {
+    padding: 12px 40px;
+  }
+
+  .word-details,
+  .suggestion-details {
+    padding: 150px 40px 30px 40px;
+  }
+
+  .word-details .box,
+  .suggestion-details .box {
+    padding: 0;
+  }
+
+  .word-details .box h3,
+  .suggestion-details .box h3 {
+    font-size: 1.8rem;
+  }
+
+  .word-details .box p,
+  .suggestion-details .box p {
+    font-size: 1.3rem;
+  }
+
+  .word-details .box .down h4,
+  .suggestion-details .box .down h4 {
+    font-size: 1.3rem;
+  }
 }
 
 @media only screen and (max-width: 900px) {
-  .profile .top-part {
+  .profile .top-part,
+  .user-details .top-part {
     flex-wrap: wrap;
   }
 
-  .profile .top-part .single-chart {
+  .profile .top-part .single-chart,
+  .user-details .top-part .single-chart {
     width: 100%;
     margin-top: 50px;
     padding: 0 50px;
   }
 
-  .profile .top-part .single-chart:first-child {
+  .profile .top-part .single-chart:first-child,
+  .user-details .top-part .single-chart:first-child {
     margin-top: 0;
   }
 
-  .profile .top-part .single-chart h4 {
+  .profile .top-part .single-chart h4,
+  .user-details .top-part .single-chart h4 {
     font-size: 1.3rem;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 0;
+  }
+
+  .user-details .top-part .single-chart:not(:first-child) {
+    margin-top: 30px;
+  }
+
+  .list nav .pagination li:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  .list nav .pagination a {
+    font-size: 1.3rem;
+  }
+
+  .list nav .pagination span {
+    font-size: 1.3rem;
+  }
+
+  table {
+    border: 0;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #333;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  table td {
+    border-bottom: 1px solid #333;
+    display: block;
+    font-size: 1.1rem;
+    text-align: right;
+  }
+
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-right: 20px;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
   }
 }
 
@@ -2524,15 +2922,18 @@ a.success:hover {
     margin-top: 20px;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 100px;
   }
 
-  .profile .bottom-part .single-form {
+  .profile .bottom-part .single-form,
+  .user-details .bottom-part .single-form {
     margin-top: 50px;
   }
 
-  .profile .bottom-part .single-form:first-child {
+  .profile .bottom-part .single-form:first-child,
+  .user-details .bottom-part .single-form:first-child {
     margin-top: 0;
   }
 
@@ -2608,16 +3009,35 @@ a.success:hover {
     font-size: 1.7rem;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     padding: 0 60px;
   }
 
-  .profile .bottom-part .single-form {
+  .profile .bottom-part .single-form,
+  .user-details .bottom-part .single-form {
     margin-top: 40px;
   }
 
-  .profile .bottom-part .single-form:first-child {
+  .profile .bottom-part .single-form:first-child,
+  .user-details .bottom-part .single-form:first-child {
     margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .suggestion-details .box .operations {
+    flex-direction: column;
+  }
+
+  .suggestion-details .box .operations a {
+    margin-left: auto;
+    margin-top: 15px;
+  }
+
+  .suggestion-details .box .operations a:first-child {
+    margin-top: 0;
+    margin-left: auto;
   }
 }
 
@@ -2680,35 +3100,107 @@ a.success:hover {
     width: calc(100% - 60px);
   }
 
-  .profile h2 {
+  .profile h2,
+  .user-details h2 {
     font-size: 1.3rem;
     margin-bottom: 20px;
     font-weight: 600;
   }
 
-  .profile .top-part .single-chart {
+  .profile .top-part .single-chart,
+  .user-details .top-part .single-chart {
     padding: 0 30px;
   }
 
-  .profile .top-part .single-chart h4 {
+  .profile .top-part .single-chart h4,
+  .user-details .top-part .single-chart h4 {
     font-size: 1.2rem;
   }
 
-  .profile .bottom-part {
+  .profile .bottom-part,
+  .user-details .bottom-part {
     margin-top: 40px;
     padding: 0 0;
   }
 
   .profile .bottom-part .single-form,
   .profile .bottom-part .single-form:nth-of-type(3),
-  .profile .bottom-part .single-form:nth-of-type(4) {
+  .profile .bottom-part .single-form:nth-of-type(4),
+  .user-details .bottom-part .single-form,
+  .user-details .bottom-part .single-form:nth-of-type(3),
+  .user-details .bottom-part .single-form:nth-of-type(4) {
     margin-top: 30px;
   }
 
   .profile .bottom-part .single-form:first-child,
   .profile .bottom-part .single-form:nth-of-type(3):first-child,
-  .profile .bottom-part .single-form:nth-of-type(4):first-child {
+  .profile .bottom-part .single-form:nth-of-type(4):first-child,
+  .user-details .bottom-part .single-form:first-child,
+  .user-details .bottom-part .single-form:nth-of-type(3):first-child,
+  .user-details .bottom-part .single-form:nth-of-type(4):first-child {
     margin-top: 0;
+  }
+
+  .user-details h3 {
+    font-size: 1.3rem;
+  }
+
+  .users-list,
+  .words-list,
+  .suggestions-list {
+    padding: 70px 40px 20px 40px;
+  }
+
+  .users-list table thead th,
+  .words-list table thead th,
+  .suggestions-list table thead th {
+    padding: 12px 30px;
+  }
+
+  .users-list table tbody tr td,
+  .words-list table tbody tr td,
+  .suggestions-list table tbody tr td {
+    padding: 12px 30px;
+  }
+
+  .suggestions-list .no-suggestions h2 {
+    font-size: 1.3rem;
+  }
+
+  .suggestions-list .no-suggestions p {
+    font-size: 1rem;
+  }
+
+  .word-details .box h3,
+  .suggestion-details .box h3 {
+    font-size: 1.7rem;
+  }
+
+  .word-details .box p,
+  .suggestion-details .box p {
+    font-size: 1.2rem;
+  }
+
+  .word-details .box .down h4,
+  .suggestion-details .box .down h4 {
+    font-size: 1.2rem;
+  }
+
+  .word-details .box .operations,
+  .suggestion-details .box .operations {
+    flex-direction: column;
+  }
+
+  .word-details .box .operations a,
+  .suggestion-details .box .operations a {
+    margin-left: auto;
+    margin-top: 15px;
+  }
+
+  .word-details .box .operations a:first-child,
+  .suggestion-details .box .operations a:first-child {
+    margin-top: 0;
+    margin-left: auto;
   }
 }
 
@@ -2873,61 +3365,78 @@ a.success:hover {
   }
 
   .profile .top-part .single-chart,
-  .profile .top-part .single-chart:last-child {
+  .profile .top-part .single-chart:last-child,
+  .user-details .top-part .single-chart,
+  .user-details .top-part .single-chart:last-child {
     margin-top: 30px;
     padding: 0 0;
   }
 
   .profile .top-part .single-chart:first-child,
-  .profile .top-part .single-chart:last-child:first-child {
+  .profile .top-part .single-chart:last-child:first-child,
+  .user-details .top-part .single-chart:first-child,
+  .user-details .top-part .single-chart:last-child:first-child {
     margin-top: 0;
   }
 
   .profile .top-part .single-chart h4,
-  .profile .top-part .single-chart:last-child h4 {
+  .profile .top-part .single-chart:last-child h4,
+  .user-details .top-part .single-chart h4,
+  .user-details .top-part .single-chart:last-child h4 {
     font-size: 1rem;
   }
 
   .profile .top-part .single-chart a,
-  .profile .top-part .single-chart:last-child a {
+  .profile .top-part .single-chart:last-child a,
+  .user-details .top-part .single-chart a,
+  .user-details .top-part .single-chart:last-child a {
     width: 120px;
   }
 
-  .profile .bottom-part .single-form {
+  .profile .bottom-part .single-form,
+  .user-details .bottom-part .single-form {
     margin-right: auto;
   }
 
-  .profile .bottom-part .single-form h4 {
+  .profile .bottom-part .single-form h4,
+  .user-details .bottom-part .single-form h4 {
     font-size: 1.1rem;
   }
 
-  .profile .bottom-part .single-form .group {
+  .profile .bottom-part .single-form .group,
+  .user-details .bottom-part .single-form .group {
     margin-top: 15px;
   }
 
-  .profile .bottom-part .single-form .group label {
+  .profile .bottom-part .single-form .group label,
+  .user-details .bottom-part .single-form .group label {
     width: 50px;
     height: 50px;
     font-size: 1.2rem;
   }
 
-  .profile .bottom-part .single-form .group input {
+  .profile .bottom-part .single-form .group input,
+  .user-details .bottom-part .single-form .group input {
     max-width: 230px;
     height: 50px;
     padding: 21px 25px;
     font-size: 1rem;
   }
 
-  .profile .bottom-part .single-form button {
+  .profile .bottom-part .single-form button,
+  .user-details .bottom-part .single-form button {
     padding: 14px 28px;
   }
 
   .profile a.button,
-  .profile button {
+  .profile button,
+  .user-details a.button,
+  .user-details button {
     font-size: 1rem;
   }
 
-  .profile .toHide {
+  .profile .toHide,
+  .user-details .toHide {
     display: none;
   }
 
@@ -2996,6 +3505,60 @@ a.success:hover {
     width: calc(100% - 50px);
     height: 50px;
   }
+
+  .users-list table thead th,
+  .words-list table thead th,
+  .suggestions-list table thead th {
+    padding: 12px 20px;
+  }
+
+  .users-list table tbody tr td,
+  .words-list table tbody tr td,
+  .suggestions-list table tbody tr td {
+    padding: 12px 20px;
+  }
+
+  .list nav .pagination li:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  .list nav .pagination a {
+    font-size: 1rem;
+  }
+
+  .list nav .pagination span {
+    font-size: 1rem;
+  }
+
+  table td {
+    font-size: 1rem;
+  }
+
+  .word-details,
+  .suggestion-details {
+    padding: 120px 40px 30px 40px;
+  }
+
+  .word-details .box h3,
+  .suggestion-details .box h3 {
+    font-size: 1.6rem;
+  }
+
+  .word-details .box p,
+  .suggestion-details .box p {
+    font-size: 1.1rem;
+  }
+
+  .word-details .box .down h4,
+  .suggestion-details .box .down h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+
+  .word-details .box .down h4:last-child,
+  .suggestion-details .box .down h4:last-child {
+    margin-bottom: 0;
+  }
 }
 
 @media only screen and (max-width: 470px) {
@@ -3039,6 +3602,31 @@ a.success:hover {
 
   .auth.remember .right-part .group input {
     font-size: 1.1rem;
+  }
+
+  table td {
+    font-size: 0.9rem;
+  }
+
+  .list nav .pagination {
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .list nav .pagination li:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  .list nav .pagination a {
+    font-size: 1rem;
+  }
+
+  .list nav .pagination span {
+    font-size: 1rem;
+  }
+
+  .user-details h3 {
+    font-size: 1.2rem;
   }
 }
 
@@ -3212,6 +3800,14 @@ a.success:hover {
     height: 40px;
     padding: 15px 18px;
   }
+
+  table td:before {
+    display: none;
+  }
+
+  .user-details h3 {
+    font-size: 1.1rem;
+  }
 }
 
 @media only screen and (max-width: 355px) {
@@ -3325,7 +3921,8 @@ a.success:hover {
     margin-top: 15px;
   }
 
-  .profile .bottom-part .single-form .group input {
+  .profile .bottom-part .single-form .group input,
+  .user-details .bottom-part .single-form .group input {
     max-width: 190px;
     height: 50px;
     padding: 17px 21px;
@@ -3359,24 +3956,32 @@ a.success:hover {
   .auth.remember .right-part .group input {
     font-size: 0.9rem;
   }
+
+  .user-details h3 {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 319px) {
-  .profile .bottom-part a.button {
+  .profile .bottom-part a.button,
+  .user-details .bottom-part a.button {
     padding: 14px 28px;
   }
 
-  .profile .bottom-part .single-form .group {
+  .profile .bottom-part .single-form .group,
+  .user-details .bottom-part .single-form .group {
     margin-top: 13px;
   }
 
-  .profile .bottom-part .single-form .group label {
+  .profile .bottom-part .single-form .group label,
+  .user-details .bottom-part .single-form .group label {
     width: 40px;
     height: 40px;
     font-size: 1rem;
   }
 
-  .profile .bottom-part .single-form .group input {
+  .profile .bottom-part .single-form .group input,
+  .user-details .bottom-part .single-form .group input {
     max-width: 150px;
     height: 40px;
     font-size: 0.9rem;

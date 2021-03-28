@@ -47,8 +47,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/suggestions', 'SuggestionController@list');
 
             Route::get('/users/{id}', 'UserController@details');
-            Route::get('/users/{id}/edit', 'UserController@edit');
-            Route::get('/users/{id}/delete', 'UserController@delete');
+            Route::post('/user/edit/name', 'UserController@editUserName')->name('changeUserName');
+            Route::post('/user/edit/email', 'UserController@editUserEmail')->name('changeUserEmail');
+            Route::post('/user/delete', 'UserController@deleteUser')->name('deleteUserAccount');
 
             Route::get('/words/{id}', 'WordController@details');
             Route::get('/words/{id}/edit', 'WordController@edit');

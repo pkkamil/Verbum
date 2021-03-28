@@ -1,6 +1,6 @@
 <?php
     $active = 'suggestion';
-    $title = 'Verbum - Słowa do zatwierdzenia |'.strtoupper($suggestion -> word);
+    $title = 'Verbum - Słowa do zatwierdzenia | '.strtoupper($suggestion -> word);
     $lazy = true;
 ?>
 

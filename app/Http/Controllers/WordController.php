@@ -24,7 +24,7 @@ class WordController extends Controller
     }
 
     public function list() {
-        $words = Word::paginate(9);
+        $words = Word::paginate(10);
         return view('words-list')->with('words', $words);
     }
 

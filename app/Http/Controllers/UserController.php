@@ -41,13 +41,13 @@ class UserController extends Controller
     }
 
     public function list() {
-        $users = User::paginate(9);
+        $users = User::paginate(10);
         return view('users-list')->with('users', $users);
     }
 
     public function changeName(Request $req) {
         $user = User::find(Auth::id());
-        $user -> name = $req -> name;
+        $user -> name = mb_strtolower($req -> name);
         $user -> save();
         return redirect()->back();
     }
@@ -68,15 +68,15 @@ class UserController extends Controller
             'description' => 'required|string|max:200',
         ]);
         $report = new Report();
-        $report -> type = $req -> type;
-        $report -> description = $req -> description;
+        $report -> type = mb_strtolower($req -> type);
+        $report -> description = mb_strtolower($req -> description);
         $report -> user_id = Auth::id();
         $report -> save();
         return redirect()->back();
     }
 
     public function destroy(Request $req) {
-        if (strtolower($req -> delete) == 'usuwam konto') {
+        if (mb_strtolower($req -> delete) == 'usuwam konto') {
             User::destroy(Auth::id());
             return redirect('/');
         }
@@ -91,11 +91,31 @@ class UserController extends Controller
         return view('user-details')->with('user', $user);
     }
 
-    public function edit($id) {
-
+    public function editUserName(Request $req) {
+        $req->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+        $user = User::find($req -> user_id);
+        $user -> name = mb_strtolower($req -> name);
+        $user -> save();
+        return redirect()->back();
     }
 
-    public function delete($id) {
+    public function editUserEmail(Request $req) {
+        $req->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        ]);
+        $user = User::find($req -> user_id);
+        $user -> email = mb_strtolower($req -> email);
+        $user -> save();
+        return redirect()->back();
+    }
 
+    public function deleteUser(Request $req) {
+        if (mb_strtolower($req -> delete) == 'usuwam użytkownika') {
+            User::destroy($req -> user_id);
+            return redirect('/admin/users');
+        }
+        return redirect()->back();
     }
 }
