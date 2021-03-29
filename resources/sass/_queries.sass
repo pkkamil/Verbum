@@ -130,7 +130,7 @@
                     width: 250px
                     height: 50px
 
-    .adding-words, .word-edit, .suggestion-edit
+    .adding-words, .word-edit, .suggestion-edit, .ranking
         & .left-part
             width: 50%
             & .group
@@ -247,6 +247,15 @@
                     &:first-child
                         margin-bottom: 10px
 
+    .ranking
+        @include flex-center
+        height: 100%
+        & .left-part
+            padding: 100px 60px 60px 60px
+            width: 100%
+        & .right-part
+            display: none
+
 @media only screen and (max-width: 1100px)
     .profile, .user-details
         & .bottom-part
@@ -269,8 +278,9 @@
             padding: 0 30px
 
 @media screen and (max-width: 976px)
-    nav .logo
-        margin-left: 40px
+    nav
+        & .logo
+            margin-left: 40px
     .nav-wrapper
         display: none
         position: fixed
@@ -314,7 +324,7 @@
     .nav-btn
         position: fixed
         background-color: $primary
-        right: 30px
+        right: 32px
         top: 11px
         font-size: 1.5em
         display: block
@@ -452,6 +462,10 @@
                 & h4
                     font-size: 1.3rem
 
+    .ranking
+        & .left-part
+            padding: 100px 40px 40px 40px
+
 @media only screen and (max-width: 900px)
     .profile, .user-details
         & .top-part
@@ -482,7 +496,7 @@
                 & span
                     font-size: 1.3rem
 
-    table
+    table:not(.ranks)
         border: 0
         & thead
             border: none
@@ -629,6 +643,13 @@
                 margin-top: 40px
                 &:first-child
                     margin-top: 0
+
+    .ranking
+        & .left-part
+            & h2
+                font-size: 1.6rem
+            & table
+                font-size: 1.3rem
 
 @media only screen and (max-width: 670px)
     .suggestion-details
@@ -957,6 +978,20 @@
                     &:last-child
                         margin-bottom: 0
 
+
+    .ranking
+        & .left-part
+            & h2
+                font-size: 1.4rem
+
+    input
+        border-radius: 0
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill::first-line
+            font-size: 1.1rem
+
 @media only screen and (max-width: 470px)
     .not-found
         & .info
@@ -1143,6 +1178,19 @@
         & h3
             font-size: 1.1rem
 
+    .ranking
+        & .left-part
+            & h2
+                font-size: 1.3rem
+
+    input
+        border-radius: 0
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill::first-line
+            font-size: 1rem
+
 @media only screen and (max-width: 355px)
     .not-found
         & .info
@@ -1227,9 +1275,12 @@
                 & .group
                     & input
                         max-width: 190px
-                        height: 50px
                         padding: 17px 21px
-                        font-size: 1rem
+                        &:-webkit-autofill,
+                        &:-webkit-autofill:hover,
+                        &:-webkit-autofill:focus,
+                        &:-webkit-autofill::first-line
+                            font-size: 1rem
 
     .auth
         & .errors
@@ -1240,26 +1291,47 @@
                     font-size: 1.5rem
                 & .group
                     & input
-                        font-size: .9rem
+                        font-size: .8rem
         &.register
             & .right-part
                 & h1
                     font-size: 1.5rem
                 & .group
                     & input
-                        font-size: .9rem
+                        font-size: .8rem
         &.remember
             & .right-part
                 & h1
                     font-size: 1.5rem
                 & .group
                     & input
-                        font-size: .9rem
+                        font-size: .8rem
 
     .user-details
         & h3
             font-size: 1rem
 
+    .ranking
+        & .left-part
+            & h2
+                font-size: 1.1rem
+
+    input
+        border-radius: 0
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill::first-line
+            font-size: .9rem
+
+    .auth
+        input
+            border-radius: 0
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill::first-line
+                font-size: .8rem
 
 @media only screen and (max-width: 319px)
     .profile, .user-details

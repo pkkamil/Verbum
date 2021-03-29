@@ -724,7 +724,7 @@ a.success:hover {
 }
 
 .auth.login .left-part button {
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -809,7 +809,7 @@ a.success:hover {
 }
 
 .auth.register .right-part button {
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -890,7 +890,7 @@ a.success:hover {
 }
 
 .auth.remember .right-part button {
-  margin-top: 30px;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -1534,6 +1534,7 @@ a.success:hover {
 .ranking .left-part table tr td {
   padding-top: 10px;
   padding-bottom: 5px;
+  text-transform: capitalize;
 }
 
 .ranking .right-part {
@@ -2263,19 +2264,22 @@ a.success:hover {
 
   .adding-words .left-part,
   .word-edit .left-part,
-  .suggestion-edit .left-part {
+  .suggestion-edit .left-part,
+  .ranking .left-part {
     width: 50%;
   }
 
   .adding-words .left-part .group input,
   .word-edit .left-part .group input,
-  .suggestion-edit .left-part .group input {
+  .suggestion-edit .left-part .group input,
+  .ranking .left-part .group input {
     width: 300px;
   }
 
   .adding-words .right-part,
   .word-edit .right-part,
-  .suggestion-edit .right-part {
+  .suggestion-edit .right-part,
+  .ranking .right-part {
     width: 50%;
   }
 
@@ -2439,6 +2443,22 @@ a.success:hover {
   .suggestion-details .box .down h4:first-child {
     margin-bottom: 10px;
   }
+
+  .ranking {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .ranking .left-part {
+    padding: 100px 60px 60px 60px;
+    width: 100%;
+  }
+
+  .ranking .right-part {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
@@ -2537,7 +2557,7 @@ a.success:hover {
   .nav-btn {
     position: fixed;
     background-color: #333;
-    right: 30px;
+    right: 32px;
     top: 11px;
     font-size: 1.5em;
     display: block;
@@ -2775,6 +2795,10 @@ a.success:hover {
   .suggestion-details .box .down h4 {
     font-size: 1.3rem;
   }
+
+  .ranking .left-part {
+    padding: 100px 40px 40px 40px;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -2821,11 +2845,11 @@ a.success:hover {
     font-size: 1.3rem;
   }
 
-  table {
+  table:not(.ranks) {
     border: 0;
   }
 
-  table thead {
+  table:not(.ranks) thead {
     border: none;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -2836,20 +2860,20 @@ a.success:hover {
     width: 1px;
   }
 
-  table tr {
+  table:not(.ranks) tr {
     border-bottom: 3px solid #333;
     display: block;
     margin-bottom: 12px;
   }
 
-  table td {
+  table:not(.ranks) td {
     border-bottom: 1px solid #333;
     display: block;
     font-size: 1.1rem;
     text-align: right;
   }
 
-  table td:before {
+  table:not(.ranks) td:before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
@@ -2857,7 +2881,7 @@ a.success:hover {
     padding-right: 20px;
   }
 
-  table td:last-child {
+  table:not(.ranks) td:last-child {
     border-bottom: 0;
   }
 }
@@ -3022,6 +3046,14 @@ a.success:hover {
   .profile .bottom-part .single-form:first-child,
   .user-details .bottom-part .single-form:first-child {
     margin-top: 0;
+  }
+
+  .ranking .left-part h2 {
+    font-size: 1.6rem;
+  }
+
+  .ranking .left-part table {
+    font-size: 1.3rem;
   }
 }
 
@@ -3559,6 +3591,21 @@ a.success:hover {
   .suggestion-details .box .down h4:last-child {
     margin-bottom: 0;
   }
+
+  .ranking .left-part h2 {
+    font-size: 1.4rem;
+  }
+
+  input {
+    border-radius: 0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill::first-line {
+    font-size: 1.1rem;
+  }
 }
 
 @media only screen and (max-width: 470px) {
@@ -3808,6 +3855,21 @@ a.success:hover {
   .user-details h3 {
     font-size: 1.1rem;
   }
+
+  .ranking .left-part h2 {
+    font-size: 1.3rem;
+  }
+
+  input {
+    border-radius: 0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill::first-line {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 355px) {
@@ -3924,8 +3986,17 @@ a.success:hover {
   .profile .bottom-part .single-form .group input,
   .user-details .bottom-part .single-form .group input {
     max-width: 190px;
-    height: 50px;
     padding: 17px 21px;
+  }
+
+  .profile .bottom-part .single-form .group input:-webkit-autofill,
+  .profile .bottom-part .single-form .group input:-webkit-autofill:hover,
+  .profile .bottom-part .single-form .group input:-webkit-autofill:focus,
+  .profile .bottom-part .single-form .group input:-webkit-autofill::first-line,
+  .user-details .bottom-part .single-form .group input:-webkit-autofill,
+  .user-details .bottom-part .single-form .group input:-webkit-autofill:hover,
+  .user-details .bottom-part .single-form .group input:-webkit-autofill:focus,
+  .user-details .bottom-part .single-form .group input:-webkit-autofill::first-line {
     font-size: 1rem;
   }
 
@@ -3938,7 +4009,7 @@ a.success:hover {
   }
 
   .auth.login .left-part .group input {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .auth.register .right-part h1 {
@@ -3946,7 +4017,7 @@ a.success:hover {
   }
 
   .auth.register .right-part .group input {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .auth.remember .right-part h1 {
@@ -3954,11 +4025,37 @@ a.success:hover {
   }
 
   .auth.remember .right-part .group input {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .user-details h3 {
     font-size: 1rem;
+  }
+
+  .ranking .left-part h2 {
+    font-size: 1.1rem;
+  }
+
+  input {
+    border-radius: 0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill::first-line {
+    font-size: 0.9rem;
+  }
+
+  .auth input {
+    border-radius: 0;
+  }
+
+  .auth input:-webkit-autofill,
+  .auth input:-webkit-autofill:hover,
+  .auth input:-webkit-autofill:focus,
+  .auth input:-webkit-autofill::first-line {
+    font-size: 0.8rem;
   }
 }
 

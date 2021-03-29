@@ -9,7 +9,7 @@
 <article class="ranking repeat">
     <section class="left-part">
         <h2>Największa ilość powtórzonych słów</h2>
-        <table>
+        <table class="ranks">
             <tbody>
                 @foreach($ranking as $rank)
                     <tr>

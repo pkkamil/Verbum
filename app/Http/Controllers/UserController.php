@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use stdClass;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -19,21 +20,13 @@ class UserController extends Controller
 
     public function showRanking($type) {
         if ($type == 'add') {
-            $ranking = User::all()->sortBy('words')->reverse();
+            $ranking = User::paginate(15)->sortBy('words')->reverse();
             return view('ranking-add')->with('ranking', $ranking);
         } else if ($type == 'exercise') {
-            $ranks = Exercise::all();
-            $keys = [];
-            $values = [];
-            foreach($ranks as $rank) {
-                array_push($keys, $rank -> user_id);
-                array_push($values, $rank -> writing + $rank -> matching);
-            }
-            $ranking = array_combine($keys, $values);
-            arsort($ranking);
-            return view('ranking-exercise')->with('ranking', $ranking);
+            $ranks = Exercise::orderBy(DB::raw("`writing` + `matching`"), 'desc')->paginate(15);
+            return view('ranking-exercise')->with('ranking', $ranks);
         } else if ($type == 'repeat') {
-            $ranking = Exercise::orderBy('translation', 'desc')->get();
+            $ranking = Exercise::orderBy('translation', 'desc')->paginate(15);
             return view('ranking-repeat')->with('ranking', $ranking);
         } else {
             return view('404');

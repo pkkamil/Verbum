@@ -9,13 +9,13 @@
 <article class="ranking exercising">
     <section class="left-part">
         <h2>Największa ilość uzyskanych punktów</h2>
-        <table>
+        <table class="ranks">
             <tbody>
-                @foreach($ranking as $key => $value)
+                @foreach($ranking as $rank)
                     <tr>
                         <td>{{ $loop -> index+1 }}</td>
-                        <td>{{ \App\User::find($key) -> name }}</td>
-                        <td>{{ $value }}</td>
+                        <td>{{ \App\User::find($rank -> user_id) -> name }}</td>
+                        <td>{{ $rank -> writing + $rank -> matching }}</td>
                     </tr>
                 @endforeach
             </tbody>
