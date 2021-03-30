@@ -38,7 +38,7 @@ class SuggestionController extends Controller
         $suggestion = Suggestion::find($id);
         $duplicate = Word::where('word', $suggestion -> word)->first();
         if (!$suggestion) {
-            return redirect(url()->previous());
+            return redirect()->back();
         }
         return view('suggestion-details', compact('suggestion', 'duplicate'));
     }
@@ -46,7 +46,7 @@ class SuggestionController extends Controller
     public function edit($id) {
         $suggestion = Suggestion::find($id);
         if (!$suggestion) {
-            return redirect(url()->previous());
+            return redirect()->back();
         }
         return view('suggestion-edit')->with('suggestion', $suggestion);
     }
@@ -86,15 +86,15 @@ class SuggestionController extends Controller
         return redirect('/admin/suggestions/');
     }
 
-    public function replace($id_suggestion) {
-        $suggestion = Suggestion::find($id_suggestion);
+    public function replace(Request $req) {
+        $suggestion = Suggestion::find($req -> suggestion_id);
         $word = Word::where('word', $suggestion -> word)->first();
 
         $user = User::find($suggestion -> user_id);
         $user -> words = $user -> words + 1;
         $user -> save();
 
-        Suggestion::destroy($id_suggestion);
+        Suggestion::destroy($req -> suggestion_id);
 
         // Replace Word
         $word = Word::find($word -> id);
@@ -104,8 +104,10 @@ class SuggestionController extends Controller
         return redirect('/admin/words/'.$word -> id);
     }
 
-    public function delete($id) {
-        Suggestion::destroy($id);
+    public function delete(Request $req) {
+        Suggestion::destroy($req -> suggestion_id);
+        if (str_contains(url()->previous(), '/suggestions?page'))
+            return redirect()->back();
         return redirect('/admin/suggestions');
     }
 }

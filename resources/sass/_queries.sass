@@ -190,13 +190,13 @@
 
 @media only screen and (max-width: 1200px)
     .exercises
-        padding-top: 68px
+        padding-top: 66px
         flex-direction: column
         & .part
             width: 100%
             & .images
                 width: 100%
-                height: calc((100vh - 68px) / 3)
+                height: calc((100vh - 66px) / 3)
                 min-height: 166px
                 padding: 0 160px
             & h2
@@ -278,9 +278,8 @@
             padding: 0 30px
 
 @media screen and (max-width: 976px)
-    nav
-        & .logo
-            margin-left: 40px
+    nav .logo
+        margin-left: 40px
     .nav-wrapper
         display: none
         position: fixed
@@ -302,6 +301,7 @@
                 float: none
                 width: 100%
                 text-align: right
+                margin-left: 0!important
                 margin-bottom: 10px
                 &:nth-child(1) a
                     transition: 0.2s
@@ -311,8 +311,6 @@
                     transition: 0.4s
                 &:nth-child(4) a
                     transition: 0.5s
-                &:not(first-child)
-                    margin-left: 0
                 & a
                     padding: 10px 24px
                     opacity: 0
@@ -656,12 +654,15 @@
         & .box
             & .operations
                 flex-direction: column
-                & a
-                    margin-left: auto
+                & a, button
+                    margin-right: 0
                     margin-top: 15px
-                    &:first-child
-                        margin-top: 0
-                        margin-left: auto
+                & a:first-child
+                    margin-top: 25px
+                    margin-right: 0
+            & .duplicate
+                & h2
+                    font-size: 1.4rem
 
 @media only screen and (max-width: 600px)
     .not-found
@@ -673,6 +674,9 @@
                 font-size: 1.4rem
 
     .dimmer
+        &.hider
+            & h2
+                font-size: 1.4rem
         & .result-box
             padding: 40px
             & h2.text
@@ -748,12 +752,24 @@
                     font-size: 1.2rem
             & .operations
                 flex-direction: column
-                & a
-                    margin-left: auto
+                & a, button
+                    margin-right: auto
                     margin-top: 15px
                     &:first-child
                         margin-top: 0
-                        margin-left: auto
+                        margin-right: auto
+
+    .suggestion-details
+        & .box
+            & .operations
+                & a, button
+                    margin-right: 0
+                & a:first-child
+                    margin-top: 25px
+                    margin-right: 0
+            & .duplicate
+                & h2
+                    font-size: 1.3rem
 
 
 @media only screen and (max-width: 500px)
@@ -978,11 +994,22 @@
                     &:last-child
                         margin-bottom: 0
 
-
     .ranking
         & .left-part
             & h2
                 font-size: 1.4rem
+
+    .dimmer.hider
+        padding: 30px 40px
+        & h2
+            font-size: 1.3rem
+        & form
+            flex-direction: column
+            & button
+                margin: inherit
+                &.danger, &.success
+                    margin-right: 0!important
+                    margin-bottom: 20px
 
     input
         border-radius: 0
@@ -1183,6 +1210,12 @@
             & h2
                 font-size: 1.3rem
 
+    .suggestion-details
+        & .box
+            & .duplicate
+                & h2
+                    font-size: 1.2rem
+
     input
         border-radius: 0
         &:-webkit-autofill,
@@ -1207,7 +1240,7 @@
                 font-size: 1.6rem
 
     .dimmer
-        padding: 30px 0 0 0
+        padding: 30px 0 0 0!important
         & .result-box
             padding: 30px
             & h2.text

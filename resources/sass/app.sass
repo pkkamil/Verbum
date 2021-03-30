@@ -95,7 +95,7 @@ input
         -webkit-text-fill-color: #000
         transition: background-color 5000s ease-in-out 0s
 
-nav
+nav:not(.pag)
     position: fixed
     padding: 8px 0
     width: 100%
@@ -991,38 +991,26 @@ button.success, a.success
 .list
     & nav
         position: relative
-        & ul li
-            &:not(:first-child)
-                margin-left: 20px
+        padding: 8px 0
+        & ul
+            list-style: none
+            margin-top: 10px
+            float: none
+            @include flex-center
             & a
-                font-size: 1.4rem
-            & span
-                font-size: 1.4rem
-    & .pagination
-        margin-top: 10px
-        float: none
-        @include flex-center
-        & li
-            padding: 0
-            &:last-child
-                margin-right: 0
-        & .icon
-            display: inline
-            background: #262626
-            width: 32px
-            height: 32px
-            &.disabled
-                color: #555
-                &:hover
-                    color: #555
-            &:not(.disabled):hover
-                color: #fff
-        & .arrow i
-            transform: translateY(-2px)
-        & a
-            color: #888
-        &.active
-            color: #FFF
+                color: #888
+            &.active
+                color: #FFF
+            & li
+                padding: 0
+                &:last-child
+                    margin-right: 0
+                &:not(:first-child)
+                    margin-left: 20px
+                & a
+                    font-size: 1.4rem
+                & span
+                    font-size: 1.4rem
 
 .users-list
     width: 100%
@@ -1159,13 +1147,12 @@ button.success, a.success
                     text-transform: uppercase
                     font-weight: 400
                     & i
+                        cursor: pointer
                         font-weight: 600
                     & a
                         color: #333
                         transition: .6s color
-                        margin-left: 10px
-                        &:first-child
-                            margin-left: 0
+                        margin-right: 10px
                         &:hover
                             color: #555
 
@@ -1202,9 +1189,7 @@ button.success, a.success
             @include flex-center
             justify-content: center
             & a
-                margin-left: 20px
-                &:first-child
-                    margin-left: 0
+                margin-right: 20px
 
 .suggestions-list
     width: 100%
@@ -1233,18 +1218,17 @@ button.success, a.success
                     font-weight: 400
                     & i
                         font-weight: 600
+                        cursor: pointer
                     & a
                         color: #333
                         transition: .6s color
-                        margin-left: 10px
-                        &:first-child
-                            margin-left: 0
+                        margin-right: 10px
                         &:hover
                             color: #555
                     & p
                         display: inline-block
                         color: #777
-                        margin-left: 10px
+                        margin-right: 10px
     & .no-suggestions
         margin-top: 100px
         @include flex-center
@@ -1292,16 +1276,46 @@ button.success, a.success
                 text-transform: uppercase
         & .operations
             @include flex-center
+            flex-wrap: wrap
             justify-content: center
             & a
-                margin-left: 20px
-                &:first-child
-                    margin-left: 0
+                margin-right: 20px
+                margin-top: 25px
+                margin-left: 0
+            & button
+                margin-right: 20px
+                margin-top: 25px
+                margin-left: 0
+                &:last-child
+                    margin-right: 0
     & .duplicate
-        margin-bottom: 25px
         & h2
+            text-align: center
             font-weight: 400
             text-transform: uppercase
+
+.dimmer
+    &.hider
+        display: none
+    .result-box
+        & h2
+            font-size: 1.5rem
+            text-transform: uppercase
+            color: #FFF
+            margin-bottom: 30px
+            font-weight: 400
+            & span.w
+                font-weight: 600
+        & form
+            display: flex
+            flex-direction: row
+            justify-content: center
+            & button
+                margin: 0
+            & .danger
+                margin-right: 30px
+            & .success
+                margin-right: 30px
 
 // Queries
 @import 'queries'

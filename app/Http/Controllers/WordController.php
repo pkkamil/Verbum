@@ -31,7 +31,7 @@ class WordController extends Controller
     public function details($id) {
         $word = word::find($id);
         if (!$word) {
-            return redirect(url()->previous());
+            return redirect()->back();
         }
         return view('word-details')->with('word', $word);
     }
@@ -39,7 +39,7 @@ class WordController extends Controller
     public function edit($id) {
         $word = word::find($id);
         if (!$word) {
-            return redirect(url()->previous());
+            return redirect()->back();
         }
         return view('word-edit')->with('word', $word);
     }
@@ -58,8 +58,10 @@ class WordController extends Controller
         return redirect('/admin/words/'.$req -> word_id);
     }
 
-    public function delete($id) {
-        Word::destroy($id);
+    public function delete(Request $req) {
+        Word::destroy($req -> word_id);
+        if (str_contains(url()->previous(), '/words?page'))
+            return redirect()->back();
         return redirect('/admin/words');
     }
 }

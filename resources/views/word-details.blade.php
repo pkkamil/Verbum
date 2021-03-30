@@ -17,12 +17,37 @@
             <section class="operations">
                 @if (str_contains(url()->previous(), 'suggestions/'))
                     <a href="{{ url()->previous() }}" class="button">Wróć</a>
+                @elseif (str_contains(url()->previous(), '/words?page'))
+                    <a href="{{ url()->previous() }}" class="button">Wróć</a>
                 @else
                     <a href="{{ url('/admin/words') }}" class="button">Wróć</a>
                 @endif
                 <a href="{{ url()->current().'/edit' }}" class="button">Edytuj</a>
-                <a href="{{ url()->current().'/delete' }}" class="button danger">Usuń</a>
+                <button class="danger">Usuń</button>
             </section>
         </section>
+        <article class="dimmer hider">
+            <section class="result-box">
+                    <h2>Czy na pewno chcesz usunąć słowo <span class="w">{{ $word -> word }}</span>?</h2>
+                    <form method="POST" action="{{ route('deleteWord') }}">
+                        @csrf
+                        <input type="hidden" name="word_id" id="word_id" value="{{ $word -> id }}">
+                        <button type="submit" class="danger">Usuń</button>
+                        <button type="button" class="reverse-color">Anuluj</button>
+                    </form>
+            </section>
+        </article>
     </article>
+    <script>
+        let click = document.querySelector('.danger');
+        let dimmer = document.querySelector('.dimmer');
+
+        click.addEventListener('click', (e) => {
+            dimmer.style.display = 'flex';
+        });
+
+        document.querySelector('.reverse-color').addEventListener('click', () => {
+            dimmer.style.display = 'none';
+        })
+    </script>
 @endsection

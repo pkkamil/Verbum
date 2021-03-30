@@ -149,7 +149,7 @@ input:-webkit-autofill::first-line {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-nav {
+nav:not(.pag) {
   position: fixed;
   padding: 8px 0;
   width: 100%;
@@ -157,13 +157,13 @@ nav {
   transition: 1s color, 1s background-color;
 }
 
-nav .logo {
+nav:not(.pag) .logo {
   float: left;
   padding: 8px 0px;
   margin-left: 60px;
 }
 
-nav .logo a {
+nav:not(.pag) .logo a {
   color: black;
   text-transform: uppercase;
   font-size: 2rem;
@@ -172,25 +172,25 @@ nav .logo a {
   -webkit-text-stroke-color: #FFF;
 }
 
-nav ul {
+nav:not(.pag) ul {
   float: right;
 }
 
-nav ul li {
+nav:not(.pag) ul li {
   display: inline-block;
   padding: 16px 0px;
   font-size: 1.1rem;
 }
 
-nav ul li:not(:first-child) {
+nav:not(.pag) ul li:not(:first-child) {
   margin-left: 40px;
 }
 
-nav ul li:last-child {
+nav:not(.pag) ul li:last-child {
   margin-right: 60px;
 }
 
-nav ul li a {
+nav:not(.pag) ul li a {
   display: inline-block;
   outline: none;
   color: #FFF;
@@ -200,7 +200,7 @@ nav ul li a {
   font-weight: 400;
 }
 
-nav ul li a::after {
+nav:not(.pag) ul li a::after {
   content: "";
   display: block;
   width: 0;
@@ -209,37 +209,37 @@ nav ul li a::after {
   transition: width 1s;
 }
 
-nav ul li a.active::after {
+nav:not(.pag) ul li a.active::after {
   -webkit-animation: activeLink ease-in 1s;
           animation: activeLink ease-in 1s;
 }
 
-nav ul li a.active::after {
+nav:not(.pag) ul li a.active::after {
   width: 100%;
 }
 
-nav ul li a:hover::after {
+nav:not(.pag) ul li a:hover::after {
   width: 100%;
   translation: width 1s;
 }
 
-nav.gray {
+nav:not(.pag).gray {
   background-color: #333;
 }
 
-nav.gray .logo a {
+nav:not(.pag).gray .logo a {
   color: #333;
 }
 
-nav.gray ul li a {
+nav:not(.pag).gray ul li a {
   color: #FFF;
 }
 
-nav.gray ul li a::after {
+nav:not(.pag).gray ul li a::after {
   background-color: #FFF;
 }
 
-nav.gray-ww {
+nav:not(.pag).gray-ww {
   background-color: #333;
 }
 
@@ -1563,6 +1563,32 @@ a.success:hover {
 
 .list nav {
   position: relative;
+  padding: 8px 0;
+}
+
+.list nav ul {
+  list-style: none;
+  margin-top: 10px;
+  float: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list nav ul a {
+  color: #888;
+}
+
+.list nav ul.active {
+  color: #FFF;
+}
+
+.list nav ul li {
+  padding: 0;
+}
+
+.list nav ul li:last-child {
+  margin-right: 0;
 }
 
 .list nav ul li:not(:first-child) {
@@ -1575,53 +1601,6 @@ a.success:hover {
 
 .list nav ul li span {
   font-size: 1.4rem;
-}
-
-.list .pagination {
-  margin-top: 10px;
-  float: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.list .pagination li {
-  padding: 0;
-}
-
-.list .pagination li:last-child {
-  margin-right: 0;
-}
-
-.list .pagination .icon {
-  display: inline;
-  background: #262626;
-  width: 32px;
-  height: 32px;
-}
-
-.list .pagination .icon.disabled {
-  color: #555;
-}
-
-.list .pagination .icon.disabled:hover {
-  color: #555;
-}
-
-.list .pagination .icon:not(.disabled):hover {
-  color: #fff;
-}
-
-.list .pagination .arrow i {
-  transform: translateY(-2px);
-}
-
-.list .pagination a {
-  color: #888;
-}
-
-.list .pagination.active {
-  color: #FFF;
 }
 
 .users-list {
@@ -1817,17 +1796,14 @@ a.success:hover {
 }
 
 .words-list table tbody tr td i {
+  cursor: pointer;
   font-weight: 600;
 }
 
 .words-list table tbody tr td a {
   color: #333;
   transition: 0.6s color;
-  margin-left: 10px;
-}
-
-.words-list table tbody tr td a:first-child {
-  margin-left: 0;
+  margin-right: 10px;
 }
 
 .words-list table tbody tr td a:hover {
@@ -1887,11 +1863,7 @@ a.success:hover {
 }
 
 .word-details .box .operations a {
-  margin-left: 20px;
-}
-
-.word-details .box .operations a:first-child {
-  margin-left: 0;
+  margin-right: 20px;
 }
 
 .suggestions-list {
@@ -1932,16 +1904,13 @@ a.success:hover {
 
 .suggestions-list table tbody tr td i {
   font-weight: 600;
+  cursor: pointer;
 }
 
 .suggestions-list table tbody tr td a {
   color: #333;
   transition: 0.6s color;
-  margin-left: 10px;
-}
-
-.suggestions-list table tbody tr td a:first-child {
-  margin-left: 0;
+  margin-right: 10px;
 }
 
 .suggestions-list table tbody tr td a:hover {
@@ -1951,7 +1920,7 @@ a.success:hover {
 .suggestions-list table tbody tr td p {
   display: inline-block;
   color: #777;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .suggestions-list .no-suggestions {
@@ -2026,24 +1995,64 @@ a.success:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .suggestion-details .box .operations a {
-  margin-left: 20px;
-}
-
-.suggestion-details .box .operations a:first-child {
+  margin-right: 20px;
+  margin-top: 25px;
   margin-left: 0;
 }
 
-.suggestion-details .duplicate {
-  margin-bottom: 25px;
+.suggestion-details .box .operations button {
+  margin-right: 20px;
+  margin-top: 25px;
+  margin-left: 0;
+}
+
+.suggestion-details .box .operations button:last-child {
+  margin-right: 0;
 }
 
 .suggestion-details .duplicate h2 {
+  text-align: center;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+.dimmer.hider {
+  display: none;
+}
+
+.dimmer .result-box h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  color: #FFF;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.dimmer .result-box h2 span.w {
+  font-weight: 600;
+}
+
+.dimmer .result-box form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.dimmer .result-box form button {
+  margin: 0;
+}
+
+.dimmer .result-box form .danger {
+  margin-right: 30px;
+}
+
+.dimmer .result-box form .success {
+  margin-right: 30px;
 }
 
 @media only screen and (max-width: 1800px) {
@@ -2367,7 +2376,7 @@ a.success:hover {
 
 @media only screen and (max-width: 1200px) {
   .exercises {
-    padding-top: 68px;
+    padding-top: 66px;
     flex-direction: column;
   }
 
@@ -2377,7 +2386,7 @@ a.success:hover {
 
   .exercises .part .images {
     width: 100%;
-    height: calc((100vh - 68px) / 3);
+    height: calc((100vh - 66px) / 3);
     min-height: 166px;
     padding: 0 160px;
   }
@@ -2521,6 +2530,7 @@ a.success:hover {
     float: none;
     width: 100%;
     text-align: right;
+    margin-left: 0 !important;
     margin-bottom: 10px;
   }
 
@@ -2538,10 +2548,6 @@ a.success:hover {
 
   .nav-wrapper ul li:nth-child(4) a {
     transition: 0.5s;
-  }
-
-  .nav-wrapper ul li:not(first-child) {
-    margin-left: 0;
   }
 
   .nav-wrapper ul li a {
@@ -3062,14 +3068,19 @@ a.success:hover {
     flex-direction: column;
   }
 
-  .suggestion-details .box .operations a {
-    margin-left: auto;
+  .suggestion-details .box .operations a,
+  .suggestion-details .box .operations button {
+    margin-right: 0;
     margin-top: 15px;
   }
 
   .suggestion-details .box .operations a:first-child {
-    margin-top: 0;
-    margin-left: auto;
+    margin-top: 25px;
+    margin-right: 0;
+  }
+
+  .suggestion-details .box .duplicate h2 {
+    font-size: 1.4rem;
   }
 }
 
@@ -3083,6 +3094,10 @@ a.success:hover {
   }
 
   .not-found .info a {
+    font-size: 1.4rem;
+  }
+
+  .dimmer.hider h2 {
     font-size: 1.4rem;
   }
 
@@ -3224,15 +3239,33 @@ a.success:hover {
   }
 
   .word-details .box .operations a,
-  .suggestion-details .box .operations a {
-    margin-left: auto;
+  .word-details .box .operations button,
+  .suggestion-details .box .operations a,
+  .suggestion-details .box .operations button {
+    margin-right: auto;
     margin-top: 15px;
   }
 
   .word-details .box .operations a:first-child,
-  .suggestion-details .box .operations a:first-child {
+  .word-details .box .operations button:first-child,
+  .suggestion-details .box .operations a:first-child,
+  .suggestion-details .box .operations button:first-child {
     margin-top: 0;
-    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .suggestion-details .box .operations a,
+  .suggestion-details .box .operations button {
+    margin-right: 0;
+  }
+
+  .suggestion-details .box .operations a:first-child {
+    margin-top: 25px;
+    margin-right: 0;
+  }
+
+  .suggestion-details .box .duplicate h2 {
+    font-size: 1.3rem;
   }
 }
 
@@ -3596,6 +3629,28 @@ a.success:hover {
     font-size: 1.4rem;
   }
 
+  .dimmer.hider {
+    padding: 30px 40px;
+  }
+
+  .dimmer.hider h2 {
+    font-size: 1.3rem;
+  }
+
+  .dimmer.hider form {
+    flex-direction: column;
+  }
+
+  .dimmer.hider form button {
+    margin: inherit;
+  }
+
+  .dimmer.hider form button.danger,
+  .dimmer.hider form button.success {
+    margin-right: 0 !important;
+    margin-bottom: 20px;
+  }
+
   input {
     border-radius: 0;
   }
@@ -3860,6 +3915,10 @@ a.success:hover {
     font-size: 1.3rem;
   }
 
+  .suggestion-details .box .duplicate h2 {
+    font-size: 1.2rem;
+  }
+
   input {
     border-radius: 0;
   }
@@ -3888,7 +3947,7 @@ a.success:hover {
   }
 
   .dimmer {
-    padding: 30px 0 0 0;
+    padding: 30px 0 0 0 !important;
   }
 
   .dimmer .result-box {

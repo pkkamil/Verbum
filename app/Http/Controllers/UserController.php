@@ -79,7 +79,7 @@ class UserController extends Controller
     public function details($id) {
         $user = user::find($id);
         if (!$user) {
-            return redirect(url()->previous());
+            return redirect()->back();
         }
         return view('user-details')->with('user', $user);
     }

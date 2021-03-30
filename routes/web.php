@@ -54,14 +54,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/words/{id}', 'WordController@details');
             Route::get('/words/{id}/edit', 'WordController@edit');
             Route::post('/word/edit', 'WordController@editWordDetails')->name('changeWordDetails');
-            Route::get('/words/{id}/delete', 'WordController@delete');
+            Route::post('/word/delete', 'WordController@delete')->name('deleteWord');
 
             Route::get('/suggestions/{id}', 'SuggestionController@details');
             Route::get('/suggestions/{id}/edit', 'SuggestionController@edit');
             Route::post('/suggestion/edit', 'SuggestionController@editSuggestionDetails')->name('changeSuggestionDetails');
             Route::get('/suggestions/{id_suggestion}/accept', 'SuggestionController@accept');
-            Route::get('/suggestions/{id_suggestion}/replace', 'SuggestionController@replace');
-            Route::get('/suggestions/{id}/delete', 'SuggestionController@delete');
+            Route::post('/suggestion/replace', 'SuggestionController@replace')->name('replaceWord');
+            Route::post('/suggestion/delete', 'SuggestionController@delete')->name('deleteSuggestion');
         });
     });
     Route::get('/ranking/{type}', 'UserController@showRanking');
