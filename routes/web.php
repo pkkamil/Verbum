@@ -59,7 +59,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/suggestions/{id}', 'SuggestionController@details');
             Route::get('/suggestions/{id}/edit', 'SuggestionController@edit');
             Route::post('/suggestion/edit', 'SuggestionController@editSuggestionDetails')->name('changeSuggestionDetails');
-            Route::get('/suggestions/{id_suggestion}/accept', 'SuggestionController@accept');
+            Route::post('/suggestions/accept', 'SuggestionController@accept')->name('acceptSuggestion');
             Route::post('/suggestion/replace', 'SuggestionController@replace')->name('replaceWord');
             Route::post('/suggestion/delete', 'SuggestionController@delete')->name('deleteSuggestion');
         });

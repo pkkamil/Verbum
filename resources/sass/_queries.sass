@@ -288,7 +288,7 @@
         width: 100%
         height: 100vh
         z-index: 1
-        background: $primary
+        background: rgba(51, 51, 51, .8)
         opacity: 0
         transition: all 0.2s ease
         & ul
@@ -619,6 +619,12 @@
         & a
             width: 160px
 
+    .words
+        & .all-words
+            & .null
+                font-size: 1.4rem
+                padding: 0 20px
+
     .exercises
         & .part
             & .images
@@ -804,6 +810,7 @@
                 padding: 8px 16px
 
     .words
+        padding: 40px
         & .search
             & form
                 & input
@@ -819,13 +826,18 @@
                     font-size: 1.1rem
                     border-radius: 0
         & .all-words
+            margin-top: 20px
             & .single-word
-                margin: 7px
+                margin: 7px 0
                 padding: 33px 40px
                 width: 100%
                 & h3
                     font-size: 1.4rem
                     margin-bottom: 8px
+            & .null
+                font-size: 1.3rem
+                margin-top: 10px
+                padding: 0 10px
 
     .exercises
         & .part
@@ -1114,7 +1126,7 @@
         & .search
             & form
                 & input
-                    width: 190px
+                    width: calc(100% - 50px)
                     height: 50px
                     padding: 14px 28px
                     font-size: 1rem
@@ -1124,7 +1136,10 @@
                 padding: 25px 33px
                 width: 100%
                 & h3
-                    font-size: 1.3rem
+                    font-size: 1.2rem
+            & .null
+                font-size: 1.2rem
+                padding: 0
 
     .exercise
         &.translation
@@ -1145,30 +1160,21 @@
                 font-size: 1.4rem
             & .group
                 & label
-                    width: 40px
-                    height: 40px
                     & i
                         font-size: 1.3rem
                 & input
                     width: 210px
-                    padding: 15px 18px
-                    height: 40px
+                    padding: 17px 21px
                     font-size: 1.1rem
 
     .adding-words, .word-edit, .suggestion-edit
         & .left-part
             & .group
                 & input
-                    width: calc(100% - 40px)
-                    height: 40px
                     font-size: 1rem
-                    padding: 15px 18px
+                    padding: 17px 21px
                     &#word
-                        width: calc(100% - 40px)
-                & label
-                    height: 40px
-                    width: 40px
-                    font-size: 1.1rem
+                        width: calc(100% - 50px)
             & h1
                 font-size: 1.4rem
 
@@ -1179,48 +1185,27 @@
                     font-size: 1.6rem
                 & .group
                     margin-top: 15px
-                    & label
-                        height: 40px
-                        width: 40px
-                        & i
-                            font-size: 1rem
                     & input
                         font-size: 1.1rem
-                        width: calc(100% - 40px)
-                        height: 40px
-                        padding: 15px 18px
+                        padding: 17px 21px
         &.register
             & .right-part
                 & h1
                     font-size: 1.6rem
                 & .group
                     margin-top: 15px
-                    & label
-                        height: 40px
-                        width: 40px
-                        & i
-                            font-size: 1rem
                     & input
                         font-size: 1.1rem
-                        width: calc(100% - 40px)
-                        height: 40px
-                        padding: 15px 18px
+                        padding: 17px 21px
         &.remember
             & .right-part
                 & h1
                     font-size: 1.6rem
                 & .group
                     margin-top: 15px
-                    & label
-                        height: 40px
-                        width: 40px
-                        & i
-                            font-size: 1rem
                     & input
                         font-size: 1.1rem
-                        width: calc(100% - 40px)
-                        height: 40px
-                        padding: 15px 18px
+                        padding: 17px 21px
 
     table
         & td
@@ -1259,6 +1244,15 @@
             font-size: 1rem
 
 @media only screen and (max-width: 355px)
+    .words
+        & .all-words
+            & .single-word
+                padding: 25px 30px
+                & h3
+                    font-size: 1.1rem
+            & .null
+                font-size: 1.1rem
+
     .not-found
         & .info
             & h2

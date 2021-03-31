@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Word;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Record;
+use Carbon\Carbon;
+use App\User;
 
 class WordController extends Controller
 {
@@ -59,6 +62,15 @@ class WordController extends Controller
     }
 
     public function delete(Request $req) {
+        // Remove Record
+        $user = User::find(Word::find($req -> word_id) -> user_id);
+        $record = Record::whereDate('date', Carbon::Today())->where('user_id', $user -> user_id)->first();
+        $user -> words = $user -> words - 1;
+        $user -> save();
+        if (isset($record)) {
+            $record -> words = $record -> words - 1;
+            $record -> save();
+        }
         Word::destroy($req -> word_id);
         if (str_contains(url()->previous(), '/words?page'))
             return redirect()->back();

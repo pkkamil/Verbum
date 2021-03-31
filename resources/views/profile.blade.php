@@ -81,6 +81,7 @@
                 <a href="{{ url('/admin/users') }}" class="button">Lista użytkowników</a>
                 <a href="{{ url('/admin/words') }}" class="button">Lista słów</a>
                 <a href="{{ url('/admin/suggestions') }}" class="button"><span class="toHide">Słowa </span>do zatwierdzenia</a>
+                {{-- <a href="{{ url('/admin/reports') }}" class="button">Lista zgłoszeń</a> --}}
             @endif
         </div>
         <div class="single-form">

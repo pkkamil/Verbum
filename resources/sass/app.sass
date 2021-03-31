@@ -106,7 +106,7 @@ nav:not(.pag)
         padding: 8px 0px
         margin-left: 60px
         & a
-            color: rgba(0, 0, 0, 1)
+            color: $primary
             text-transform: uppercase
             font-size: 2rem
             text-decoration: none
@@ -405,6 +405,12 @@ button.success, a.success
             & p
                 text-align: center
                 color: #fff
+        & .null
+            text-transform: uppercase
+            color: $primary
+            font-weight: 400
+            text-align: center
+            padding: 0 40px
 
 .auth
     width: 100%
@@ -761,7 +767,7 @@ button.success, a.success
                 @include flex-center
                 width: 60px
                 height: 60px
-                background-color: #c4c4c4
+                background-color: #FFF
                 float: left
                 cursor: pointer
                 margin: 0
@@ -1000,8 +1006,10 @@ button.success, a.success
                     text-transform: uppercase
                     font-size: 1.4rem
                     padding: 18px 48px
+                    box-shadow: 5px 5px 4px rgba(0, 0, 0, .4)
                 & span
                     background-color: #c4c4c4
+                    box-shadow: none
                 &:first-child
                     margin-right: 20px
 

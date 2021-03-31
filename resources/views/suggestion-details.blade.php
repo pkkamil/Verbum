@@ -25,7 +25,7 @@
                     <a href="{{ url('/admin/words/'.$duplicate -> id) }}" class="button">Podgląd</a>
                     <button class="success">Zastąp</button>
                 @else
-                    <a href="{{ url()->current().'/accept' }}" class="button success">Zatwierdź</a>
+                    <button class="success">Zatwierdź</button>
                 @endif
                 <a href="{{ url()->current().'/edit' }}" class="button">Edytuj</a>
                 <button class="danger">Usuń</button>
@@ -44,13 +44,22 @@
         </article>
         <article class="dimmer hider dimmer-replace">
             <section class="result-box">
-                    <h2>Czy na pewno chcesz zastąpić słowo <span class="w">{{ $suggestion -> word }}</span>?</h2>
-                    <form method="POST" action="{{ route('replaceWord') }}">
-                        @csrf
-                        <input type="hidden" name="suggestion_id" id="suggestion_id" value="{{ $suggestion -> id }}">
-                        <button type="submit" class="success">Zastąp</button>
-                        <button type="button" class="reverse-color">Anuluj</button>
-                    </form>
+                    <h2>Czy na pewno chcesz @if ($duplicate) zatwierdzić @else zastąpić @endif słowo <span class="w">{{ $suggestion -> word }}</span>?</h2>
+                    @if ($duplicate)
+                        <form method="POST" action="{{ route('replaceWord') }}">
+                            @csrf
+                            <input type="hidden" name="suggestion_id" id="suggestion_id" value="{{ $suggestion -> id }}">
+                            <button type="submit" class="success">Zastąp</button>
+                            <button type="button" class="reverse-color">Anuluj</button>
+                        </form>
+                    @else
+                        <form method="POST" action="{{ route('acceptSuggestion') }}">
+                            @csrf
+                            <input type="hidden" name="suggestion_id" id="suggestion_id" value="{{ $suggestion -> id }}">
+                            <button type="submit" class="success">Zatwierdź</button>
+                            <button type="button" class="reverse-color">Anuluj</button>
+                        </form>
+                    @endif
             </section>
         </article>
     </article>

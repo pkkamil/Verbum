@@ -6,7 +6,7 @@
         <i></i>
     </label>
     <div class="logo">
-        <a href="/#">Verbum</a>
+        <a href="/">Verbum</a>
     </div>
     <div class="nav-wrapper">
         <ul>

@@ -7,11 +7,15 @@
         </form>
     </section>
     <section class="all-words">
-        @foreach ($words as $word)
-            <section class="single-word">
-                <h3>{{ $word -> word}}</h3>
-                <p>{{ $word -> translation }}</p>
-            </section>
-        @endforeach
+        @if (count($words) != 0)
+            @foreach ($words as $word)
+                <section class="single-word">
+                    <h3>{{ $word -> word}}</h3>
+                    <p>{{ $word -> translation }}</p>
+                </section>
+            @endforeach
+        @else
+            <h2 class="null">Nie znaleziono żadnego słowa o&nbsp;podanej frazie!</h2>
+        @endif
     </section>
 </article>

@@ -7,8 +7,8 @@ use App\Word;
 use App\Exercise;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
-use function PHPUnit\Framework\isNan;
+use App\Record;
+use Illuminate\Support\Carbon;
 
 class ExerciseController extends Controller
 {
@@ -27,6 +27,14 @@ class ExerciseController extends Controller
                     array_push($rightWords, $w);
             }
         }
+
+        // Add Record
+        $record = Record::whereDate('date', Carbon::Today())->where('user_id', Auth::id())->first();
+        if (isset($record)) {
+            $record -> repeats = $record -> repeats + 1;
+            $record -> save();
+        }
+
         // randomize word
         $word = $rightWords[array_rand($rightWords)];
         $exercise = Exercise::where('user_id', Auth::id())->first();
@@ -82,6 +90,12 @@ class ExerciseController extends Controller
     }
 
     public function checkAnswer(Request $req) {
+        // Add Record
+        $record = Record::whereDate('date', Carbon::Today())->where('user_id', Auth::id())->first();
+        if (isset($record)) {
+            $record -> exercises = $record -> exercises + 1;
+            $record -> save();
+        }
         if ($req -> A1) {
             $points = 0;
             $results = [];

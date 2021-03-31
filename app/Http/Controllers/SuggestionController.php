@@ -7,6 +7,7 @@ use App\Suggestion;
 use Illuminate\Support\Facades\Auth;
 use App\Word;
 use App\User;
+use App\Record;
 
 class SuggestionController extends Controller
 {
@@ -66,8 +67,8 @@ class SuggestionController extends Controller
         return redirect('/admin/suggestions/'.$req -> suggestion_id);
     }
 
-    public function accept($id_suggestion) {
-        $suggestion = Suggestion::find($id_suggestion);
+    public function accept(Request $req) {
+        $suggestion = Suggestion::find($req -> suggestion_id);
         if (count(Word::where('word', $suggestion -> word)->get()) != 0) {
             return redirect('/admin/suggestions/'.$suggestion -> id);
         }
@@ -76,7 +77,14 @@ class SuggestionController extends Controller
         $user -> words = $user -> words + 1;
         $user -> save();
 
-        Suggestion::destroy($id_suggestion);
+        // Add Record
+        $record = Record::whereDate('date', $suggestion -> added_at)->where('user_id', $suggestion -> user_id)->first();
+        if (isset($record)) {
+            $record -> words = $record -> words + 1;
+            $record -> save();
+        }
+
+        Suggestion::destroy($req -> suggestion_id);
 
         // create Word
         $word = new Word();
@@ -93,6 +101,13 @@ class SuggestionController extends Controller
         $user = User::find($suggestion -> user_id);
         $user -> words = $user -> words + 1;
         $user -> save();
+
+        // Add Record
+        $record = Record::whereDate('date', $suggestion -> added_at)->where('user_id', $suggestion -> user_id)->first();
+        if (isset($record)) {
+            $record -> words = $record -> words + 1;
+            $record -> save();
+        }
 
         Suggestion::destroy($req -> suggestion_id);
 
