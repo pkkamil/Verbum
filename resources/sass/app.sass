@@ -955,7 +955,7 @@ button.success, a.success
     display: flex
     flex-direction: row
     & .left-part
-        padding: 110px 40px 0px 60px
+        padding: 110px 60px 0px 60px
         width: 40%
         display: flex
         flex-direction: column
@@ -987,6 +987,23 @@ button.success, a.success
     &.repeat
         & .right-part
             @include background-cover('./img/bg-ranking_repeat.jpg')
+    & .simple
+        & ul
+            list-style: none
+            @include flex-center
+            margin-top: 25px
+            & li
+                padding: 18px 0
+                & a, span
+                    background-color: $primary
+                    color: #fff
+                    text-transform: uppercase
+                    font-size: 1.4rem
+                    padding: 18px 48px
+                & span
+                    background-color: #c4c4c4
+                &:first-child
+                    margin-right: 20px
 
 .list
     & nav

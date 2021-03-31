@@ -49,8 +49,6 @@
         @if ($navbar ?? true)
             @include('partials.navbar')
         @endif
-        @yield('content')
-        @include('partials.footer')
         @if ($lazy ?? '' == True)
             <div class="loader-wrapper">
                 <span class="loader"><span class="loader-inner"></span></span>
@@ -61,5 +59,7 @@
                 });
             </script>
         @endif
+        @yield('content')
+        @include('partials.footer')
     </body>
 </html>

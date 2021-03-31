@@ -1508,7 +1508,7 @@ a.success:hover {
 }
 
 .ranking .left-part {
-  padding: 110px 40px 0px 60px;
+  padding: 110px 60px 0px 60px;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -1559,6 +1559,35 @@ a.success:hover {
   background-image: url(/images/bg-ranking_repeat.jpg?53395607765eae580b7f7bccf32ce399);
   background-position: center;
   background-size: cover;
+}
+
+.ranking .simple ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.ranking .simple ul li {
+  padding: 18px 0;
+}
+
+.ranking .simple ul li a,
+.ranking .simple ul li span {
+  background-color: #333;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  padding: 18px 48px;
+}
+
+.ranking .simple ul li span {
+  background-color: #c4c4c4;
+}
+
+.ranking .simple ul li:first-child {
+  margin-right: 20px;
 }
 
 .list nav {
@@ -2095,7 +2124,7 @@ a.success:hover {
     font-size: 87.5%;
   }
 
-  nav .logo {
+  nav:not(.pag) .logo {
     padding: 9px 0;
   }
 
@@ -2501,7 +2530,7 @@ a.success:hover {
 }
 
 @media screen and (max-width: 976px) {
-  nav .logo {
+  nav:not(.pag) .logo {
     margin-left: 40px;
   }
 
@@ -2984,6 +3013,16 @@ a.success:hover {
   .auth.remember .right-part .group input {
     width: 340px;
   }
+
+  .ranking .simple ul li {
+    padding: 15px 0;
+  }
+
+  .ranking .simple ul li a,
+  .ranking .simple ul li span {
+    font-size: 1.3rem;
+    padding: 15px 42px;
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -3266,6 +3305,19 @@ a.success:hover {
 
   .suggestion-details .box .duplicate h2 {
     font-size: 1.3rem;
+  }
+
+  .ranking .simple ul {
+    flex-direction: column;
+  }
+
+  .ranking .simple ul li {
+    margin-top: 15px;
+  }
+
+  .ranking .simple ul li:first-child {
+    margin-right: 0;
+    margin-top: 0;
   }
 }
 
@@ -3629,6 +3681,16 @@ a.success:hover {
     font-size: 1.4rem;
   }
 
+  .ranking .simple ul li {
+    padding: 15px 0;
+  }
+
+  .ranking .simple ul li a,
+  .ranking .simple ul li span {
+    font-size: 1.2rem;
+    padding: 15px 42px;
+  }
+
   .dimmer.hider {
     padding: 30px 40px;
   }
@@ -3913,6 +3975,16 @@ a.success:hover {
 
   .ranking .left-part h2 {
     font-size: 1.3rem;
+  }
+
+  .ranking .simple ul li {
+    padding: 13px 0;
+  }
+
+  .ranking .simple ul li a,
+  .ranking .simple ul li span {
+    font-size: 1.1rem;
+    padding: 13px 38px;
   }
 
   .suggestion-details .box .duplicate h2 {

@@ -20,13 +20,14 @@ class UserController extends Controller
 
     public function showRanking($type) {
         if ($type == 'add') {
-            $ranking = User::paginate(15)->sortBy('words')->reverse();
+            $ranking = User::orderBy('words', 'desc')->SimplePaginate(15);
+            // dd($ranking -> links() -> paginator -> perPage());
             return view('ranking-add')->with('ranking', $ranking);
         } else if ($type == 'exercise') {
-            $ranks = Exercise::orderBy(DB::raw("`writing` + `matching`"), 'desc')->paginate(15);
+            $ranks = Exercise::orderBy(DB::raw("`writing` + `matching`"), 'desc')->SimplePaginate(15);
             return view('ranking-exercise')->with('ranking', $ranks);
         } else if ($type == 'repeat') {
-            $ranking = Exercise::orderBy('translation', 'desc')->paginate(15);
+            $ranking = Exercise::orderBy('translation', 'desc')->SimplePaginate(15);
             return view('ranking-repeat')->with('ranking', $ranking);
         } else {
             return view('404');
