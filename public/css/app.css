@@ -3539,6 +3539,13 @@ a.success:hover {
     width: 120px;
   }
 
+  .profile .top-part .single-chart p,
+  .profile .top-part .single-chart:last-child p,
+  .user-details .top-part .single-chart p,
+  .user-details .top-part .single-chart:last-child p {
+    font-size: 0.8rem;
+  }
+
   .profile .bottom-part .single-form,
   .user-details .bottom-part .single-form {
     margin-right: auto;

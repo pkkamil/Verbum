@@ -44,7 +44,7 @@
         </article>
         <article class="dimmer hider dimmer-replace">
             <section class="result-box">
-                    <h2>Czy na pewno chcesz @if ($duplicate) zatwierdzić @else zastąpić @endif słowo <span class="w">{{ $suggestion -> word }}</span>?</h2>
+                    <h2>Czy na pewno chcesz @if ($duplicate) zastąpić @else zatwierdzić @endif słowo <span class="w">{{ $suggestion -> word }}</span>?</h2>
                     @if ($duplicate)
                         <form method="POST" action="{{ route('replaceWord') }}">
                             @csrf

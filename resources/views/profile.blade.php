@@ -11,20 +11,32 @@
     <section class="top-part">
         <div class="single-chart">
             <h4>Dodałeś łącznie: {{ Auth::user() -> words }} słów <span class="gray" style="color: #c4c4c4">({{ floor(Auth::user() -> words / count(\App\Word::all())*100) }}%)</span></h4>
-            <div id="chart1"></div>
-            <p>Ostatnie 3 tygodnie</p>
+            @if ($data)
+                <div id="chart1"></div>
+                <p>Ostatnie 3 tygodnie</p>
+            @else
+                <p>Nie wystarczająca ilość danych do stworzenia diagramu</p>
+            @endif
             <a href="{{ url('/ranking/add') }}" class="button">Ranking</a>
         </div>
         <div class="single-chart">
             <h4>Uzyskałeś łącznie: {{ Auth::user() -> exercises -> matching + Auth::user() -> exercises -> writing }} punktów z ćwiczeń</h4>
-            <div id="chart2"></div>
-            <p>Ostatnie 3 tygodnie</p>
+            @if ($data)
+                <div id="chart2"></div>
+                <p>Ostatnie 3 tygodnie</p>
+            @else
+                <p>Nie wystarczająca ilość danych do stworzenia diagramu</p>
+            @endif
             <a href="{{ url('/ranking/exercise') }}" class="button">Ranking</a>
         </div>
         <div class="single-chart">
             <h4>Powtórzyłeś łącznie: {{ Auth::user() -> exercises -> translation }} słów <span class="gray" style="color: #c4c4c4">({{ floor(Auth::user() -> exercises -> translation / count(\App\Word::all())*100) }}%)</span></h4>
-            <div id="chart3"></div>
-            <p>Ostatnie 3 tygodnie</p>
+            @if ($data)
+                <div id="chart3"></div>
+                <p>Ostatnie 3 tygodnie</p>
+            @else
+                <p>Nie wystarczająca ilość danych do stworzenia diagramu</p>
+            @endif
             <a href="{{ url('/ranking/repeat') }}" class="button">Ranking</a>
         </div>
     </section>
@@ -36,7 +48,7 @@
                     @csrf
                     <div class="name-group group">
                         <label for="name"><i class="fas fa-user"></i></label>
-                        <input type="text" id="name" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Imie i nazwisko">
+                        <input type="text" id="name" name="name" value="{{ Auth::user() -> name }}" required autocomplete="name" placeholder="Imie i nazwisko">
                     </div>
                     <button type="submit">Zmień</button>
                 </form>
@@ -62,7 +74,7 @@
             </div>
         {{-- </div> --}}
         <div class="single-form">
-            @if (Auth::user() -> role == 'user')
+            @if (Auth::user() -> role == 'User')
                 <h4>Zgłoś błąd</h4>
                 <form method="POST" action="{{ route('reportAnError') }}">
                     @csrf
@@ -97,38 +109,40 @@
         </div>
     </section>
 </article>
-<!-- Charting library -->
-<script src="https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js"></script>
-<!-- Chartisan -->
-<script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
-<!-- Charts -->
-<script>
-    const chart1 = new Chartisan({
-      el: '#chart1',
-      url: "http://localhost:8000/charts/profile/1",
-      hooks: new ChartisanHooks()
-        .legend(false)
-        .beginAtZero()
-        .minimalist()
-        .colors(['#c4c4c4'])
-    });
-    const chart2 = new Chartisan({
-      el: '#chart2',
-      url: "http://localhost:8000/charts/profile/2",
-      hooks: new ChartisanHooks()
-        .legend(false)
-        .beginAtZero()
-        .minimalist()
-        .colors(['#c4c4c4'])
-    });
-    const chart3 = new Chartisan({
-      el: '#chart3',
-      url: "http://localhost:8000/charts/profile/3",
-      hooks: new ChartisanHooks()
-        .legend(false)
-        .beginAtZero()
-        .minimalist()
-        .colors(['#c4c4c4'])
-    });
-  </script>
+@if ($data)
+    <!-- Charting library -->
+    <script src="https://unpkg.com/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <!-- Chartisan -->
+    <script src="https://unpkg.com/@chartisan/chartjs@^2.1.0/dist/chartisan_chartjs.umd.js"></script>
+    <!-- Charts -->
+    <script>
+        const chart1 = new Chartisan({
+        el: '#chart1',
+        url: "http://localhost:8000/charts/profile/1",
+        hooks: new ChartisanHooks()
+            .legend(false)
+            .beginAtZero()
+            .minimalist()
+            .colors(['#c4c4c4'])
+        });
+        const chart2 = new Chartisan({
+        el: '#chart2',
+        url: "http://localhost:8000/charts/profile/2",
+        hooks: new ChartisanHooks()
+            .legend(false)
+            .beginAtZero()
+            .minimalist()
+            .colors(['#c4c4c4'])
+        });
+        const chart3 = new Chartisan({
+        el: '#chart3',
+        url: "http://localhost:8000/charts/profile/3",
+        hooks: new ChartisanHooks()
+            .legend(false)
+            .beginAtZero()
+            .minimalist()
+            .colors(['#c4c4c4'])
+        });
+    </script>
+@endif
 @endsection

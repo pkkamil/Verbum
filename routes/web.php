@@ -70,3 +70,4 @@ Route::middleware(['auth'])->group(function () {
 Route::view('/charts', 'charts');
 
 Route::get('/charts/profile/{id}', 'ChartController@profiles');
+Route::get('/charts/user/{id}/{user_id}', 'ChartController@user');

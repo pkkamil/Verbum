@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function index() {
-        return view('profile');
+        $data = True;
+        if (count(Auth::user() -> records) < 21)
+            $data = False;
+        return view('profile')->with('data', $data);
     }
 
     public function showRanking($type) {
@@ -82,7 +85,10 @@ class UserController extends Controller
         if (!$user) {
             return redirect()->back();
         }
-        return view('user-details')->with('user', $user);
+        $data = True;
+        if (count($user -> records) < 21)
+            $data = False;
+        return view('user-details', compact('user', 'data'));
     }
 
     public function editUserName(Request $req) {
