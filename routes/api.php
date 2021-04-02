@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::get('words/paginate/{items?}', 'api\WordsApiController@paginate');
+Route::get('words/search/{q}', 'api\WordsApiController@search');

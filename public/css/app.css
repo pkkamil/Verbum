@@ -664,6 +664,11 @@ a.success:hover {
   padding: 0 40px;
 }
 
+.words .button-section {
+  margin-top: 30px;
+  width: 100%;
+}
+
 .auth {
   width: 100%;
   height: 100%;

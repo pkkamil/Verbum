@@ -1,4 +1,4 @@
-<article class="words">
+{{-- <article class="words">
     <section class="search">
         <form action="{{route('searchWords')}}" method="POST">
             @csrf
@@ -18,4 +18,7 @@
             <h2 class="null">Nie znaleziono żadnego słowa o&nbsp;podanej frazie!</h2>
         @endif
     </section>
-</article>
+</article> --}}
+<div id="app">
+    <Words></Words>
+</div>

@@ -44,7 +44,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    </head>
+</head>
     <body>
         @if ($navbar ?? true)
             @include('partials.navbar')
