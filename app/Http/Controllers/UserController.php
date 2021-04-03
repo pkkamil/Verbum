@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use stdClass;
 use Illuminate\Support\Facades\DB;
+use Browser;
 
 class UserController extends Controller
 {
@@ -38,7 +39,10 @@ class UserController extends Controller
     }
 
     public function list() {
-        $users = User::paginate(10);
+        if (Browser::isTablet())
+            $users = User::paginate(20);
+        else
+            $users = User::paginate(10);
         return view('users-list')->with('users', $users);
     }
 

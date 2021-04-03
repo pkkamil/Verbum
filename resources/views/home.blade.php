@@ -5,6 +5,8 @@
 
 @extends('layouts.app')
 @section('content')
-@include('home-parts.welcome')
-@include('home-parts.words')
+@include('welcome')
+<div id="app">
+    <Words></Words>
+</div>
 @endsection

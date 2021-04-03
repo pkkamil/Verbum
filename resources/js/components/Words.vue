@@ -70,7 +70,6 @@
                 .then(res => res.json())
                 .then(res => {
                     this.words = res.data;
-                    console.log(this.q.search)
                 })
                 this.search = true;
             },

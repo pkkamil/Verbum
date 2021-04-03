@@ -30,7 +30,7 @@
                                 @if (\App\Word::where('word', $suggestion -> word)->first())
                                     <p><i class="far fa-check-circle"></i></p>
                                 @else
-                                    <a href="{{ url('/admin/suggestions/'.$suggestion -> id.'/accept') }}"><i class="far fa-check-circle success-small"></i></a>
+                                    <i class="far fa-check-circle success-small"></i>
                                 @endif
                                 <i class="fas fa-trash danger-small"></i>
                             </td>
@@ -46,9 +46,9 @@
                 <a href="{{ url('/profile') }}" class="button">Wróć</a>
             </section>
         @endif
-        <article class="dimmer hider">
+        <article class="dimmer hider dimmer-danger">
             <section class="result-box">
-                    <h2>Czy na pewno chcesz usunąć słowo <span class="w"></span>?</h2>
+                    <h2>Czy na pewno chcesz usunąć słowo <span class="wd"></span>?</h2>
                     <form method="POST" action="{{ route('deleteSuggestion') }}" autocomplete="OFF">
                         @csrf
                         <input type="hidden" name="suggestion_id" id="suggestion_id" value="">
@@ -57,23 +57,52 @@
                     </form>
             </section>
         </article>
+        <article class="dimmer hider dimmer-success">
+            <section class="result-box">
+                    <h2>Czy na pewno chcesz zatwierdzić słowo <span class="wa"></span>?</h2>
+                    <form method="POST" action="{{ route('acceptSuggestion') }}">
+                        @csrf
+                        <input type="hidden" name="suggestion_id" id="suggestion_id" value="{{ $suggestion -> id }}">
+                        <button type="submit" class="success">Zatwierdź</button>
+                        <button type="button" class="reverse-color">Anuluj</button>
+                    </form>
+            </section>
+        </article>
     </article>
     <script>
-        let clicks = document.querySelectorAll('.danger-small');
-        let dimmer = document.querySelector('.dimmer');
-        let dimmer_word = dimmer.querySelector('.w');
+        let dangers = document.querySelectorAll('.danger-small');
+        let accepts = document.querySelectorAll('.success-small');
+        let dimmer_delete = document.querySelector('.dimmer-danger');
+        let dimmer_accept = document.querySelector('.dimmer-success');
+        let dimmer_wordD = dimmer_delete.querySelector('.wd');
+        let dimmer_wordA = dimmer_accept.querySelector('.wa');
 
-        clicks.forEach(click => {
+        dangers.forEach(click => {
             click.addEventListener('click', (e) => {
                 let w = e.path[2].querySelector('td:nth-child(2)').textContent;
                 document.querySelector('#suggestion_id').value = e.path[2].querySelector('td:nth-child(1)').textContent;
-                dimmer_word.textContent = w;
-                dimmer.style.display = 'flex';
+                dimmer_wordD.textContent = w;
+                dimmer_delete.style.display = 'flex';
             });
         });
 
-        document.querySelector('.reverse-color').addEventListener('click', () => {
-            dimmer.style.display = 'none';
+        accepts.forEach(click => {
+            click.addEventListener('click', (e) => {
+                let w = e.path[2].querySelector('td:nth-child(2)').textContent;
+                document.querySelector('#suggestion_id').value = e.path[2].querySelector('td:nth-child(1)').textContent;
+                dimmer_wordA.textContent = w;
+                dimmer_accept.style.display = 'flex';
+            });
+        });
+
+        document.querySelectorAll('.reverse-color').forEach(e => {
+            e.addEventListener('click', () => {
+                if (dimmer_delete.style.display == 'flex')
+                    dimmer_delete.style.display = 'none';
+                else
+                    dimmer_accept.style.display = 'none';
+            })
         })
+
     </script>
 @endsection

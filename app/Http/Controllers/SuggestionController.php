@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Word;
 use App\User;
 use App\Record;
+use Browser;
 
 class SuggestionController extends Controller
 {
     public function add(Request $req) {
         $req->validate([
-            // 'word' => 'required|string|unique:word',
             'word' => 'required|string',
             'translation' => 'required|string',
         ]);
@@ -27,11 +27,14 @@ class SuggestionController extends Controller
         if ($req -> action == 'exit')
             return redirect('/');
         else
-            return view('addWord');
+            return view('add-word');
     }
 
     public function list() {
-        $suggestions = Suggestion::paginate(10);
+        if (Browser::isTablet())
+            $suggestions = Suggestion::paginate(20);
+        else
+            $suggestions = Suggestion::paginate(10);
         return view('suggestions-list')->with('suggestions', $suggestions);
     }
 
@@ -90,6 +93,7 @@ class SuggestionController extends Controller
         $word = new Word();
         $word -> word = $suggestion -> word;
         $word -> translation = $suggestion -> translation;
+        $word -> user_id = $suggestion -> user_id;
         $word -> save();
         return redirect('/admin/suggestions/');
     }
@@ -115,6 +119,22 @@ class SuggestionController extends Controller
         $word = Word::find($word -> id);
         $word -> word = $suggestion -> word;
         $word -> translation = $suggestion -> translation;
+
+        // Decrease words
+        $user = User::find($word -> user_id);
+        if ($user -> user_id != $suggestion -> user_id) {
+            $user -> words = $user -> words - 1;
+            $user -> save();
+
+            $record = Record::whereDate('date', $word -> updated_at)->where('user_id', $user -> user_id)->first();
+
+            if (isset($record)) {
+                $record -> words = $record -> words - 1;
+                $record -> save();
+            }
+        }
+
+        $word -> user_id = $suggestion -> user_id;
         $word -> save();
         return redirect('/admin/words/'.$word -> id);
     }

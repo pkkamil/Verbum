@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Record;
 use Carbon\Carbon;
 use App\User;
+use Browser;
 
 class WordController extends Controller
 {
@@ -23,11 +24,14 @@ class WordController extends Controller
     }
 
     public function addPage() {
-        return view('addWord');
+        return view('add-word');
     }
 
     public function list() {
-        $words = Word::paginate(10);
+        if (Browser::isTablet())
+            $words = Word::paginate(20);
+        else
+            $words = Word::paginate(10);
         return view('words-list')->with('words', $words);
     }
 
@@ -64,13 +68,16 @@ class WordController extends Controller
     public function delete(Request $req) {
         // Remove Record
         $user = User::find(Word::find($req -> word_id) -> user_id);
-        $record = Record::whereDate('date', Carbon::Today())->where('user_id', $user -> user_id)->first();
+        $record = Record::whereDate('date', Word::find($req -> word_id) -> updated_at)->where('user_id', $user -> id)->first();
+
         $user -> words = $user -> words - 1;
         $user -> save();
+
         if (isset($record)) {
             $record -> words = $record -> words - 1;
             $record -> save();
         }
+
         Word::destroy($req -> word_id);
         if (str_contains(url()->previous(), '/words?page'))
             return redirect()->back();
