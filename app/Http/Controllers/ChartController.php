@@ -74,7 +74,7 @@ class ChartController extends Controller
         } else if ($id == 2) {
             $chart = Chartisan::build()
             ->labels($dates)
-            ->dataset('Przeprowadzonych ćwiczeń', $exercises)
+            ->dataset('Uzyskanych punktów', $exercises)
             ->toJSON();
         } else {
             $chart = Chartisan::build()

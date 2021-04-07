@@ -28,8 +28,8 @@ class UserController extends Controller
             // dd($ranking -> links() -> paginator -> perPage());
             return view('ranking-add')->with('ranking', $ranking);
         } else if ($type == 'exercise') {
-            $ranks = Exercise::orderBy(DB::raw("`writing` + `matching`"), 'desc')->SimplePaginate(15);
-            return view('ranking-exercise')->with('ranking', $ranks);
+            $ranking = Exercise::orderBy(DB::raw("`writing` + `matching`"), 'desc')->SimplePaginate(15);
+            return view('ranking-exercise')->with('ranking', $ranking);
         } else if ($type == 'repeat') {
             $ranking = Exercise::orderBy('translation', 'desc')->SimplePaginate(15);
             return view('ranking-repeat')->with('ranking', $ranking);

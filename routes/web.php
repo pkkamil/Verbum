@@ -40,6 +40,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/password', 'UserController@changePassword')->name('changePassword');
     Route::post('/profile/report', 'UserController@reportAnError')->name('reportAnError');
     Route::post('/profile/delete', 'UserController@destroy')->name('deleteAccount');
+
+    Route::get('/profile/remembered', 'WordController@remembered')->name('rememberedList');
+    Route::post('/profile/remembered/delete', 'WordController@deleteRemembered')->name('deleteRemembered');
+
     Route::middleware(['admin'])->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/users', 'UserController@list');
@@ -62,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/suggestions/accept', 'SuggestionController@accept')->name('acceptSuggestion');
             Route::post('/suggestion/replace', 'SuggestionController@replace')->name('replaceWord');
             Route::post('/suggestion/delete', 'SuggestionController@delete')->name('deleteSuggestion');
+
+            Route::get('/reports', 'ReportController@list')->name('listReports');
+            Route::get('/reports/{id}', 'ReportController@index');
+            Route::post('/report/delete', 'ReportController@destroy')->name('deleteReport');
         });
     });
     Route::get('/ranking/{type}', 'UserController@showRanking');

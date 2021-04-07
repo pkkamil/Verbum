@@ -90,23 +90,15 @@ class ExerciseController extends Controller
     }
 
     public function checkAnswer(Request $req) {
-        // Add Record
-        $record = Record::whereDate('date', Carbon::Today())->where('user_id', Auth::id())->first();
-        if (isset($record)) {
-            $record -> exercises = $record -> exercises + 1;
-            $record -> save();
-        }
         if ($req -> A1) {
             $points = 0;
             $results = [];
             $keys = [];
             $values = [];
-            // dd($req -> _token);
             foreach($req -> request as $i) {
                 if ($i != $req -> _token) {
                     $word = explode(' | ', $i)[0];
                     $translation = explode(' | ', $i)[1];
-                    // print($word.' - '.$translation.' [] ');
                     $correct = Word::where('word', $word) -> first();
                     if ($correct -> translation == $translation) {
                         $points++;
@@ -133,7 +125,12 @@ class ExerciseController extends Controller
             }
             $exercise -> matching = $exercise -> matching + $points;
             $exercise -> save();
-            // dd('Uzyskano '.$points.' punktów');
+            // Add Record
+            $record = Record::whereDate('date', Carbon::Today())->where('user_id', Auth::id())->first();
+            if (isset($record)) {
+                $record -> exercises = $record -> exercises + $points;
+                $record -> save();
+            }
             return view('exercise-matching', compact('results', 'words'));
         } else {
             $word = $req -> word;
@@ -148,6 +145,12 @@ class ExerciseController extends Controller
                 }
                 $exercise -> writing = $exercise -> writing + 1;
                 $exercise -> save();
+                // Add Record
+                $record = Record::whereDate('date', Carbon::Today())->where('user_id', Auth::id())->first();
+                if (isset($record)) {
+                    $record -> exercises = $record -> exercises + 1;
+                    $record -> save();
+                }
                 $result = 'correct';
                 return view('exercise-writing', compact('word', 'translation', 'result'));
             }

@@ -170,7 +170,7 @@
             & .left-part
                 width: 50%
 
-    .users-list, .words-list, .suggestions-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
         padding: 80px 60px 20px 60px
         & table
             font-size: 1.2rem
@@ -434,7 +434,7 @@
             & .left-part
                 display: none
 
-    .users-list, .words-list, .suggestions-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
         padding: 80px 40px 20px 40px
         & table
             font-size: 1.1rem
@@ -738,7 +738,7 @@
         & h3
             font-size: 1.3rem
 
-    .users-list, .words-list, .suggestions-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
         padding: 70px 40px 20px 40px
         & table
             & thead
@@ -751,6 +751,20 @@
 
     .suggestions-list
         & .no-suggestions
+            & h2
+                font-size: 1.3rem
+            & p
+                font-size: 1rem
+
+    .remembered-list
+        & .no-remembered
+            & h2
+                font-size: 1.3rem
+            & p
+                font-size: 1rem
+
+    .reports-list
+        & .no-reports
             & h2
                 font-size: 1.3rem
             & p
@@ -989,7 +1003,7 @@
                         width: calc(100% - 50px)
                         height: 50px
 
-    .users-list, .words-list, .suggestions-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
         & table
             & thead
                 & th

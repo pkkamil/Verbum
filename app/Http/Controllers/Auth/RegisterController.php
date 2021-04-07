@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Exercise;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
@@ -64,10 +65,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => mb_strtolower($data['name']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        Exercise::create([
+            'user_id' => $user -> id,
+        ]);
+        return $user;
     }
 }

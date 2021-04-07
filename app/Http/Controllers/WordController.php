@@ -6,6 +6,7 @@ use App\Word;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Record;
+use App\Remembered;
 use Carbon\Carbon;
 use App\User;
 use Browser;
@@ -25,6 +26,19 @@ class WordController extends Controller
 
     public function addPage() {
         return view('add-word');
+    }
+
+    public function remembered() {
+        if (Browser::isTablet())
+            $remembered = Remembered::where('user_id', Auth::id()) -> paginate(20);
+        else
+            $remembered = Remembered::where('user_id', Auth::id()) -> paginate(10);
+        return view('remembered-list')->with('remembered', $remembered);
+    }
+
+    public function deleteRemembered(Request $req) {
+        Remembered::where('user_id', Auth::id())->where('word_id', $req -> word_id)->delete();
+        return redirect()->back();
     }
 
     public function list() {

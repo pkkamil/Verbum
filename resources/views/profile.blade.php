@@ -41,8 +41,8 @@
         </div>
     </section>
     <section class="bottom-part">
-        {{-- <div class="divider"> --}}
-            <div class="single-form">
+        <div class="single-form">
+            @if (Auth::user() -> role == 'User')
                 <h4>Zmień swoje imie i nazwisko</h4>
                 <form method="POST" action="{{ route('changeName') }}">
                     @csrf
@@ -52,60 +52,65 @@
                     </div>
                     <button type="submit">Zmień</button>
                 </form>
-            </div>
-            <div class="single-form">
-                <h4>Zmień swoje hasło</h4>
-                <form method="POST" action="{{ route('changePassword') }}">
-                    @csrf
-                    <div class="current-password-group group">
-                        <label for="current_password"><i class="fas fa-lock"></i></label>
-                        <input type="password" id="current_password" name="current_password" required autocomplete="current_password" placeholder="Obecne hasło">
-                    </div>
-                    <div class="new_password-group group">
-                        <label for="new_password"><i class="fas fa-lock"></i></label>
-                        <input type="password" id="new_password"  name="new_password" required autocomplete="new_password" placeholder="Nowe hasło">
-                    </div>
-                    <div class="confirm_password-group group">
-                        <label for="confirm_password"><i class="fas fa-lock"></i></label>
-                        <input type="password" id="confirm_password"  name="confirm_password" required autocomplete="confirm_password" placeholder="Potwierdzenie hasła">
-                    </div>
-                    <button type="submit">Zmień</button>
-                </form>
-            </div>
-        {{-- </div> --}}
-        <div class="single-form">
-            @if (Auth::user() -> role == 'User')
-                <h4>Zgłoś błąd</h4>
-                <form method="POST" action="{{ route('reportAnError') }}">
-                    @csrf
-                    <div class="type-group group">
-                        <label for="type"><i class="fas fa-exclamation-triangle"></i></label>
-                        <input type="text" id="type" name="type" placeholder="Rodzaj błędu">
-                    </div>
-                    <div class="description-group group">
-                        <label for="description"><i class="fas fa-scroll"></i></label>
-                        <input type="text" id="description" name="description" placeholder="Opis błędu" maxlength="200">
-                    </div>
-                    <button type="submit">Zgłoś</button>
-                </form>
+                <h4>Przeglądaj</h4>
+                <a href="{{ url('/profile/remembered') }}" class="button">Zapamiętane słowa</a>
             @else
                 <h4>Zarządzaj stroną</h4>
                 <a href="{{ url('/admin/users') }}" class="button">Lista użytkowników</a>
                 <a href="{{ url('/admin/words') }}" class="button">Lista słów</a>
                 <a href="{{ url('/admin/suggestions') }}" class="button"><span class="toHide">Słowa </span>do zatwierdzenia</a>
-                {{-- <a href="{{ url('/admin/reports') }}" class="button">Lista zgłoszeń</a> --}}
             @endif
         </div>
         <div class="single-form">
-            <h4>Usuń konto</h4>
-            <form action="{{ route('deleteAccount') }}" method="POST" autocomplete="off">
+            <h4>Zmień swoje hasło</h4>
+            <form method="POST" action="{{ route('changePassword') }}">
                 @csrf
-                <div class="delete-group group danger">
-                    <label for="delete"><i class="fas fa-trash"></i></label>
-                    <input type="text" id="delete" name="delete" placeholder="Usuwam konto">
+                <div class="current-password-group group">
+                    <label for="current_password"><i class="fas fa-lock"></i></label>
+                    <input type="password" id="current_password" name="current_password" required autocomplete="current_password" placeholder="Obecne hasło">
                 </div>
-                <button class="danger" type="submit">Zatwierdź</button>
+                <div class="new_password-group group">
+                    <label for="new_password"><i class="fas fa-lock"></i></label>
+                    <input type="password" id="new_password"  name="new_password" required autocomplete="new_password" placeholder="Nowe hasło">
+                </div>
+                <div class="confirm_password-group group">
+                    <label for="confirm_password"><i class="fas fa-lock"></i></label>
+                    <input type="password" id="confirm_password"  name="confirm_password" required autocomplete="confirm_password" placeholder="Potwierdzenie hasła">
+                </div>
+                <button type="submit">Zmień</button>
             </form>
+        </div>
+        <div class="single-form">
+            <h4>Zgłoś błąd</h4>
+            <form method="POST" action="{{ route('reportAnError') }}">
+                @csrf
+                <div class="type-group group">
+                    <label for="type"><i class="fas fa-exclamation-triangle"></i></label>
+                    <input type="text" id="type" name="type" placeholder="Rodzaj błędu">
+                </div>
+                <div class="description-group group">
+                    <label for="description"><i class="fas fa-scroll"></i></label>
+                    <input type="text" id="description" name="description" placeholder="Opis błędu" maxlength="200">
+                </div>
+                <button type="submit">Zgłoś</button>
+            </form>
+        </div>
+        <div class="single-form">
+            @if (Auth::user() -> role == 'User')
+                <h4>Usuń konto</h4>
+                <form action="{{ route('deleteAccount') }}" method="POST" autocomplete="off">
+                    @csrf
+                    <div class="delete-group group danger">
+                        <label for="delete"><i class="fas fa-trash"></i></label>
+                        <input type="text" id="delete" name="delete" placeholder="Usuwam konto">
+                    </div>
+                    <button class="danger" type="submit">Zatwierdź</button>
+                </form>
+            @else
+                <h4>Korzystaj z innych operacji</h4>
+                <a href="{{ url('/admin/reports') }}" class="button">Lista zgłoszeń</a>
+                <a href="{{ url('/profile/remembered') }}" class="button">Zapamiętane słowa</a>
+            @endif
         </div>
     </section>
 </article>

@@ -921,6 +921,8 @@ button.success, a.success
                 text-transform: uppercase
                 font-size: 1.3rem
                 font-weight: 400
+                &:nth-of-type(2)
+                    margin-top: 25px
             & .group
                 display: block
                 margin-top: 20px
@@ -1325,6 +1327,122 @@ button.success, a.success
             font-weight: 400
             text-transform: uppercase
 
+.remembered-list
+    width: 100%
+    height: 100%
+    padding: 80px 60px 20px 60px
+    & table
+        width: 100%
+        font-size: 1.3rem
+        border-spacing: 0 14px
+        & thead
+            width: 100%
+            height: 60px
+            background-color: $primary
+            color: #fff
+            & th
+                padding: 16px 60px
+                text-transform: uppercase
+                font-weight: 400
+                text-align: left
+        & tbody
+            & tr
+                background-color: #c4c4c4
+                & td
+                    padding: 16px 60px
+                    text-transform: uppercase
+                    font-weight: 400
+                    & i
+                        font-weight: 600
+                        cursor: pointer
+                        &.success-small
+                            margin-right: 10px
+                    & a
+                        color: #333
+                        transition: .6s color
+                        margin-right: 10px
+                        &:hover
+                            color: #555
+                    & p
+                        display: inline-block
+                        color: #777
+                        margin-right: 10px
+                        cursor: default
+    & .no-remembered
+        margin-top: 100px
+        @include flex-center
+        flex-direction: column
+        text-align: center
+        & h2
+            font-size: 1.5rem
+            font-weight: 600
+            text-transform: uppercase
+            margin-bottom: 5px
+        & p
+            text-transform: uppercase
+            font-size: 1.1rem
+            margin-bottom: 20px
+
+.reports-list
+    width: 100%
+    height: 100%
+    padding: 80px 60px 20px 60px
+    & table
+        width: 100%
+        font-size: 1.3rem
+        border-spacing: 0 14px
+        & thead
+            width: 100%
+            height: 60px
+            background-color: $primary
+            color: #fff
+            & th
+                padding: 16px 60px
+                text-transform: uppercase
+                font-weight: 400
+                text-align: left
+        & tbody
+            & tr
+                background-color: #c4c4c4
+                & td
+                    padding: 16px 60px
+                    text-transform: uppercase
+                    font-weight: 400
+                    & p.desc
+                        max-width: 100%
+                        text-overflow: ellipsis
+                        white-space: nowrap
+                        overflow: hidden
+                    & i
+                        font-weight: 600
+                        cursor: pointer
+                        margin-right: 10px
+                        color: #333
+                        transition: .6s color
+                        &:not(.danger-small):hover
+                            color: #555
+                        &:last-child
+                            margin-right: 0
+                    & p:not(.desc)
+                        display: inline-block
+                        color: #777
+                        margin-right: 10px
+                        cursor: default
+    & .no-reports
+        margin-top: 100px
+        @include flex-center
+        flex-direction: column
+        text-align: center
+        & h2
+            font-size: 1.5rem
+            font-weight: 600
+            text-transform: uppercase
+            margin-bottom: 5px
+        & p
+            text-transform: uppercase
+            font-size: 1.1rem
+            margin-bottom: 20px
+
 .dimmer
     &.hider
         display: none
@@ -1337,6 +1455,10 @@ button.success, a.success
             font-weight: 400
             & span.w
                 font-weight: 600
+        & p
+            font-weight: 400
+            color: #FFF
+            margin-bottom: 30px
         & form
             display: flex
             flex-direction: row
