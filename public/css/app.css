@@ -694,6 +694,10 @@ a.success:hover {
   flex-direction: column;
 }
 
+.auth.login .left-part form {
+  text-align: center;
+}
+
 .auth.login .left-part h1 {
   font-size: 2rem;
   font-weight: 400;
@@ -738,6 +742,11 @@ a.success:hover {
 
 .auth.login .left-part button {
   margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.auth.login .left-part a.button {
+  display: inline-block;
   margin-bottom: 20px;
 }
 
@@ -777,6 +786,10 @@ a.success:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.auth.register .right-part form {
+  text-align: center;
 }
 
 .auth.register .right-part h1 {
@@ -823,6 +836,11 @@ a.success:hover {
 
 .auth.register .right-part button {
   margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.auth.register .right-part a.button {
+  display: inline-block;
   margin-bottom: 20px;
 }
 
@@ -4182,6 +4200,10 @@ a.success:hover {
     padding: 17px 21px;
   }
 
+  .auth.register .right-part a.button span {
+    display: none;
+  }
+
   .auth.remember .right-part h1 {
     font-size: 1.6rem;
   }
@@ -4383,6 +4405,10 @@ a.success:hover {
 
   .auth.login .left-part .group input {
     font-size: 0.8rem;
+  }
+
+  .auth.login .left-part a.button span {
+    display: none;
   }
 
   .auth.register .right-part h1 {

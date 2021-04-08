@@ -27,6 +27,7 @@
                     <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Hasło">
                 </div>
                 <button type="submit">Zaloguj</button>
+                <a href="{{ url('auth/google') }}" class="button"><span>Zaloguj się z </span>Google</a>
                 <div class="flex">
                     <a href="{{ route('register') }}">Nie masz jeszcze konta?</a>
                     <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>

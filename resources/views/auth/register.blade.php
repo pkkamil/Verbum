@@ -37,6 +37,7 @@
                     <input type="password" id="confirm-password"  name="password_confirmation" required autocomplete="new-password" placeholder="Potwierdzenie hasła">
                 </div>
                 <button type="submit">Zarejestruj</button>
+                <a href="{{ url('auth/google') }}" class="button"><span>Zarejestruj się z </span>Google</a>
                 <div class="flex">
                     <a href="{{ route('login') }}">Masz już konto?</a>
                     <a href="{{ route('password.request') }}">Nie pamiętasz hasła?</a>

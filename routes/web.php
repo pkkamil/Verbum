@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'WordController@index')->name('home');
 Route::post('/', 'WordController@search')->name('searchWords');
 
+Route::get('auth/google', 'Auth\LoginController@google');
+Route::get('auth/google/callback', 'Auth\LoginController@googleRedirect');
 
 // Auth
 

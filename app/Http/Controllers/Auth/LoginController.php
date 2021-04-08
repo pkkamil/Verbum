@@ -6,6 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\User;
+use App\Exercise;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -36,5 +43,26 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function google() {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function googleRedirect() {
+        $user = Socialite::driver('google')->user();
+
+        $user = User::firstOrCreate([
+            'email' => $user -> email
+        ], [
+            'name' => $user -> name,
+            'password' => Hash::make(Str::random(16))
+        ]);
+        Exercise::create([
+            'user_id' => $user -> id,
+        ]);
+        Auth::login($user, true);
+
+        return redirect('/');
     }
 }
