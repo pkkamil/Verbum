@@ -1,21 +1,23 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:verbum/components/DedicatedInput.dart';
 import 'package:verbum/components/DedicatedButton.dart';
-import 'package:verbum/components/DedicatedButton.dart';
 import 'package:flutter/services.dart';
+import 'package:verbum/components/Words.dart';
 import 'package:verbum/components/ReturnButton.dart';
-// import 'package:verbum/services/api.dart';
+import 'package:verbum/services/Api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatelessWidget {
 
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final emailController = new TextEditingController();
+  final passwordController = new TextEditingController();
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void dispose(){
+  void dispose() {
     emailController.dispose();
     passwordController.dispose();
   }
@@ -24,52 +26,50 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     sendData(data) async{
 
-      // var api = new Api();
-      // var response = await api.login(data);
-      //
-      // if(response['email']==null){
-      //   _scaffoldKey.currentState.showSnackBar(
-      //       SnackBar(
-      //           backgroundColor: Colors.orange,
-      //           content: Text(
-      //             'Podano błędne dane logowania',
-      //             textAlign: TextAlign.center,
-      //             style: TextStyle(
-      //                 fontSize: 18
-      //             ),
-      //           )
-      //       )
-      //   );
-      // }
+      var api = new Api();
+      var response = await api.login(data);
 
-    //   try{
-    //     if(response['email'].toLowerCase()==data['email'].toLowerCase()){
-    //
-    //       //Jezeli nie ma zweryfikowanego maila popandpushnamed do verificate
-    //       SharedPreferences localStorage = await SharedPreferences.getInstance();
-    //       localStorage.setString('userData', jsonEncode(response));
-    //
-    //       Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
-    //       Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => Flats(response)));
-    //
-    //
-    //     }else{
-    //       Scaffold.of(context).showSnackBar(
-    //           SnackBar(
-    //               backgroundColor: Colors.orange,
-    //               content: Text(
-    //                 "Musisz wypełnić wszystkie pola",
-    //                 textAlign: TextAlign.center,
-    //                 style: TextStyle(
-    //                     fontSize: 18
-    //                 ),
-    //               )
-    //           )
-    //       );
-    //     }
-    //   }catch(e){
-    //     print(e);
-    //   }
+      if (response['email'] == null){
+        _scaffoldKey.currentState.showSnackBar(
+            SnackBar(
+                backgroundColor: Colors.grey[850],
+                content: Text(
+                  'Podano błędne dane logowania',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 18
+                  ),
+                )
+            )
+        );
+      }
+
+      try {
+        if (response['email'].toLowerCase() == data['email'].toLowerCase()) {
+
+          //Jezeli nie ma zweryfikowanego maila popandpushnamed do verificate
+          SharedPreferences localStorage = await SharedPreferences.getInstance();
+          localStorage.setString('userData', jsonEncode(response));
+
+          Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
+          Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => Words(response)));
+        } else {
+          Scaffold.of(context).showSnackBar(
+              SnackBar(
+                  backgroundColor: Colors.grey[850],
+                  content: Text(
+                    "Musisz wypełnić wszystkie pola",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 18
+                    ),
+                  )
+              )
+          );
+        }
+      }catch(e){
+        print(e);
+      }
     }
 
     SystemChrome.setPreferredOrientations([
@@ -125,8 +125,8 @@ class Login extends StatelessWidget {
                                 text: "Zaloguj się",
                                 color: Colors.grey[850].withOpacity(0.95),
                                 textColor: Colors.white,
-                                onPress: (){
-                                  if (emailController.text == '' || passwordController.text ==''){
+                                onPress: () {
+                                  if (emailController.text == '' || passwordController.text =='') {
                                     Scaffold.of(context).showSnackBar(
                                         SnackBar(
                                             backgroundColor: Colors.grey[850],

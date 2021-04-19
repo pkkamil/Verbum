@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:verbum/pages/home.dart';
-import 'package:verbum/pages/loading.dart';
-import 'package:verbum/pages/auth/login.dart';
-import 'package:verbum/pages/auth/register.dart';
+import 'package:verbum/pages/Home.dart';
+import 'package:verbum/pages/Loading.dart';
+import 'package:verbum/pages/auth/Login.dart';
+import 'package:verbum/pages/auth/Register.dart';
+import 'package:verbum/components/Words.dart';
+
+Map data = {
+  'id':0,
+  'name':'Disconnected'
+};
+List example;
+WordInfo wordInfo;
 
 void main() => runApp(MaterialApp(
   initialRoute: '/home',
@@ -11,6 +19,7 @@ void main() => runApp(MaterialApp(
     '/home': (context) => Home(),
     '/login': (context) => Login(),
     '/register': (context) => Register(),
+    '/words':(context) => Words(data),
   },
 ));
 
