@@ -12,9 +12,6 @@
                 <p>{{ word.translation }}</p>
             </section>
                 <h2 class="null" v-if="words.length == 0">Nie znaleziono żadnego słowa o&nbsp;podanej frazie!</h2>
-            <section class="button-section" v-if="!search">
-                <button v-show="moreExists" v-on:click="loadMore">Zobacz więcej</button>
-            </section>
         </section>
     </article>
 </template>
@@ -30,44 +27,24 @@
                     translation: '',
                 },
                 word_id: '',
-                nextPage: 1,
-                moreExists: false,
                 q: {},
                 search: false,
             };
         },
         created() {
-            this.fetchWords(60);
+            this.fetchWords();
         },
         methods: {
             fetchWords(items) {
-                fetch('/api/words/paginate/60')
+                fetch('/api/section/' + this.$sectionId + '/words')
                     .then(res => res.json())
                     .then(res => {
                         this.words = res.data;
-                        if (res.meta.current_page < res.meta.last_page)
-                            this.moreExists = true;
-                            this.nextPage = res.meta.current_page + 1;
-                    })
-            },
-            loadMore(nextPage) {
-                fetch('/api/words/paginate/60?page=' + this.nextPage)
-                    .then(res => res.json())
-                    .then(res => {
-                        if (res.meta.current_page < res.meta.last_page) {
-                            this.moreExists = true;
-                            this.nextPage = res.meta.current_page + 1;
-                        } else {
-                            this.moreExists = false;
-                        }
-                        res.data.forEach(data => {
-                            this.words.push(data);
-                        })
                     })
             },
             submit() {
                 if(this.q.search == '') this.q.search = undefined
-                fetch('/api/words/search/' + this.q.search)
+                fetch('/api/section/' + this.$sectionId + '/search/' + this.q.search)
                 .then(res => res.json())
                 .then(res => {
                     this.words = res.data;

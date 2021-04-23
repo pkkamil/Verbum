@@ -628,6 +628,10 @@ a.success:hover {
   float: left;
 }
 
+.words .search form button:hover {
+  background-color: #444;
+}
+
 .words .all-words {
   margin-top: 40px;
   width: 100%;
@@ -1422,15 +1426,15 @@ a.success:hover {
   width: 100%;
   height: 100%;
   display: flex;
-  padding: 110px 60px 50px 60px;
+  padding: 100px 60px 50px 60px;
   flex-direction: column;
 }
 
 .profile h2 {
-  font-size: 2rem;
+  font-size: 1.9rem;
   text-transform: uppercase;
   font-weight: 400;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .profile .top-part {
@@ -1448,7 +1452,7 @@ a.success:hover {
   text-transform: uppercase;
   font-weight: 400;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .profile .top-part .single-chart p {
@@ -1458,7 +1462,7 @@ a.success:hover {
   text-align: center;
   color: #999;
   margin-top: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .profile .top-part .single-chart a {
@@ -1466,7 +1470,7 @@ a.success:hover {
 }
 
 .profile .bottom-part {
-  margin-top: 60px;
+  margin-top: 40px;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -2264,6 +2268,195 @@ a.success:hover {
   margin-bottom: 20px;
 }
 
+.sections-list {
+  width: 100%;
+  height: 100%;
+  padding: 80px 60px 20px 60px;
+}
+
+.sections-list table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-spacing: 0 14px;
+}
+
+.sections-list table thead {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+
+.sections-list table thead th {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: left;
+}
+
+.sections-list table tbody tr {
+  background-color: #c4c4c4;
+}
+
+.sections-list table tbody tr td {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.sections-list table tbody tr td i {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sections-list table tbody tr td a {
+  color: #333;
+  transition: 0.6s color;
+  margin-right: 10px;
+}
+
+.sections-list table tbody tr td a:hover {
+  color: #555;
+}
+
+.sections-list .no-sections {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sections-list .no-sections h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.sections-list .no-sections p {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.sections-list .no-sections .operations {
+  display: flex;
+  justify-content: space-between;
+  transform: translateX(-20px);
+}
+
+.sections-list .no-sections .operations a:first-of-type {
+  margin-right: 20px;
+}
+
+.section {
+  width: 100%;
+  height: 100%;
+  padding: 120px 60px 20px 60px;
+}
+
+.section h1 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #333;
+  text-align: center;
+}
+
+.section p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #c4c4c4;
+  text-align: center;
+}
+
+.section.section-create .name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.section-create .name form {
+  margin: 30px 0px 50px 0;
+}
+
+.section.section-create .name form input {
+  width: 330px;
+  height: 70px;
+  background-color: #c4c4c4;
+  padding: 21px 33px;
+  text-transform: uppercase;
+  color: #333;
+  border: 0;
+  outline: none;
+  float: left;
+  font-size: 1.3rem;
+  border-radius: 0;
+}
+
+.section.section-create .name form button {
+  display: inline;
+  width: 70px;
+  height: 70px;
+  padding: 18px;
+  font-size: 1.5rem;
+  box-shadow: none;
+  float: left;
+}
+
+.section.section-create .name form button:not(.disabled):hover {
+  background-color: #444;
+}
+
+.section.section-create .all-words {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.section.section-create .all-words .single-word {
+  background-color: #c4c4c4;
+  cursor: pointer;
+  margin: 10px;
+  padding: 33px 50px;
+}
+
+.section.section-create .all-words .single-word h3 {
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.section.section-create .all-words .single-word p {
+  text-align: center;
+  color: #fff;
+}
+
+.section.section-create .words {
+  padding-top: 30px;
+}
+
+.section.section-create .words .blank {
+  background-color: #e4e4e4;
+}
+
 .dimmer.hider {
   display: none;
 }
@@ -2274,6 +2467,10 @@ a.success:hover {
   color: #FFF;
   margin-bottom: 30px;
   font-weight: 400;
+}
+
+.dimmer .result-box h2.sl {
+  margin-bottom: 20px;
 }
 
 .dimmer .result-box h2 span.w {
@@ -2302,6 +2499,18 @@ a.success:hover {
 
 .dimmer .result-box form .success {
   margin-right: 30px;
+}
+
+.dimmer .result-box h5 {
+  color: #FFF;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.dimmer .result-box h5 span {
+  color: #999;
 }
 
 @media only screen and (max-width: 1800px) {
@@ -3402,6 +3611,10 @@ a.success:hover {
     font-size: 1.2rem;
   }
 
+  .dimmer .result-box h5 {
+    font-size: 1.1rem;
+  }
+
   .dimmer .result-box a {
     margin-top: 20px !important;
   }
@@ -3991,6 +4204,10 @@ a.success:hover {
     font-size: 1.3rem;
   }
 
+  .dimmer.hider h5 {
+    font-size: 1rem;
+  }
+
   .dimmer.hider form {
     flex-direction: column;
   }
@@ -4380,7 +4597,7 @@ a.success:hover {
 
   .profile .bottom-part .single-form .group input,
   .user-details .bottom-part .single-form .group input {
-    max-width: 190px;
+    max-width: calc(100% - 50px);
     padding: 17px 21px;
   }
 

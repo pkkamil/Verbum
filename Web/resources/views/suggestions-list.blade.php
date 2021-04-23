@@ -22,6 +22,7 @@
                         <tr>
                             <td data-label="ID">{{ $suggestion -> id }}</td>
                             <td data-label="Słowo">{{ $suggestion -> word }}</td>
+                            <td class="translation" style="display: none;">{{ $suggestion -> translation }}</td>
                             <td data-label="Autor">{{ \App\User::find($suggestion -> user_id) -> name }}</td>
                             <td data-label="Duplikat">@if (\App\Word::where('word', $suggestion -> word)->first()) tak @else nie @endif</td>
                             <td data-label="Data i czas">{{ date('d.m.Y H:i:s', strtotime($suggestion -> added_at)) }}</td>
@@ -38,7 +39,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $suggestions->links() }}
+            {{ $suggestions->links('vendor.pagination.custom') }}
         @else
             <section class="no-suggestions">
                 <h2>Wróć tutaj później!</h2>
@@ -48,7 +49,8 @@
         @endif
         <article class="dimmer hider dimmer-danger">
             <section class="result-box">
-                    <h2>Czy na pewno chcesz usunąć słowo <span class="wd"></span>?</h2>
+                    <h2 class="sl">Czy na pewno chcesz usunąć słowo <span class="wd"></span>?</h2>
+                    <h5>Tłumaczenie tego słowa: <span class="translation"></span></h5>
                     <form method="POST" action="{{ route('deleteSuggestion') }}" autocomplete="OFF">
                         @csrf
                         <input type="hidden" name="suggestion_id" id="suggestion_id" value="">
@@ -59,10 +61,11 @@
         </article>
         <article class="dimmer hider dimmer-success">
             <section class="result-box">
-                    <h2>Czy na pewno chcesz zatwierdzić słowo <span class="wa"></span>?</h2>
+                    <h2 class="sl">Czy na pewno chcesz zatwierdzić słowo <span class="wa"></span>?</h2>
+                    <h5>Tłumaczenie tego słowa: <span class="translation"></span></h5>
                     <form method="POST" action="{{ route('acceptSuggestion') }}">
                         @csrf
-                        <input type="hidden" name="suggestion_id" id="suggestion_id" value="{{ $suggestion -> id }}">
+                        <input type="hidden" name="suggestion_id" id="suggestion_id" value="">
                         <button type="submit" class="success">Zatwierdź</button>
                         <button type="button" class="reverse-color">Anuluj</button>
                     </form>
@@ -80,6 +83,7 @@
         dangers.forEach(click => {
             click.addEventListener('click', (e) => {
                 let w = e.path[2].querySelector('td:nth-child(2)').textContent;
+                document.querySelector('.dimmer-danger .translation').textContent = e.path[2].querySelector('td:nth-child(3)').textContent;
                 document.querySelector('#suggestion_id').value = e.path[2].querySelector('td:nth-child(1)').textContent;
                 dimmer_wordD.textContent = w;
                 dimmer_delete.style.display = 'flex';
@@ -89,7 +93,9 @@
         accepts.forEach(click => {
             click.addEventListener('click', (e) => {
                 let w = e.path[2].querySelector('td:nth-child(2)').textContent;
-                document.querySelector('#suggestion_id').value = e.path[2].querySelector('td:nth-child(1)').textContent;
+                document.querySelector('.dimmer-success .translation').textContent = e.path[2].querySelector('td:nth-child(3)').textContent
+                document.querySelector('.dimmer-success #suggestion_id').value = e.path[2].querySelector('td:nth-child(1)').textContent;
+                console.log(e.path[2].querySelector('td:nth-child(3)').textContent);
                 dimmer_wordA.textContent = w;
                 dimmer_accept.style.display = 'flex';
             });

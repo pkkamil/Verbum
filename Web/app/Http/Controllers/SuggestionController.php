@@ -82,6 +82,7 @@ class SuggestionController extends Controller
 
         // Add Record
         $record = Record::whereDate('date', $suggestion -> added_at)->where('user_id', $suggestion -> user_id)->first();
+        // dd($record);
         if (isset($record)) {
             $record -> words = $record -> words + 1;
             $record -> save();

@@ -52,8 +52,9 @@
                     </div>
                     <button type="submit">Zmień</button>
                 </form>
-                <h4>Przeglądaj</h4>
+                <h4>Zarządzaj</h4>
                 <a href="{{ url('/profile/remembered') }}" class="button">Zapamiętane słowa</a>
+                <a href="{{ url('/profile/sections') }}" class="button">Działy słów</a>
             @else
                 <h4>Zarządzaj stroną</h4>
                 <a href="{{ url('/admin/users') }}" class="button">Lista użytkowników</a>
@@ -110,6 +111,7 @@
                 <h4>Korzystaj z innych operacji</h4>
                 <a href="{{ url('/admin/reports') }}" class="button">Lista zgłoszeń</a>
                 <a href="{{ url('/profile/remembered') }}" class="button">Zapamiętane słowa</a>
+                <a href="{{ url('/profile/sections') }}" class="button">Działy słów</a>
             @endif
         </div>
     </section>

@@ -26,8 +26,15 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 if (document.querySelector("meta[name='user-id']"))
     Vue.prototype.$userId = document.querySelector("meta[name='user-id']").getAttribute('content');
 
+
+if (document.querySelector("meta[name='section-id']"))
+    Vue.prototype.$sectionId = document.querySelector("meta[name='section-id']").getAttribute('content');
+
 Vue.component('Words', require('./components/Words.vue').default);
 Vue.component('Suggestion', require('./components/AddSuggestion.vue').default);
+Vue.component('Sect', require('./components/Section.vue').default);
+Vue.component('Adding', require('./components/CreatingSection.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

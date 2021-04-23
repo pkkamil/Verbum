@@ -46,6 +46,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/remembered', 'WordController@remembered')->name('rememberedList');
     Route::post('/profile/remembered/delete', 'WordController@deleteRemembered')->name('deleteRemembered');
 
+    Route::get('/profile/sections/', 'SectionController@list');
+    Route::get('/profile/section/create', 'SectionController@createPage');
+    Route::post('/profile/section/create', 'SectionController@create')->name('createSection');
+    Route::get('/profile/sections/{id}', 'SectionController@index');
+    Route::get('/profile/sections/{id}/edit', 'SectionController@editPage');
+    Route::post('/profile/section/edit', 'SectionController@edit')->name('editSection');
+    Route::post('/profile/section/delete', 'SectionController@destroy')->name('deleteSection');
+
     Route::middleware(['admin'])->group(function () {
         Route::prefix('admin')->group(function () {
             Route::get('/users', 'UserController@list');
