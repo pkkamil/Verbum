@@ -19,7 +19,7 @@ class _LoadingState extends State<Loading> {
   void checkConnection() async {
     try{
       Response response = await get(Uri.parse("$api"+'api/words'));
-      if(response.statusCode==200){
+      if (response.statusCode == 200) {
         setupWelcomeScreen();
       }
     }
@@ -46,7 +46,6 @@ class _LoadingState extends State<Loading> {
     await Future.delayed(Duration(seconds: 1));
     SharedPreferences localStorage = await SharedPreferences.getInstance();
     var userData = localStorage.getString('userData');
-    //localStorage.setString('userData', null);
 
     //print('######');
     //print(userData);
@@ -56,7 +55,7 @@ class _LoadingState extends State<Loading> {
       Navigator.pushReplacementNamed(context, '/');
     }else{
       Map response = jsonDecode(userData);
-      Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => Words(response)));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Words(15)));
     }
   }
 
@@ -74,7 +73,7 @@ class _LoadingState extends State<Loading> {
     ]);
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.grey[850],
         body: Center(
           child: SpinKitPulse(
             color: Colors.white,

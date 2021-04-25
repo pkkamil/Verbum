@@ -9,6 +9,7 @@ Map data = {
   'id':0,
   'name':'Disconnected'
 };
+
 List example;
 WordInfo wordInfo;
 
@@ -19,7 +20,7 @@ void main() => runApp(MaterialApp(
     '/home': (context) => Home(),
     '/login': (context) => Login(),
     '/register': (context) => Register(),
-    '/words':(context) => Words(data),
+    '/words':(context) => Words(15),
   },
 ));
 
