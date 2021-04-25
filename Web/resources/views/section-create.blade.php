@@ -7,6 +7,9 @@
 @extends('layouts.app')
 @section('content')
 <article class="section section-create">
+    <div class="operations">
+        <a href="{{ url('/profile/sections') }}" class="button">Wróć</a>
+    </div>
     <h1>Tworzenie nowego działu</h1>
     <section class="name">
         <form method="POST" action="{{ route('createSection') }}" autocomplete="off">
@@ -19,7 +22,7 @@
         </form>
     </section>
     <h2>Dodane słowa</h2>
-    <p class="empty">Nie dodano żadnych słów</p>
+    <p class="empty">Nie dodano wystarczającej ilości słów</p>
     <section class="all-words added">
     </section>
     <div id="app">

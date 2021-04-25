@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('words/paginate/{items?}', 'api\WordsApiController@paginate');
 Route::get('words/search/{q}', 'api\WordsApiController@search');
 Route::post('suggestion/new/{user_id}', 'api\WordsApiController@createSuggestion');
+
+Route::get('section/paginate/{items?}', 'api\WordsApiController@paginateSectionWords');
+Route::get('section/search/{q}', 'api\WordsApiController@searchSectionWords');
 Route::get('section/{id}/words', 'api\WordsApiController@sectionWords');
 Route::get('section/{id}/search/{q}', 'api\WordsApiController@sectionSearch');
 
 Route::post('login', 'api\AuthController@login');
 Route::post('register', 'api\AuthController@register');
-

@@ -1,6 +1,13 @@
 <?php
     $active = 'exercises';
-    $title = 'Verbum - Ćwiczenia | Tłumaczenie';
+
+    if (!isset($section_id))
+        $section_id = 0;
+
+    if ($section_id != 0)
+        $title = 'Verbum - Ćwiczenia | Tłumaczenie | '.\App\Section::find($section_id) -> name;
+    else
+        $title = 'Verbum - Ćwiczenia | Tłumaczenie';
     $lazy = True;
 ?>
 
@@ -8,13 +15,18 @@
 @section('content')
     <article class="exercise translation">
         <h4>Pozostały czas: <span class="timer">10</span></h4>
-        <h2>{{ $word['word'] }}</h2>
-        <h3 class="tn">{{ $word['translation'] }}</h3>
-        <form action="{{ route('rememberWord') }}" method="POST">
-            @csrf
-            <input type="hidden" name="word" value="{{ $word['id'] }}">
-            <button type="submit">Znam to słowo</button>
-        </form>
+        @if ($section_id != 0)
+            <h2>{{ \App\Word::find($word -> word_id) -> word }}</h2>
+            <h3>{{ \App\Word::find($word -> word_id) -> translation }}</h3>
+        @else
+            <h2>{{ $word['word'] }}</h2>
+            <h3 class="tn">{{ $word['translation'] }}</h3>
+            <form action="{{ route('rememberWord') }}" method="POST">
+                @csrf
+                <input type="hidden" name="word" value="{{ $word['id'] }}">
+                <button type="submit">Znam to słowo</button>
+            </form>
+        @endif
     </article>
     <script>
         let timer = 10;

@@ -17,11 +17,22 @@ class WordsApiController extends Controller
         return WordsResource::collection(Word::paginate($items));
     }
 
+    public function paginateSectionWords($items = 60) {
+        return WordsResource::collection(Word::orderByDesc('created_at')->paginate($items));
+    }
+
     public function search($q) {
         if ($q == '' || $q == 'undefined') {
             return WordsResource::collection((Word::all()));
         }
         return WordsResource::collection(Word::where('word', 'like', '%'.$q.'%')->orWhere('translation', 'like', '%'.$q.'%')->get());
+    }
+
+    public function searchSectionWords($q) {
+        if ($q == '' || $q == 'undefined') {
+            return WordsResource::collection((Word::orderByDesc('created_at')->get()));
+        }
+        return WordsResource::collection(Word::where('word', 'like', '%'.$q.'%')->orWhere('translation', 'like', '%'.$q.'%')->orderByDesc('created_at')->get());
     }
 
     public function createSuggestion(Request $req, $user_id) {

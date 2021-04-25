@@ -28,15 +28,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/add-word', 'WordController@addPage');
     Route::get('/profile', 'UserController@index');
     Route::post('/add', 'SuggestionController@add')->name('addSuggestion');
-    Route::get('/exercises', 'ExerciseController@index');
+    Route::get('/exercises/{section_id?}', 'ExerciseController@index');
 
-    Route::get('/exercises/translation', 'ExerciseController@translation');
-    Route::get('/exercises/matching', 'ExerciseController@matching')->name('matching');
-    Route::get('/exercises/writing', 'ExerciseController@writing');
+    Route::get('/exercise/translation/{section_id?}', 'ExerciseController@translation');
+    Route::get('/exercise/matching/{section_id?}', 'ExerciseController@matching')->name('matching');
+    Route::get('/exercise/writing/{section_id?}', 'ExerciseController@writing');
 
-    Route::post('/exercises/translation', 'ExerciseController@rememberWord')->name('rememberWord');
-    Route::post('/exercises/matching', 'ExerciseController@checkAnswer')->name('checkAnswers');
-    Route::post('/exercises/writing', 'ExerciseController@checkAnswer')->name('checkWord');
+    Route::post('/exercise/translation', 'ExerciseController@rememberWord')->name('rememberWord');
+    Route::post('/exercise/matching', 'ExerciseController@checkAnswer')->name('checkAnswers');
+    Route::post('/exercise/writing', 'ExerciseController@checkAnswer')->name('checkWord');
 
     Route::post('/profile/name', 'UserController@changeName')->name('changeName');
     Route::post('/profile/password', 'UserController@changePassword')->name('changePassword');
@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/section/create', 'SectionController@createPage');
     Route::post('/profile/section/create', 'SectionController@create')->name('createSection');
     Route::get('/profile/sections/{id}', 'SectionController@index');
-    Route::get('/profile/sections/{id}/edit', 'SectionController@editPage');
+    Route::get('/profile/section/{id}/edit', 'SectionController@editPage');
     Route::post('/profile/section/edit', 'SectionController@edit')->name('editSection');
     Route::post('/profile/section/delete', 'SectionController@destroy')->name('deleteSection');
 

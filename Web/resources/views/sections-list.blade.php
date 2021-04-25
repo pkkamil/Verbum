@@ -8,10 +8,14 @@
 @section('content')
     <article class="sections-list list">
         @if (count($sections) > 0)
+            <div class="operations">
+                <a href="{{ url('/profile/section/create') }}" class="button">Utwórz<span class="toHide"> nowy dział</span></a>
+            </div>
             <table>
                 <thead>
                     <th scope="col">#</th>
                     <th scope="col">Nazwa</th>
+                    <th scope="col">Liczba słów</th>
                     <th scope="col">Data i czas utworzenia</th>
                     <th scope="col">Operacje</th>
                 </thead>
@@ -20,11 +24,12 @@
                         <tr>
                             <td data-label="#">{{ ($loop -> index + 1) + ($sections -> links() -> paginator -> currentPage() - 1) * $sections -> links() -> paginator -> perPage() }}</td>
                             <td class="id" style="display: none">{{ $section -> id }}</td>
-                            <td data-label="Słowo">{{ $section -> name }}</td>
+                            <td data-label="Nazwa">{{ $section -> name }}</td>
+                            <td data-label="Liczba słów">{{ count($section -> words) }}</td>
                             <td data-label="Data i czas">{{ date('d.m.Y H:i:s', strtotime($section -> created_at)) }}</td>
                             <td data-label="Operacje">
                                 <a href="{{ url('/profile/sections/'.$section -> id) }}"><i class="fas fa-eye"></i></a>
-                                <a href="{{ url('/profile/sections/'.$section -> id.'/edit') }}"><i class="fas fa-edit"></i></a>
+                                <a href="{{ url('/profile/section/'.$section -> id.'/edit') }}"><i class="fas fa-edit"></i></a>
                                 <i class="fas fa-trash danger-small"></i>
                             </td>
                         </tr>

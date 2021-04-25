@@ -1,6 +1,13 @@
 <?php
     $active = 'exercises';
-    $title = 'Verbum - Ćwiczenia | Dopasowanie';
+
+    if (!isset($section_id))
+        $section_id = 0;
+
+    if ($section_id != 0)
+        $title = 'Verbum - Ćwiczenia | Dopasowanie | '.\App\Section::find($section_id) -> name;
+    else
+        $title = 'Verbum - Ćwiczenia | Dopasowanie';
     $lazy = True;
 ?>
 
@@ -21,6 +28,9 @@
     </section>
     <form action="{{ route('checkAnswers') }}" method="POST" autocomplete="off">
         @csrf
+        @if ($section_id != 0)
+            <input type="hidden" name="section_id" id="section_id" value="{{ $section_id }}">
+        @endif
         <input type="hidden" name="A1" id="A1" class="answer">
         <input type="hidden" name="A2" id="A2" class="answer">
         <input type="hidden" name="A3" id="A3" class="answer">
@@ -37,7 +47,11 @@
                         <span class="word">{{ $arr['word'] }}</span> - <span class="translation">{{ $arr['translation'] }}</span>
                     </h4>
                 @endforeach
-                <a href="{{ url('/exercises/matching') }}"><button class="next reverse-color">Dalej</button></a>
+                @if ($section_id != 0)
+                    <a href="{{ url('/exercise/matching/'.$section_id) }}"><button class="next reverse-color">Dalej</button></a>
+                @else
+                    <a href="{{ url('/exercise/matching') }}"><button class="next reverse-color">Dalej</button></a>
+                @endif
             </section>
         </article>
     @endif

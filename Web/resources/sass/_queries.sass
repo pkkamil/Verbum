@@ -170,7 +170,7 @@
             & .left-part
                 width: 50%
 
-    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list, .sections-list
         padding: 80px 60px 20px 60px
         & table
             font-size: 1.2rem
@@ -219,6 +219,16 @@
             & tbody
                 & tr
                     & td:last-child
+                        display: none
+
+    .sections-list
+        & table
+            & thead
+                & th:nth-child(3)
+                    display: none
+            & tbody
+                & tr
+                    & td:nth-child(4)
                         display: none
 
     .suggestions-list
@@ -434,7 +444,7 @@
             & .left-part
                 display: none
 
-    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list, .sections-list
         padding: 80px 40px 20px 40px
         & table
             font-size: 1.1rem
@@ -459,6 +469,9 @@
             & .down
                 & h4
                     font-size: 1.3rem
+
+    .section
+        padding: 70px 40px 20px 40px
 
     .ranking
         & .left-part
@@ -619,7 +632,7 @@
         & a
             width: 160px
 
-    .words
+    .words, .section
         & .all-words
             & .null
                 font-size: 1.4rem
@@ -740,7 +753,7 @@
         & h3
             font-size: 1.3rem
 
-    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list, .sections-list
         padding: 70px 40px 20px 40px
         & table
             & thead
@@ -802,6 +815,14 @@
                 & h2
                     font-size: 1.3rem
 
+    .section
+        & .name
+            & form
+                & input#name
+                    width: 310px
+        & p
+            font-size: 1rem
+
     .ranking
         & .simple
             & ul
@@ -850,6 +871,25 @@
                 & h3
                     font-size: 1.4rem
                     margin-bottom: 8px
+                & p
+                    font-size: 1.1rem
+            & .null
+                font-size: 1.3rem
+                margin-top: 10px
+                padding: 0 10px
+
+    .section
+        & .all-words
+            margin-top: 20px
+            & .single-word
+                margin: 7px 0
+                padding: 33px 40px
+                width: 100%
+                & h3
+                    font-size: 1.4rem
+                    margin-bottom: 8px
+                & p
+                    font-size: 1.1rem
             & .null
                 font-size: 1.3rem
                 margin-top: 10px
@@ -1005,7 +1045,7 @@
                         width: calc(100% - 50px)
                         height: 50px
 
-    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list
+    .users-list, .words-list, .suggestions-list, .remembered-list, .reports-list, .sections-list
         & table
             & thead
                 & th
@@ -1054,6 +1094,25 @@
                     & a, span
                         font-size: 1.2rem
                         padding: 15px 42px
+
+    .section
+        & p
+            font-size: 1rem
+        &.section-create
+            & .name
+                & form
+                    & input#name
+                        width: 280px
+                        height: 50px
+                        padding: 17px 28px
+                        font-size: 1.1rem
+                        border-radius: 0
+                    & button
+                        width: 50px
+                        height: 50px
+                        padding: 16px
+                        font-size: 1.1rem
+                        border-radius: 0
 
     .dimmer.hider
         padding: 30px 40px
@@ -1114,6 +1173,33 @@
                     & input
                         font-size: 1.1rem
 
+    .section
+        & h1
+            font-size: 1.6rem
+        & h2
+            font-size: 1.4rem
+        & .operations
+            &.triple
+                & a
+                    margin-right: 0
+                    &:first-of-type
+                        margin-right: 20px
+        &.section-create
+            & .name
+                & form
+                    & input#name
+                        width: calc(100% - 50px)
+                        height: 50px
+                        padding: 17px 28px
+                        font-size: 1.1rem
+                        border-radius: 0
+                    & button
+                        width: 50px
+                        height: 50px
+                        padding: 16px
+                        font-size: 1.1rem
+                        border-radius: 0
+
     table
         & td
             font-size: .9rem
@@ -1148,8 +1234,20 @@
                 & input
                     width: calc(100% - 50px)
                     height: 50px
-                    padding: 14px 28px
+                    padding: 17px 21px
                     font-size: 1rem
+        & .all-words
+            & .single-word
+                margin: 6px
+                padding: 25px 33px
+                width: 100%
+                & h3
+                    font-size: 1.2rem
+            & .null
+                font-size: 1.2rem
+                padding: 0
+
+    .section
         & .all-words
             & .single-word
                 margin: 6px
@@ -1230,6 +1328,23 @@
                         font-size: 1.1rem
                         padding: 17px 21px
 
+    .section
+        & h1
+            font-size: 1.4rem
+        & .operations
+            flex-direction: column
+            &.triple
+                & a
+                    margin-right: 0
+                    &:first-of-type
+                        margin-right: 0
+        &.section-create
+            & .name
+                & form
+                    & input#name
+                        padding: 17px 21px
+                        font-size: 1rem
+
     table
         & td
             &:before
@@ -1251,6 +1366,11 @@
                         font-size: 1.1rem
                         padding: 13px 38px
 
+    .sections-list
+        & .operations
+            margin-bottom: 10px
+            & .toHide
+                display: none
 
     .suggestion-details
         & .box
@@ -1267,12 +1387,14 @@
             font-size: 1rem
 
 @media only screen and (max-width: 355px)
-    .words
+    .words, .section
         & .all-words
             & .single-word
                 padding: 25px 30px
                 & h3
                     font-size: 1.1rem
+                & p
+                    font-size: 1rem
             & .null
                 font-size: 1.1rem
 

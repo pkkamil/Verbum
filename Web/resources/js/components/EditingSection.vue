@@ -7,7 +7,7 @@
             </form>
         </section>
         <section class="all-words">
-            <section class="single-word blank" v-for="word in words" :key="word.id" :id="word.id" v-on:click="add">
+            <section class="single-word blank" v-for="word in words" :key="word.id" :id="word.id" v-on:click="add" :class="addedWords.includes(word.id) ? 'a' : ''">
                 <h3 :id="word.id">{{ word.word }}</h3>
                 <p :id="word.id">{{ word.translation }}</p>
             </section>
@@ -38,9 +38,50 @@
             };
         },
         created() {
+            this.check();
             this.fetchWords(60);
         },
+        updated() {
+            this.catchAdded();
+            this.setUpBlank();
+        },
         methods: {
+            check() {
+                document.querySelectorAll('.added section').forEach(sect => {
+                    this.addedWords.push(sect.id.slice(1))
+                    sect.addEventListener('click', (e) => {
+                        if (e.target.nodeName == 'H3' || e.target.nodeName == 'P')
+                            var element = e.path[1]
+                        else
+                            var element = e.target
+                        element.remove()
+                        if (document.getElementById(element.id.slice(1)))
+                            document.getElementById(element.id.slice(1)).classList.remove('a')
+                        for (var i = 0; i < this.addedWords.length; i++) {
+                            if (this.addedWords[i] == element.id.slice(1)) {
+                                this.addedWords.splice(i, 1)
+                                break;
+                            }
+                        }
+                        document.getElementById('words').value = this.addedWords
+                        if (this.addedWords.length >= 4) {
+                            document.querySelector('.empty').style.display = 'none'
+                            document.querySelector('form button').disabled = false
+                            document.querySelector('form button').classList.remove('disabled')
+                        } else {
+                            document.querySelector('.empty').style.display = 'block'
+                            document.querySelector('form button').disabled = true
+                            document.querySelector('form button').classList.add('disabled')
+                        }
+                    })
+                })
+            },
+            setUpBlank() {
+                for (var i = 0; i < this.addedWords.length; i++) {
+                    if (document.getElementById(this.addedWords[i]))
+                        document.getElementById(this.addedWords[i]).classList.add('a')
+                }
+            },
             fetchWords(items) {
                 fetch('/api/section/paginate/60')
                     .then(res => res.json())
@@ -75,6 +116,12 @@
                 })
                 this.search = true;
             },
+            catchAdded() {
+                document.querySelectorAll('.all-words .blank').forEach(el => {
+                    if (this.addedWords.includes(el.id))
+                        el.classList.add('a')
+                })
+            },
             add(e) {
                 if (e.path[1].className == 'all-words')
                     var element = e.target
@@ -82,22 +129,20 @@
                     var element = e.path[1]
 
                 // Dodawanie słów do listy
-                var words = this.addedWords
-
-                if (element.classList.contains('a')) {
+                if (element.classList.contains('a') && this.addedWords.includes(element.id)) {
                     element.classList.remove('a')
                     document.querySelector('#n' + element.id).remove()
-                    for (var i = 0; i < words.length; i++) {
-                        if (words[i] == element.id) {
-                            words.splice(i, 1)
+                    for (var i = 0; i < this.addedWords.length; i++) {
+                        if (this.addedWords[i] == element.id) {
+                            this.addedWords.splice(i, 1)
                             break;
                         }
                     }
-                    document.getElementById('words').value = words
+                    document.getElementById('words').value = this.addedWords
                 } else {
                     element.classList.add('a')
-                    words.push(element.id)
-                    document.getElementById('words').value = words
+                    this.addedWords.push(element.id)
+                    document.getElementById('words').value = this.addedWords
 
                     var section = document.createElement('section')
                     section.classList.add('single-word')
@@ -108,20 +153,19 @@
                         else
                             var element = e.target
                         element.remove()
-                        document.getElementById(element.id.slice(1)).classList.remove('a')
-                        for (var i = 0; i < words.length; i++) {
-                            if (words[i] == element.id.slice(1)) {
-                                words.splice(i, 1)
+                        if (document.getElementById(element.id.slice(1)))
+                            document.getElementById(element.id.slice(1)).classList.remove('a')
+                        for (var i = 0; i < this.addedWords.length; i++) {
+                            if (this.addedWords[i] == element.id.slice(1)) {
+                                this.addedWords.splice(i, 1)
                                 break;
                             }
                         }
-                        document.getElementById('words').value = words
-                        if (words.length >= 4) {
-                            document.querySelector('.empty').style.display = 'none'
+                        document.getElementById('words').value = this.addedWords
+                        if (this.addedWords.length >= 4) {
                             document.querySelector('form button').disabled = false
                             document.querySelector('form button').classList.remove('disabled')
                         } else {
-                            document.querySelector('.empty').style.display = 'block'
                             document.querySelector('form button').disabled = true
                             document.querySelector('form button').classList.add('disabled')
                         }
@@ -135,7 +179,7 @@
                     document.querySelector('.added').appendChild(section)
                 }
 
-                if (words.length >= 4) {
+                if (this.addedWords.length >= 4) {
                     document.querySelector('.empty').style.display = 'none'
                     document.querySelector('form button').disabled = false
                     document.querySelector('form button').classList.remove('disabled')

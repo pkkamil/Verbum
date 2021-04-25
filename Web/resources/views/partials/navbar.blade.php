@@ -15,7 +15,7 @@
             @else
                 <li><a class="down" href="/#slownik">Słownik</a></li>
             @endif
-            <li><a href="/exercises" @if ($active == 'exercises') class="active" @endif>ćwiczenia</a></li>
+            <li><a @if ($active == 'exercises' && (isset($section_id) && $section_id != 0)) href="{{ url('/exercises/'.$section_id) }}" @else href="/exercises" @endif @if ($active == 'exercises') class="active" @endif>ćwiczenia</a></li>
             <li><a href="/add-word" @if ($active == 'add') class="active" @endif>Dodaj słowo</a></li>
             @guest
                 @if ($active == 'register')

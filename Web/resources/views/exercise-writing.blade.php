@@ -1,6 +1,13 @@
 <?php
     $active = 'exercises';
-    $title = 'Verbum - Ćwiczenia | Pisanie';
+
+    if (!isset($section_id))
+        $section_id = 0;
+
+    if ($section_id != 0)
+        $title = 'Verbum - Ćwiczenia | Pisanie | '.\App\Section::find($section_id) -> name;
+    else
+        $title = 'Verbum - Ćwiczenia | Pisanie';
     $lazy = True;
 ?>
 
@@ -10,6 +17,9 @@
     <h4>Pozostały czas: <span class="timer">10</span></h4>
     <form action="{{ route('checkWord') }}" method="POST" autocomplete="off">
         @csrf
+        @if ($section_id != 0)
+            <input type="hidden" name="section_id" id="section_id" value="{{ $section_id }}">
+        @endif
         <div class="answer-group group">
             <label for="answer"><i class="fas fa-globe-americas"></i></label>
             <input type="answer" id="answer" name="answer" autofocus placeholder="Word">
@@ -29,7 +39,11 @@
                     <h2 class="text"><span style="color: #bb0909">Niestety!</span></h2>
                     <p><span style="text-decoration: underline;">{{ $word }}</span> to poprawna odpowiedź.</p>
                 @endif
-                <a href="{{ url('/exercises/writing') }}"><button class="next reverse-color">Dalej</button></a>
+                @if ($section_id != 0)
+                    <a href="{{ url('/exercise/writing/'.$section_id) }}"><button class="next reverse-color">Dalej</button></a>
+                @else
+                    <a href="{{ url('/exercise/writing') }}"><button class="next reverse-color">Dalej</button></a>
+                @endif
             </section>
         </article>
     @endif

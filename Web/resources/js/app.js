@@ -34,6 +34,7 @@ Vue.component('Words', require('./components/Words.vue').default);
 Vue.component('Suggestion', require('./components/AddSuggestion.vue').default);
 Vue.component('Sect', require('./components/Section.vue').default);
 Vue.component('Adding', require('./components/CreatingSection.vue').default);
+Vue.component('Editing', require('./components/EditingSection.vue').default);
 
 
 /**

@@ -16,16 +16,33 @@ class SectionController extends Controller
     }
 
     public function editPage($id) {
-
+        $section = Section::find($id);
+        if ($section -> user_id == Auth::id())
+            return view('section-edit')->with('section', $section);
+        else
+            return redirect()-back();
     }
 
     public function edit(Request $req) {
-
+        $req->validate([
+            'name' => 'required|string|min:2|max:50',
+        ]);
+        $section = Section::where('id', $req -> section_id)->where('user_id', Auth::id())->first();
+        $section -> name = $req -> name;
+        $section -> save();
+        $words = explode(',', $req -> words);
+        DB::table('elements_of_section')->where('section_id', $req -> section_id)->delete();
+        foreach($words as $word ) {
+            DB::table('elements_of_section')->insert(
+                ['section_id' => $section -> id, 'word_id' => $word]
+            );
+        }
+        return redirect('/profile/sections');
     }
 
     public function list() {
         $words = Word::all();
-        $sections = Section::where('user_id', Auth::id())->paginate(15);
+        $sections = Section::where('user_id', Auth::id())->paginate(10);
         return view('sections-list') -> with('sections', $sections);
     }
 
@@ -43,13 +60,16 @@ class SectionController extends Controller
         $section -> save();
         $words = explode(',', $req -> words);
         foreach($words as $word ) {
-            DB::insert('insert into elements_of_section (section_id, word_id) values (?, ?)', [$section -> id, $word]);
+            DB::table('elements_of_section')->insert(
+                ['section_id' => $section -> id, 'word_id' => $word]
+            );
         }
         return redirect('/profile/sections');
     }
 
     public function destroy(Request $req) {
         Section::destroy($req -> section_id);
+        DB::table('elements_of_section')->where('section_id', $req -> section_id)->delete();
         return redirect()->back();
     }
 }
