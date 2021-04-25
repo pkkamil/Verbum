@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
+import 'package:verbum/components/Words.dart';
 import 'package:verbum/components/DedicatedButton.dart';
+
 
 class Home extends StatelessWidget{
   @override
 
   Widget build(BuildContext context) {
+
+    showWords() async {
+      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Words(15)));
+    }
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -74,7 +81,9 @@ class Home extends StatelessWidget{
                   height: 10.0,
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showWords();
+                  },
                   child: Text(
                     'Pomiń'.toUpperCase(),
                     style: TextStyle(

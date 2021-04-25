@@ -24,8 +24,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sendData(data) async{
 
+    sendData(data) async {
       var api = new Api();
       var response = await api.login(data);
 
@@ -51,8 +51,8 @@ class Login extends StatelessWidget {
           SharedPreferences localStorage = await SharedPreferences.getInstance();
           localStorage.setString('userData', jsonEncode(response));
 
-          Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
-          Navigator.push(context,MaterialPageRoute(builder: (BuildContext context) => Words(response)));
+          // Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => Words(15)));
         } else {
           Scaffold.of(context).showSnackBar(
               SnackBar(

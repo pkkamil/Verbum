@@ -23,33 +23,33 @@ class WordCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(marginL, marginT, marginR, marginB),
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.4),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3),
-            ),
-          ]
-      ),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8),
         width: size,
         height: size,
         child: Center(
-          child: RichText(
-            text: TextSpan(
-              style: TextStyle(
-                fontSize: fontSize,
-                color: Colors.grey[850],
+          child: Column(
+            children: [
+              Text(
+                (wordName).toUpperCase(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey[850],
+                  fontWeight: FontWeight.w500,
+                  fontSize: 24.0,
+                ),
               ),
-              children: [
-                TextSpan(text: wordName.toUpperCase()),
-                TextSpan(text: wordTranslation.toUppercase()),
-              ]
-            ),
-          ),
+              Text(
+                wordTranslation,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.grey[850],
+                  fontWeight: FontWeight.w400,
+                  fontSize: 21.0,
+                ),
+              )
+            ],
+          )
         ),
       )
     );

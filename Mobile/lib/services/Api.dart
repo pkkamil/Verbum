@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart';
 
-String api = "http://127.0.0.1:8000/";
-// String secondApi = "http://localhost:8000";
+String api = "http://foodlegitcheck.online/";
+String secondApi = "http://89.107.56.101/";
 
 String token = 'nKNWdq7z2LVYXIiBQhDcDekWdS5HnNGIoKQO2MyD%3D';
 
@@ -17,15 +17,15 @@ class Api{
 
   login(data) async{
     String fullUrl = api + "api/login";
-    var response = await post(Uri.parse('http://127.0.0.1:8000/api/login'),
+    var response = await post(Uri.parse(fullUrl),
         headers:  await _setHeaders(),
         body: jsonEncode(data));
     print(response.body);
     return jsonDecode(response.body);
   }
 
-  wordsList(id) async{
-    String fullUrl = api + "api/words";
+  wordsList(i) async{
+    String fullUrl = api + "api/words/paginate/" + i.toString();
     var response = await get(Uri.parse(fullUrl),
         headers:  await _setHeaders());
     Map body = jsonDecode(response.body);
