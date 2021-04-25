@@ -1346,7 +1346,55 @@ a.success:hover {
   font-size: 2rem;
   font-weight: 400;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.adding-words .left-part h2,
+.word-edit .left-part h2,
+.suggestion-edit .left-part h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.adding-words .left-part .similar,
+.word-edit .left-part .similar,
+.suggestion-edit .left-part .similar {
+  display: none;
+  margin-bottom: 40px;
+}
+
+.adding-words .left-part ul,
+.word-edit .left-part ul,
+.suggestion-edit .left-part ul {
+  list-style-type: square;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #555;
+  text-transform: uppercase;
+  transform: translateX(50px);
+}
+
+.adding-words .left-part ul li,
+.word-edit .left-part ul li,
+.suggestion-edit .left-part ul li {
+  margin-bottom: 5px;
+}
+
+.adding-words .left-part ul li:last-of-type,
+.word-edit .left-part ul li:last-of-type,
+.suggestion-edit .left-part ul li:last-of-type {
+  margin-bottom: 10px;
+}
+
+.adding-words .left-part p,
+.word-edit .left-part p,
+.suggestion-edit .left-part p {
+  color: #777;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .adding-words .left-part .group,
@@ -4022,7 +4070,13 @@ a.success:hover {
   .adding-words,
   .word-edit,
   .suggestion-edit {
-    padding: 0 40px;
+    padding: 50px 40px 0 40px;
+  }
+
+  .adding-words .left-part .group,
+  .word-edit .left-part .group,
+  .suggestion-edit .left-part .group {
+    margin-top: 10px;
   }
 
   .adding-words .left-part .group input,
@@ -4074,6 +4128,12 @@ a.success:hover {
     margin-right: auto;
     font-size: 1.5rem;
     margin-bottom: 5px;
+  }
+
+  .adding-words .left-part h2,
+  .word-edit .left-part h2,
+  .suggestion-edit .left-part h2 {
+    font-size: 1.4rem;
   }
 
   .word-edit .left-part .operations a,
@@ -4573,6 +4633,12 @@ a.success:hover {
     font-size: 1.4rem;
   }
 
+  .adding-words .left-part h2,
+  .word-edit .left-part h2,
+  .suggestion-edit .left-part h2 {
+    font-size: 1.3rem;
+  }
+
   .auth.login .left-part h1 {
     font-size: 1.6rem;
   }
@@ -4800,6 +4866,24 @@ a.success:hover {
   .word-edit .left-part h1,
   .suggestion-edit .left-part h1 {
     font-size: 1.3rem;
+  }
+
+  .adding-words .left-part h2,
+  .word-edit .left-part h2,
+  .suggestion-edit .left-part h2 {
+    font-size: 1.2rem;
+  }
+
+  .adding-words .left-part ul,
+  .word-edit .left-part ul,
+  .suggestion-edit .left-part ul {
+    font-size: 1.1rem;
+  }
+
+  .adding-words .left-part p,
+  .word-edit .left-part p,
+  .suggestion-edit .left-part p {
+    font-size: 1rem;
   }
 
   .word-edit .left-part .operations,

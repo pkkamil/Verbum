@@ -15,7 +15,7 @@
                     @endforeach
                 </div>
             @endif
-            <h1>{{ __('Edycja propozycji') }}</h1>
+            <h1>Edycja propozycji</h1>
             <form method="POST" action="{{ route('changeSuggestionDetails') }}">
                 @csrf
                 <input type="hidden" name="suggestion_id" id="suggestion_id" value="{{ $suggestion -> id }}">

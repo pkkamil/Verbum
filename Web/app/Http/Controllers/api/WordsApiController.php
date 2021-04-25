@@ -45,6 +45,10 @@ class WordsApiController extends Controller
         return $word;
     }
 
+    public function findSimilar($q) {
+        return WordsResource::collection(Word::where('word', 'like', '%'.$q.'%')->get('word'));
+    }
+
     public function sectionSearch($id, $q) {
         if ($q == '' || $q == 'undefined') {
             $words = Section::find($id) -> words;

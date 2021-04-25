@@ -9,7 +9,6 @@
 @section('content')
 <article class="adding-words">
     <section class="left-part">
-        <h1>{{ __('Dodawanie nowego słowa') }}</h1>
         <div id="app">
             <Suggestion></Suggestion>
         </div>
