@@ -74,6 +74,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/suggestions/{id}/edit', 'SuggestionController@edit');
             Route::post('/suggestion/edit', 'SuggestionController@editSuggestionDetails')->name('changeSuggestionDetails');
             Route::post('/suggestions/accept', 'SuggestionController@accept')->name('acceptSuggestion');
+            Route::post('/suggestions/accept/all', 'SuggestionController@acceptAll')->name('acceptAllSuggestions');
             Route::post('/suggestion/replace', 'SuggestionController@replace')->name('replaceWord');
             Route::post('/suggestion/delete', 'SuggestionController@delete')->name('deleteSuggestion');
 

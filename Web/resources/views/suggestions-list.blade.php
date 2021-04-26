@@ -2,12 +2,23 @@
     $active = 'suggestions';
     $title = 'Verbum - Słowa do zatwierdzenia';
     $lazy = true;
+    $suggs = \App\Suggestion::all();
+    $s = [];
+    foreach ($suggs as $sugg) {
+        if (!\App\Word::where('word', $sugg -> word)->first())
+            array_push($s, $sugg -> word);
+    }
+    $s = array_unique($s);
 ?>
 
 @extends('layouts.app')
 @section('content')
     <article class="suggestions-list list">
         @if (count($suggestions) > 0)
+            <div class="operations">
+                <a href="{{ url('/profile') }}" class="button">Wróć</a>
+                <button class="acceptAll">Zatwierdź wszystko</button>
+            </div>
             <table>
                 <thead>
                     <th scope="col">ID</th>
@@ -71,6 +82,21 @@
                     </form>
             </section>
         </article>
+        <article class="dimmer hider dimmer-accept-all">
+            <section class="result-box">
+                    <h2 class="sl">Czy na pewno chcesz zatwierdzić poniższe słowa?</h2>
+                    <h5>
+                        @foreach ($s as $suggestion)
+                            {{ $suggestion }}@if (!$loop -> last)<span class="comma">,</span>@endif
+                        @endforeach
+                    </h5>
+                    <form method="POST" action="{{ route('acceptAllSuggestions') }}">
+                        @csrf
+                        <button type="submit" class="success">Zatwierdź</button>
+                        <button type="button" class="reverse-color">Anuluj</button>
+                    </form>
+            </section>
+        </article>
     </article>
     <script>
         let dangers = document.querySelectorAll('.danger-small');
@@ -95,7 +121,6 @@
                 let w = e.path[2].querySelector('td:nth-child(2)').textContent;
                 document.querySelector('.dimmer-success .translation').textContent = e.path[2].querySelector('td:nth-child(3)').textContent
                 document.querySelector('.dimmer-success #suggestion_id').value = e.path[2].querySelector('td:nth-child(1)').textContent;
-                console.log(e.path[2].querySelector('td:nth-child(3)').textContent);
                 dimmer_wordA.textContent = w;
                 dimmer_accept.style.display = 'flex';
             });
@@ -105,9 +130,17 @@
             e.addEventListener('click', () => {
                 if (dimmer_delete.style.display == 'flex')
                     dimmer_delete.style.display = 'none';
-                else
+                else if (dimmer_accept.style.display == 'flex')
                     dimmer_accept.style.display = 'none';
+                else
+                    dimmer_accept_all.style.display = 'none';
             })
+        })
+
+        let dimmer_accept_all = document.querySelector('.dimmer-accept-all')
+        let acceptAll = document.querySelector('.acceptAll')
+        acceptAll.addEventListener('click', () => {
+            dimmer_accept_all.style.display = 'flex';
         })
 
     </script>

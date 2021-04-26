@@ -1291,7 +1291,22 @@ button.success, a.success
 .suggestions-list
     width: 100%
     height: 100%
-    padding: 80px 60px 20px 60px
+    padding: 65px 60px 20px 60px
+    & .operations
+        margin-bottom: 10px
+        @include flex-center
+        flex-wrap: wrap
+        justify-content: center
+        & a
+            margin-right: 20px
+            margin-top: 25px
+            margin-left: 0
+        & button
+            margin-right: 20px
+            margin-top: 25px
+            margin-left: 0
+            &:last-child
+                margin-right: 0
     & table
         width: 100%
         font-size: 1.3rem
@@ -1315,12 +1330,15 @@ button.success, a.success
                     font-weight: 400
                     & i
                         font-weight: 600
-                        cursor: pointer
                         &.success-small
                             margin-right: 10px
+                            cursor: pointer
+                        &.danger-small
+                            cursor: pointer
                     & a
                         color: #333
                         transition: .6s color
+                        cursor: pointer
                         margin-right: 10px
                         &:hover
                             color: #555
@@ -1592,6 +1610,22 @@ button.success, a.success
         font-weight: 400
         color: #c4c4c4
         text-align: center
+    & .pageUp
+        position: fixed
+        @include flex-center
+        right: 60px
+        bottom: 60px
+        width: 64px
+        height: 64px
+        font-size: 1.5rem
+        background-color: $primary
+        color: #FFF
+        border-radius: 100%
+        cursor: pointer
+        transition: .6s background-color
+        display: none
+        &:hover
+            background-color: #555
     & .operations
         @include flex-center
         flex-wrap: wrap
@@ -1677,5 +1711,7 @@ button.success, a.success
             margin-bottom: 30px
             & span
                 color: #999
+        & .comma
+            color: #777
 // Queries
 @import 'queries'

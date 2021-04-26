@@ -34,7 +34,7 @@ class SuggestionController extends Controller
         if (Browser::isTablet())
             $suggestions = Suggestion::paginate(20);
         else
-            $suggestions = Suggestion::paginate(10);
+            $suggestions = Suggestion::paginate(9);
         return view('suggestions-list')->with('suggestions', $suggestions);
     }
 
@@ -96,6 +96,36 @@ class SuggestionController extends Controller
         $word -> translation = $suggestion -> translation;
         $word -> user_id = $suggestion -> user_id;
         $word -> save();
+        return redirect('/admin/suggestions/');
+    }
+
+    public function acceptAll(Request $req) {
+        $suggestions = Suggestion::all();
+
+        foreach($suggestions as $suggestion) {
+            if (!Word::where('word', $suggestion -> word)->first()) {
+                $user = User::find($suggestion -> user_id);
+                $user -> words = $user -> words + 1;
+                $user -> save();
+
+                // Add Record
+                $record = Record::whereDate('date', $suggestion -> added_at)->where('user_id', $suggestion -> user_id)->first();
+                // dd($record);
+                if (isset($record)) {
+                    $record -> words = $record -> words + 1;
+                    $record -> save();
+                }
+
+                Suggestion::destroy($suggestion -> id);
+
+                // create Word
+                $word = new Word();
+                $word -> word = $suggestion -> word;
+                $word -> translation = $suggestion -> translation;
+                $word -> user_id = $suggestion -> user_id;
+                $word -> save();
+            }
+        }
         return redirect('/admin/suggestions/');
     }
 

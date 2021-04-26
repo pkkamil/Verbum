@@ -1960,12 +1960,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    submit: function submit() {
+    submit: function submit(e) {
       var _this = this;
 
+      document.querySelector('.similar').style.display = 'none';
       axios.post('/api/suggestion/new/' + this.$userId, this.suggestion).then(function (res) {
         return _this.suggestion = {};
       });
+      e.path[0][0].focus();
     },
     findSimilar: function findSimilar() {
       var _this2 = this;

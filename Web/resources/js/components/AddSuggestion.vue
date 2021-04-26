@@ -31,9 +31,11 @@
             };
         },
         methods: {
-            submit() {
+            submit(e) {
+                document.querySelector('.similar').style.display = 'none'
                 axios.post('/api/suggestion/new/'+ this.$userId, this.suggestion)
                 .then(res => this.suggestion = {})
+                e.path[0][0].focus()
             },
             findSimilar() {
                 if (this.suggestion.word.length >= 3) {
@@ -66,7 +68,7 @@
                     document.querySelector('.other').style.display = 'block'
                 }
                 this.similarWords = this.similarWords.slice(0, 5)
-            },
+            }
         }
     }
 </script>
