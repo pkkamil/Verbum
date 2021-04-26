@@ -22,6 +22,7 @@
                         <td data-label="Tłumaczenie"><p>{{ $word -> translation }}</p></td>
                         <td data-label="Operacje">
                             <a href="{{ url('/admin/words/'.$word -> id) }}"><i class="fas fa-eye"></i></a>
+                            <a href="{{ url('/admin/words/'.$word -> id.'/edit') }}"><i class="fas fa-edit"></i></a>
                             <i class="fas fa-trash danger-small"></i>
                         </td>
                     </tr>

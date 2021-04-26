@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Record;
 use App\Section;
 use Illuminate\Support\Carbon;
+use App\Log;
 
 class ExerciseController extends Controller
 {
@@ -145,6 +146,14 @@ class ExerciseController extends Controller
         DB::table('user_word')->insert(
             ['word_id' => $req -> word, 'user_id' => Auth::id()]
         );
+
+        // Add log
+        $log = new Log;
+        $log -> type = 14;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $req -> word;
+        $log -> save();
+
         return redirect()->back();
     }
 
@@ -191,11 +200,24 @@ class ExerciseController extends Controller
                 $record -> exercises = $record -> exercises + $points;
                 $record -> save();
             }
+
+            // Add log
+            $log = new Log;
+            $log -> type = 19;
+            $log -> user_id = Auth::id();
+            $log -> save();
+
             if ($req -> section_id)
                 return view('exercise-matching', compact('results', 'words'), ['section_id' => $req -> section_id]);
             else
                 return view('exercise-matching', compact('results', 'words'));
         } else {
+            // Add log
+            $log = new Log;
+            $log -> type = 20;
+            $log -> user_id = Auth::id();
+            $log -> save();
+
             $word = $req -> word;
             $translation = $req -> translation;
             if (strtolower($req -> answer) == $req -> word) {

@@ -8,8 +8,7 @@ use App\Http\Resources\WordsResource;
 use App\Word;
 use App\Suggestion;
 use App\Section;
-use Illuminate\Support\Facades\Auth;
-use Mockery\Undefined;
+use App\Log;
 
 class WordsApiController extends Controller
 {
@@ -42,6 +41,14 @@ class WordsApiController extends Controller
         $word -> translation = mb_strtolower($req -> translation);
         $word -> user_id = $user_id;
         $word -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 5;
+        $log -> user_id = $user_id;
+        $log -> type_id = $word -> id;
+        $log -> save();
+
         return $word;
     }
 

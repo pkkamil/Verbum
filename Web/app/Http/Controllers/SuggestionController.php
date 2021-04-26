@@ -9,6 +9,7 @@ use App\Word;
 use App\User;
 use App\Record;
 use Browser;
+use App\Log;
 
 class SuggestionController extends Controller
 {
@@ -24,6 +25,14 @@ class SuggestionController extends Controller
         $word -> translation = mb_strtolower($req -> translation);
         $word -> user_id = Auth::id();
         $word -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 5;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $word -> id;
+        $log -> save();
+
         if ($req -> action == 'exit')
             return redirect('/');
         else
@@ -67,6 +76,14 @@ class SuggestionController extends Controller
         $suggestion -> word = mb_strtolower($req -> word);
         $suggestion -> translation = mb_strtolower($req -> translation);
         $suggestion -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 8;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $suggestion -> id;
+        $log -> save();
+
         return redirect('/admin/suggestions/'.$req -> suggestion_id);
     }
 
@@ -82,7 +99,6 @@ class SuggestionController extends Controller
 
         // Add Record
         $record = Record::whereDate('date', $suggestion -> added_at)->where('user_id', $suggestion -> user_id)->first();
-        // dd($record);
         if (isset($record)) {
             $record -> words = $record -> words + 1;
             $record -> save();
@@ -96,6 +112,14 @@ class SuggestionController extends Controller
         $word -> translation = $suggestion -> translation;
         $word -> user_id = $suggestion -> user_id;
         $word -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 6;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $word -> id;
+        $log -> save();
+
         return redirect('/admin/suggestions/');
     }
 
@@ -110,7 +134,6 @@ class SuggestionController extends Controller
 
                 // Add Record
                 $record = Record::whereDate('date', $suggestion -> added_at)->where('user_id', $suggestion -> user_id)->first();
-                // dd($record);
                 if (isset($record)) {
                     $record -> words = $record -> words + 1;
                     $record -> save();
@@ -124,6 +147,13 @@ class SuggestionController extends Controller
                 $word -> translation = $suggestion -> translation;
                 $word -> user_id = $suggestion -> user_id;
                 $word -> save();
+
+                // Add log
+                $log = new Log;
+                $log -> type = 6;
+                $log -> user_id = Auth::id();
+                $log -> type_id = $word -> id;
+                $log -> save();
             }
         }
         return redirect('/admin/suggestions/');
@@ -143,6 +173,13 @@ class SuggestionController extends Controller
             $record -> words = $record -> words + 1;
             $record -> save();
         }
+
+        // Add log
+        $log = new Log;
+        $log -> type = 7;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $word -> id;
+        $log -> save();
 
         Suggestion::destroy($req -> suggestion_id);
 
@@ -174,6 +211,14 @@ class SuggestionController extends Controller
         Suggestion::destroy($req -> suggestion_id);
         if (str_contains(url()->previous(), '/suggestions?page'))
             return redirect()->back();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 9;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $req -> suggestion_id;
+        $log -> save();
+
         return redirect('/admin/suggestions');
     }
 }

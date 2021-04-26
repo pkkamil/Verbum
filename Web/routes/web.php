@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/profile/name', 'UserController@changeName')->name('changeName');
     Route::post('/profile/password', 'UserController@changePassword')->name('changePassword');
-    Route::post('/profile/report', 'UserController@reportAnError')->name('reportAnError');
+    Route::post('/profile/report', 'ReportController@create')->name('reportAnError');
     Route::post('/profile/delete', 'UserController@destroy')->name('deleteAccount');
 
     Route::get('/profile/remembered', 'WordController@remembered')->name('rememberedList');
@@ -79,8 +79,9 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/suggestion/delete', 'SuggestionController@delete')->name('deleteSuggestion');
 
             Route::get('/reports', 'ReportController@list')->name('listReports');
-            Route::get('/reports/{id}', 'ReportController@index');
             Route::post('/report/delete', 'ReportController@destroy')->name('deleteReport');
+
+            Route::get('/logs', 'UserController@logs');
         });
     });
     Route::get('/ranking/{type}', 'UserController@showRanking');

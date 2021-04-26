@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Record;
 use App\Remembered;
-use Carbon\Carbon;
 use App\User;
 use Browser;
+use App\Log;
 
 class WordController extends Controller
 {
@@ -38,6 +38,14 @@ class WordController extends Controller
 
     public function deleteRemembered(Request $req) {
         Remembered::where('user_id', Auth::id())->where('word_id', $req -> word_id)->delete();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 15;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $req -> word_id;
+        $log -> save();
+
         return redirect()->back();
     }
 
@@ -62,6 +70,7 @@ class WordController extends Controller
         if (!$word) {
             return redirect()->back();
         }
+
         return view('word-edit')->with('word', $word);
     }
 
@@ -76,6 +85,14 @@ class WordController extends Controller
         $word -> word = mb_strtolower($req -> word);
         $word -> translation = mb_strtolower($req -> translation);
         $word -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 10;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $word -> id;
+        $log -> save();
+
         return redirect('/admin/words/'.$req -> word_id);
     }
 
@@ -91,6 +108,13 @@ class WordController extends Controller
             $record -> words = $record -> words - 1;
             $record -> save();
         }
+
+        // Add log
+        $log = new Log;
+        $log -> type = 11;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $req -> word_id;
+        $log -> save();
 
         Word::destroy($req -> word_id);
         if (str_contains(url()->previous(), '/words?page'))

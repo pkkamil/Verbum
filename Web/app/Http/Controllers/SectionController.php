@@ -7,6 +7,7 @@ use App\Word;
 use App\Section;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Log;
 
 class SectionController extends Controller
 {
@@ -37,6 +38,14 @@ class SectionController extends Controller
                 ['section_id' => $section -> id, 'word_id' => $word]
             );
         }
+
+        // Add log
+        $log = new Log;
+        $log -> type = 17;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $section -> id;
+        $log -> save();
+
         return redirect('/profile/sections');
     }
 
@@ -64,12 +73,28 @@ class SectionController extends Controller
                 ['section_id' => $section -> id, 'word_id' => $word]
             );
         }
+
+        // Add log
+        $log = new Log;
+        $log -> type = 16;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $section -> id;
+        $log -> save();
+
         return redirect('/profile/sections');
     }
 
     public function destroy(Request $req) {
         Section::destroy($req -> section_id);
         DB::table('elements_of_section')->where('section_id', $req -> section_id)->delete();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 18;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $req -> section_id;
+        $log -> save();
+
         return redirect()->back();
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Log;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,13 @@ class AuthController extends Controller
             'password' => Hash::make($req -> password),
         ]);
         $user->save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 1;
+        $log -> user_id = $user -> id;
+        $log -> save();
+
         return response()->json(['message' => 'OK']);
     }
 
@@ -36,12 +44,26 @@ class AuthController extends Controller
         if(!Auth::attempt($credentials))
             return response()->json(['message' => 'Podano błędne dane logowania'], 401);
         $user = $req->user();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 2;
+        $log -> user_id = $user -> id;
+        $log -> save();
+
         return response()->json($user);
     }
 
-    public function logout(Request $req)
-    {
-        $req->user()->token()->revoke();
-        return response()->json(['message' => 'Wylogowano']);
-    }
+    // public function logout(Request $req)
+    // {
+    //     $req->user()->token()->revoke();
+
+    //     // Add log
+    //     $log = new Log;
+    //     $log -> type = 3;
+    //     $log -> user_id = $req -> user() -> id;
+    //     $log -> save();
+
+    //     return response()->json(['message' => 'Wylogowano']);
+    // }
 }

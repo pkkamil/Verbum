@@ -2607,6 +2607,69 @@ a.success:hover {
   background-color: #e4e4e4;
 }
 
+.logs-list {
+  width: 100%;
+  height: 100%;
+  padding: 80px 60px 20px 60px;
+}
+
+.logs-list table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-spacing: 0 14px;
+}
+
+.logs-list table thead {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+
+.logs-list table thead th {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: left;
+}
+
+.logs-list table tbody tr {
+  background-color: #c4c4c4;
+}
+
+.logs-list table tbody tr td {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.logs-list table tbody tr td .grey {
+  color: #555;
+  font-weight: 400;
+}
+
+.logs-list .no-logs {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.logs-list .no-logs h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.logs-list .no-logs p {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
 .dimmer.hider {
   display: none;
 }
@@ -2955,7 +3018,8 @@ a.success:hover {
   .suggestions-list,
   .remembered-list,
   .reports-list,
-  .sections-list {
+  .sections-list,
+  .logs-lists {
     padding: 80px 60px 20px 60px;
   }
 
@@ -2964,7 +3028,8 @@ a.success:hover {
   .suggestions-list table,
   .remembered-list table,
   .reports-list table,
-  .sections-list table {
+  .sections-list table,
+  .logs-lists table {
     font-size: 1.2rem;
     border-spacing: 0 11px;
   }
@@ -2974,7 +3039,8 @@ a.success:hover {
   .suggestions-list table thead,
   .remembered-list table thead,
   .reports-list table thead,
-  .sections-list table thead {
+  .sections-list table thead,
+  .logs-lists table thead {
     height: 45px;
   }
 
@@ -2983,7 +3049,8 @@ a.success:hover {
   .suggestions-list table thead th,
   .remembered-list table thead th,
   .reports-list table thead th,
-  .sections-list table thead th {
+  .sections-list table thead th,
+  .logs-lists table thead th {
     padding: 12px 40px;
   }
 
@@ -2992,7 +3059,8 @@ a.success:hover {
   .suggestions-list table tbody tr td,
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
-  .sections-list table tbody tr td {
+  .sections-list table tbody tr td,
+  .logs-lists table tbody tr td {
     padding: 12px 40px;
   }
 
@@ -3386,7 +3454,8 @@ a.success:hover {
   .suggestions-list,
   .remembered-list,
   .reports-list,
-  .sections-list {
+  .sections-list,
+  .logs-list {
     padding: 80px 40px 20px 40px;
   }
 
@@ -3395,7 +3464,8 @@ a.success:hover {
   .suggestions-list table,
   .remembered-list table,
   .reports-list table,
-  .sections-list table {
+  .sections-list table,
+  .logs-list table {
     font-size: 1.1rem;
     border-spacing: 0 10px;
   }
@@ -3405,7 +3475,8 @@ a.success:hover {
   .suggestions-list table thead,
   .remembered-list table thead,
   .reports-list table thead,
-  .sections-list table thead {
+  .sections-list table thead,
+  .logs-list table thead {
     height: 45px;
   }
 
@@ -3414,7 +3485,8 @@ a.success:hover {
   .suggestions-list table thead th,
   .remembered-list table thead th,
   .reports-list table thead th,
-  .sections-list table thead th {
+  .sections-list table thead th,
+  .logs-list table thead th {
     padding: 12px 40px;
   }
 
@@ -3423,7 +3495,8 @@ a.success:hover {
   .suggestions-list table tbody tr td,
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
-  .sections-list table tbody tr td {
+  .sections-list table tbody tr td,
+  .logs-list table tbody tr td {
     padding: 12px 40px;
   }
 
@@ -3871,7 +3944,8 @@ a.success:hover {
   .suggestions-list,
   .remembered-list,
   .reports-list,
-  .sections-list {
+  .sections-list,
+  .logs-list {
     padding: 70px 40px 20px 40px;
   }
 
@@ -3880,7 +3954,8 @@ a.success:hover {
   .suggestions-list table thead th,
   .remembered-list table thead th,
   .reports-list table thead th,
-  .sections-list table thead th {
+  .sections-list table thead th,
+  .logs-list table thead th {
     padding: 12px 30px;
   }
 
@@ -3889,7 +3964,8 @@ a.success:hover {
   .suggestions-list table tbody tr td,
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
-  .sections-list table tbody tr td {
+  .sections-list table tbody tr td,
+  .logs-list table tbody tr td {
     padding: 12px 30px;
   }
 
@@ -4358,7 +4434,8 @@ a.success:hover {
   .suggestions-list table thead th,
   .remembered-list table thead th,
   .reports-list table thead th,
-  .sections-list table thead th {
+  .sections-list table thead th,
+  .logs-list table thead th {
     padding: 12px 20px;
   }
 
@@ -4367,7 +4444,8 @@ a.success:hover {
   .suggestions-list table tbody tr td,
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
-  .sections-list table tbody tr td {
+  .sections-list table tbody tr td,
+  .logs-list table tbody tr td {
     padding: 12px 20px;
   }
 

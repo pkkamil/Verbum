@@ -9,9 +9,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use stdClass;
 use Illuminate\Support\Facades\DB;
 use Browser;
+use App\Log;
 
 class UserController extends Controller
 {
@@ -50,6 +50,13 @@ class UserController extends Controller
         $user = User::find(Auth::id());
         $user -> name = mb_strtolower($req -> name);
         $user -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 23;
+        $log -> user_id = Auth::id();
+        $log -> save();
+
         return redirect()->back();
     }
 
@@ -60,20 +67,14 @@ class UserController extends Controller
             'confirm_password' => ['same:new_password'],
         ]);
         User::find(Auth::id())->update(['password'=> Hash::make($req->new_password)]);
-        return redirect('/panel/ustawienia')->with(['message' => 'Twoje hasło zostało zmienione']);
-    }
 
-    public function reportAnError(Request $req) {
-        $req->validate([
-            'type' => 'required|string|max:50',
-            'description' => 'required|string|max:200',
-        ]);
-        $report = new Report();
-        $report -> type = mb_strtolower($req -> type);
-        $report -> description = mb_strtolower($req -> description);
-        $report -> user_id = Auth::id();
-        $report -> save();
-        return redirect()->back();
+        // Add log
+        $log = new Log;
+        $log -> type = 21;
+        $log -> user_id = Auth::id();
+        $log -> save();
+
+        return redirect('/panel/ustawienia')->with(['message' => 'Twoje hasło zostało zmienione']);
     }
 
     public function destroy(Request $req) {
@@ -81,6 +82,13 @@ class UserController extends Controller
             User::destroy(Auth::id());
             return redirect('/');
         }
+
+        // Add log
+        $log = new Log;
+        $log -> type = 24;
+        $log -> user_id = Auth::id();
+        $log -> save();
+
         return redirect()->back();
     }
 
@@ -102,6 +110,14 @@ class UserController extends Controller
         $user = User::find($req -> user_id);
         $user -> name = mb_strtolower($req -> name);
         $user -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 26;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $user -> id;
+        $log -> save();
+
         return redirect()->back();
     }
 
@@ -112,14 +128,63 @@ class UserController extends Controller
         $user = User::find($req -> user_id);
         $user -> email = mb_strtolower($req -> email);
         $user -> save();
+
+        // Add log
+        $log = new Log;
+        $log -> type = 25;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $user -> id;
+        $log -> save();
+
         return redirect()->back();
     }
 
     public function deleteUser(Request $req) {
         if (mb_strtolower($req -> delete) == 'usuwam użytkownika') {
             User::destroy($req -> user_id);
+
+            // Add log
+            $log = new Log;
+            $log -> type = 27;
+            $log -> user_id = Auth::id();
+            $log -> type_id = $req -> user_id;
+            $log -> save();
+
             return redirect('/admin/users');
         }
+
         return redirect()->back();
+    }
+
+    public function logs() {
+        // 1 - Create account
+	    // 2 - Log in
+	    // 3 - Log out
+        // 4 - Forgot password - Not Yet Included
+        // 5 - Add suggestion
+        // 6 - Accept suggestion
+        // 7 - Replace word
+        // 8 - Edit suggestion
+        // 9 - Delete suggestion
+        // 10 - Edit word
+        // 11 - Delete word
+        // 12 - Write report
+        // 13 - Delete report
+        // 14 - Add remembered word
+        // 15 - Delete remembered word
+        // 16 - Add section
+        // 17 - Edit section
+        // 18 - Delete section
+        // 19 - Exercise - matching
+        // 20 - Exercise - writing
+        // 21 - Change password
+        // 22 - Change email
+        // 23 - Change name
+        // 24 - Delete account
+        // 25 - Change somebody's email
+        // 26 - Change somebody's name
+        // 27 - Delete somebody's account
+        $logs = Log::orderByDesc('date')->paginate(10);
+        return view('logs')->with('logs', $logs);
     }
 }

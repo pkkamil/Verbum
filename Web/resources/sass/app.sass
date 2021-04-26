@@ -1675,6 +1675,49 @@ button.success, a.success
             & .blank:not(.a)
                 background-color: #e4e4e4
 
+.logs-list
+    width: 100%
+    height: 100%
+    padding: 80px 60px 20px 60px
+    & table
+        width: 100%
+        font-size: 1.3rem
+        border-spacing: 0 14px
+        & thead
+            width: 100%
+            height: 60px
+            background-color: $primary
+            color: #fff
+            & th
+                padding: 16px 60px
+                text-transform: uppercase
+                font-weight: 400
+                text-align: left
+        & tbody
+            & tr
+                background-color: #c4c4c4
+                & td
+                    padding: 16px 60px
+                    text-transform: uppercase
+                    font-weight: 400
+                    & .grey
+                        color: #555
+                        font-weight: 400
+    & .no-logs
+        margin-top: 100px
+        @include flex-center
+        flex-direction: column
+        text-align: center
+        & h2
+            font-size: 1.5rem
+            font-weight: 600
+            text-transform: uppercase
+            margin-bottom: 5px
+        & p
+            text-transform: uppercase
+            font-size: 1.1rem
+            margin-bottom: 20px
+
 .dimmer
     &.hider
         display: none
