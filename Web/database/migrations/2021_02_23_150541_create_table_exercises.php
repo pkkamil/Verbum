@@ -18,7 +18,7 @@ class CreateTableExercises extends Migration
             $table->integer('translation');
             $table->integer('matching');
             $table->integer('writing');
-            $table->bigInteger('user_id');
+            $table->integer('user_id');
         });
     }
 

@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use App\User;
 use App\Exercise;
 use Illuminate\Support\Facades\Auth;
+use App\Log;
 
 class LoginController extends Controller
 {
@@ -58,6 +59,13 @@ class LoginController extends Controller
             'name' => $user -> name,
             'password' => Hash::make(Str::random(16))
         ]);
+
+        // Add log
+        $log = new Log;
+        $log -> type = 2;
+        $log -> user_id = $user -> id;
+        $log -> save();
+
         Exercise::create([
             'user_id' => $user -> id,
         ]);

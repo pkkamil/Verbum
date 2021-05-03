@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecordingsTable extends Migration
+class CreateTrashTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateRecordingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('records', function (Blueprint $table) {
-            $table->id()->autoIncrement();
-            $table->integer('words')->default(0);
-            $table->integer('exercises')->default(0);
-            $table->integer('repeats')->default(0);
+        Schema::create('trash', function (Blueprint $table) {
+            $table->id();
             $table->integer('user_id');
-            $table->timestamp('date');
+            $table->enum('type', ['suggestion', 'word']);
+            $table->string('word');
+            $table->string('translation');
+            $table->timestamp('deleted_at');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateRecordingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recordings');
+        Schema::dropIfExists('trash');
     }
 }

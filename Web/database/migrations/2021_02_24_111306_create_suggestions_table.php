@@ -17,7 +17,7 @@ class CreateSuggestionsTable extends Migration
             $table->id();
             $table->string('word');
             $table->string('translation');
-            $table->bigInteger('user_id');
+            $table->integer('user_id');
             $table->timestamp('added_at');
         });
     }

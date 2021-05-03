@@ -17,7 +17,7 @@ class CreateWordsTable extends Migration
             $table->id();
             $table->string('word')->unique();
             $table->string('translation');
-            $table->bigInteger('user_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

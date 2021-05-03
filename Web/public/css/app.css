@@ -2607,6 +2607,98 @@ a.success:hover {
   background-color: #e4e4e4;
 }
 
+.trash-list {
+  width: 100%;
+  height: 100%;
+  padding: 65px 60px 20px 60px;
+}
+
+.trash-list .operations {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.trash-list .operations a {
+  margin-right: 20px;
+  margin-top: 25px;
+  margin-left: 0;
+}
+
+.trash-list .operations button {
+  margin-right: 20px;
+  margin-top: 25px;
+  margin-left: 0;
+}
+
+.trash-list .operations button:last-child {
+  margin-right: 0;
+}
+
+.trash-list table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-spacing: 0 14px;
+}
+
+.trash-list table thead {
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+
+.trash-list table thead th {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: left;
+}
+
+.trash-list table tbody tr {
+  background-color: #c4c4c4;
+}
+
+.trash-list table tbody tr td {
+  padding: 16px 60px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.trash-list table tbody tr td i {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.trash-list table tbody tr td i:hover {
+  color: #555;
+}
+
+.trash-list .empty-trash {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.trash-list .empty-trash h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.trash-list .empty-trash p {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
 .logs-list {
   width: 100%;
   height: 100%;
@@ -3019,7 +3111,8 @@ a.success:hover {
   .remembered-list,
   .reports-list,
   .sections-list,
-  .logs-lists {
+  .logs-lists,
+  .trash-list {
     padding: 80px 60px 20px 60px;
   }
 
@@ -3029,7 +3122,8 @@ a.success:hover {
   .remembered-list table,
   .reports-list table,
   .sections-list table,
-  .logs-lists table {
+  .logs-lists table,
+  .trash-list table {
     font-size: 1.2rem;
     border-spacing: 0 11px;
   }
@@ -3040,7 +3134,8 @@ a.success:hover {
   .remembered-list table thead,
   .reports-list table thead,
   .sections-list table thead,
-  .logs-lists table thead {
+  .logs-lists table thead,
+  .trash-list table thead {
     height: 45px;
   }
 
@@ -3050,7 +3145,8 @@ a.success:hover {
   .remembered-list table thead th,
   .reports-list table thead th,
   .sections-list table thead th,
-  .logs-lists table thead th {
+  .logs-lists table thead th,
+  .trash-list table thead th {
     padding: 12px 40px;
   }
 
@@ -3060,7 +3156,8 @@ a.success:hover {
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
   .sections-list table tbody tr td,
-  .logs-lists table tbody tr td {
+  .logs-lists table tbody tr td,
+  .trash-list table tbody tr td {
     padding: 12px 40px;
   }
 
@@ -3455,7 +3552,8 @@ a.success:hover {
   .remembered-list,
   .reports-list,
   .sections-list,
-  .logs-list {
+  .logs-list,
+  .trash-list {
     padding: 80px 40px 20px 40px;
   }
 
@@ -3465,7 +3563,8 @@ a.success:hover {
   .remembered-list table,
   .reports-list table,
   .sections-list table,
-  .logs-list table {
+  .logs-list table,
+  .trash-list table {
     font-size: 1.1rem;
     border-spacing: 0 10px;
   }
@@ -3476,7 +3575,8 @@ a.success:hover {
   .remembered-list table thead,
   .reports-list table thead,
   .sections-list table thead,
-  .logs-list table thead {
+  .logs-list table thead,
+  .trash-list table thead {
     height: 45px;
   }
 
@@ -3486,7 +3586,8 @@ a.success:hover {
   .remembered-list table thead th,
   .reports-list table thead th,
   .sections-list table thead th,
-  .logs-list table thead th {
+  .logs-list table thead th,
+  .trash-list table thead th {
     padding: 12px 40px;
   }
 
@@ -3496,7 +3597,8 @@ a.success:hover {
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
   .sections-list table tbody tr td,
-  .logs-list table tbody tr td {
+  .logs-list table tbody tr td,
+  .trash-list table tbody tr td {
     padding: 12px 40px;
   }
 
@@ -3945,7 +4047,8 @@ a.success:hover {
   .remembered-list,
   .reports-list,
   .sections-list,
-  .logs-list {
+  .logs-list,
+  .trash-list {
     padding: 70px 40px 20px 40px;
   }
 
@@ -3955,7 +4058,8 @@ a.success:hover {
   .remembered-list table thead th,
   .reports-list table thead th,
   .sections-list table thead th,
-  .logs-list table thead th {
+  .logs-list table thead th,
+  .trash-list table thead th {
     padding: 12px 30px;
   }
 
@@ -3965,7 +4069,8 @@ a.success:hover {
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
   .sections-list table tbody tr td,
-  .logs-list table tbody tr td {
+  .logs-list table tbody tr td,
+  .trash-list table tbody tr td {
     padding: 12px 30px;
   }
 
@@ -4316,11 +4421,6 @@ a.success:hover {
     font-size: 0.8rem;
   }
 
-  .profile .bottom-part .single-form,
-  .user-details .bottom-part .single-form {
-    margin-right: auto;
-  }
-
   .profile .bottom-part .single-form h4,
   .user-details .bottom-part .single-form h4 {
     font-size: 1.1rem;
@@ -4435,7 +4535,8 @@ a.success:hover {
   .remembered-list table thead th,
   .reports-list table thead th,
   .sections-list table thead th,
-  .logs-list table thead th {
+  .logs-list table thead th,
+  .trash-list table thead th {
     padding: 12px 20px;
   }
 
@@ -4445,7 +4546,8 @@ a.success:hover {
   .remembered-list table tbody tr td,
   .reports-list table tbody tr td,
   .sections-list table tbody tr td,
-  .logs-list table tbody tr td {
+  .logs-list table tbody tr td,
+  .trash-list table tbody tr td {
     padding: 12px 20px;
   }
 

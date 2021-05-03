@@ -149,7 +149,7 @@ class ExerciseController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 14;
+        $log -> type = 16;
         $log -> user_id = Auth::id();
         $log -> type_id = $req -> word;
         $log -> save();
@@ -203,7 +203,7 @@ class ExerciseController extends Controller
 
             // Add log
             $log = new Log;
-            $log -> type = 19;
+            $log -> type = 21;
             $log -> user_id = Auth::id();
             $log -> save();
 
@@ -214,7 +214,7 @@ class ExerciseController extends Controller
         } else {
             // Add log
             $log = new Log;
-            $log -> type = 20;
+            $log -> type = 22;
             $log -> user_id = Auth::id();
             $log -> save();
 

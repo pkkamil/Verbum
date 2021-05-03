@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Log;
 
 class RegisterController extends Controller
 {
@@ -70,6 +71,14 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        // Add log
+        $log = new Log;
+        $log -> type = 1;
+        $log -> user_id = Auth::id();
+        $log -> type_id = $req -> report_id;
+        $log -> save();
+
         Exercise::create([
             'user_id' => $user -> id,
         ]);

@@ -111,6 +111,7 @@
             @else
                 <h4>Korzystaj z innych operacji</h4>
                 <a href="{{ url('/admin/reports') }}" class="button">Lista zgłoszeń</a>
+                <a href="{{ url('/admin/trash') }}" class="button">Ostatnio usunięte</a>
                 <a href="{{ url('/profile/remembered') }}" class="button">Zapamiętane słowa</a>
                 <a href="{{ url('/profile/sections') }}" class="button">Działy słów</a>
             @endif

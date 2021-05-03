@@ -10,13 +10,14 @@ use App\User;
 use App\Record;
 use Browser;
 use App\Log;
+use App\Trash;
 
 class SuggestionController extends Controller
 {
     public function add(Request $req) {
         $req->validate([
-            'word' => 'required|string',
-            'translation' => 'required|string',
+            'word' => 'required|string|max:255',
+            'translation' => 'required|string|max:255',
         ]);
 
         // create Suggestion
@@ -208,10 +209,6 @@ class SuggestionController extends Controller
     }
 
     public function delete(Request $req) {
-        Suggestion::destroy($req -> suggestion_id);
-        if (str_contains(url()->previous(), '/suggestions?page'))
-            return redirect()->back();
-
         // Add log
         $log = new Log;
         $log -> type = 9;
@@ -219,6 +216,17 @@ class SuggestionController extends Controller
         $log -> type_id = $req -> suggestion_id;
         $log -> save();
 
+        // Add to trash
+        $trash = new Trash;
+        $trash -> user_id = Suggestion::find($req -> suggestion_id) -> user_id;
+        $trash -> type = 'suggestion';
+        $trash -> word = Suggestion::find($req -> suggestion_id) -> word;
+        $trash -> translation = Suggestion::find($req -> suggestion_id) -> translation;
+        $trash -> save();
+
+        Suggestion::destroy($req -> suggestion_id);
+        if (str_contains(url()->previous(), '/suggestions?page'))
+            return redirect()->back();
         return redirect('/admin/suggestions');
     }
 }

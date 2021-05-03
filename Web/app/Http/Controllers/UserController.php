@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Browser;
 use App\Log;
+use App\Suggestion;
+use App\Trash;
+use App\Word;
+use App\Record;
 
 class UserController extends Controller
 {
@@ -53,7 +57,7 @@ class UserController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 23;
+        $log -> type = 25;
         $log -> user_id = Auth::id();
         $log -> save();
 
@@ -70,7 +74,7 @@ class UserController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 21;
+        $log -> type = 23;
         $log -> user_id = Auth::id();
         $log -> save();
 
@@ -85,7 +89,7 @@ class UserController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 24;
+        $log -> type = 26;
         $log -> user_id = Auth::id();
         $log -> save();
 
@@ -113,7 +117,7 @@ class UserController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 26;
+        $log -> type = 28;
         $log -> user_id = Auth::id();
         $log -> type_id = $user -> id;
         $log -> save();
@@ -131,7 +135,7 @@ class UserController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 25;
+        $log -> type = 27;
         $log -> user_id = Auth::id();
         $log -> type_id = $user -> id;
         $log -> save();
@@ -145,7 +149,7 @@ class UserController extends Controller
 
             // Add log
             $log = new Log;
-            $log -> type = 27;
+            $log -> type = 29;
             $log -> user_id = Auth::id();
             $log -> type_id = $req -> user_id;
             $log -> save();
@@ -154,6 +158,58 @@ class UserController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function trash() {
+        if (Browser::isTablet())
+            $trash = Trash::paginate(20);
+        else
+            $trash = Trash::paginate(10);
+        return view('trash')->with('trash', $trash);
+    }
+
+    public function undo(Request $req) {
+        $item = Trash::find($req -> item_id);
+        if ($item -> type == 'suggestion') {
+            $suggestion = new Suggestion();
+            $suggestion -> user_id = $item -> user_id;
+            $suggestion -> word = $item -> word;
+            $suggestion -> translation = $item -> translation;
+            $suggestion -> save();
+
+            // Add log
+            $log = new Log;
+            $log -> type = 10;
+            $log -> user_id = Auth::id();
+            $log -> type_id = $suggestion -> id;
+            $log -> save();
+        } else {
+            $word = new Word();
+            $word -> user_id = $item -> user_id;
+            $word -> word = $item -> word;
+            $word -> translation = $item -> translation;
+            $word -> save();
+
+            $user = User::find($item -> user_id);
+            $user -> words = $user -> words + 1;
+            $user -> save();
+
+            // Add Record
+            $record = Record::whereDate('date', $item -> deleted_at)->where('user_id', $item -> user_id)->first();
+            if (isset($record)) {
+                $record -> words = $record -> words + 1;
+                $record -> save();
+            }
+
+            // Add log
+            $log = new Log;
+            $log -> type = 13;
+            $log -> user_id = Auth::id();
+            $log -> type_id = $word -> id;
+            $log -> save();
+        }
+        Trash::destroy($req -> item_id);
+        return redirect('/admin/trash');
     }
 
     public function logs() {
@@ -166,24 +222,26 @@ class UserController extends Controller
         // 7 - Replace word
         // 8 - Edit suggestion
         // 9 - Delete suggestion
-        // 10 - Edit word
-        // 11 - Delete word
-        // 12 - Write report
-        // 13 - Delete report
-        // 14 - Add remembered word
-        // 15 - Delete remembered word
-        // 16 - Add section
-        // 17 - Edit section
-        // 18 - Delete section
-        // 19 - Exercise - matching
-        // 20 - Exercise - writing
-        // 21 - Change password
-        // 22 - Change email
-        // 23 - Change name
-        // 24 - Delete account
-        // 25 - Change somebody's email
-        // 26 - Change somebody's name
-        // 27 - Delete somebody's account
+        // 10 - Undo deleted suggestion
+        // 11 - Edit word
+        // 12 - Delete word
+        // 13 - Undo deleted word
+        // 14 - Write report
+        // 15 - Delete report
+        // 16 - Add remembered word
+        // 17 - Delete remembered word
+        // 18 - Add section
+        // 19 - Edit section
+        // 20 - Delete section
+        // 21 - Exercise - matching
+        // 22 - Exercise - writing
+        // 23 - Change password
+        // 24 - Change email
+        // 25 - Change name
+        // 26 - Delete account
+        // 27 - Change somebody's email
+        // 28 - Change somebody's name
+        // 29 - Delete somebody's account
         $logs = Log::orderByDesc('date')->paginate(10);
         return view('logs')->with('logs', $logs);
     }

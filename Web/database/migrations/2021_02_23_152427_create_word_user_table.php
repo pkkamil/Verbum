@@ -15,8 +15,8 @@ class CreateWordUserTable extends Migration
     {
         Schema::create('user_word', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->bigInteger('word_id');
-            $table->bigInteger('user_id');
+            $table->integer('word_id');
+            $table->integer('user_id');
             $table->timestamp('remembered_at');
         });
     }

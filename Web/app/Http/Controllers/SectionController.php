@@ -41,7 +41,7 @@ class SectionController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 17;
+        $log -> type = 19;
         $log -> user_id = Auth::id();
         $log -> type_id = $section -> id;
         $log -> save();
@@ -76,7 +76,7 @@ class SectionController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 16;
+        $log -> type = 18;
         $log -> user_id = Auth::id();
         $log -> type_id = $section -> id;
         $log -> save();
@@ -90,7 +90,7 @@ class SectionController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 18;
+        $log -> type = 20;
         $log -> user_id = Auth::id();
         $log -> type_id = $req -> section_id;
         $log -> save();

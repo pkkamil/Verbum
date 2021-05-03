@@ -23,7 +23,7 @@ class ReportController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 13;
+        $log -> type = 14;
         $log -> user_id = Auth::id();
         $log -> type_id = $report -> id;
         $log -> save();
@@ -44,7 +44,7 @@ class ReportController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 13;
+        $log -> type = 15;
         $log -> user_id = Auth::id();
         $log -> type_id = $req -> report_id;
         $log -> save();

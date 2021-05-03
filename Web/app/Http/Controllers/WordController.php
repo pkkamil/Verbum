@@ -10,6 +10,7 @@ use App\Remembered;
 use App\User;
 use Browser;
 use App\Log;
+use App\Trash;
 
 class WordController extends Controller
 {
@@ -41,7 +42,7 @@ class WordController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 15;
+        $log -> type = 17;
         $log -> user_id = Auth::id();
         $log -> type_id = $req -> word_id;
         $log -> save();
@@ -88,7 +89,7 @@ class WordController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 10;
+        $log -> type = 11;
         $log -> user_id = Auth::id();
         $log -> type_id = $word -> id;
         $log -> save();
@@ -111,10 +112,18 @@ class WordController extends Controller
 
         // Add log
         $log = new Log;
-        $log -> type = 11;
+        $log -> type = 12;
         $log -> user_id = Auth::id();
         $log -> type_id = $req -> word_id;
         $log -> save();
+
+        // Add to trash
+        $trash = new Trash;
+        $trash -> user_id = Word::find($req -> word_id) -> user_id;
+        $trash -> type = 'word';
+        $trash -> word = Word::find($req -> word_id) -> word;
+        $trash -> translation = Word::find($req -> word_id) -> translation;
+        $trash -> save();
 
         Word::destroy($req -> word_id);
         if (str_contains(url()->previous(), '/words?page'))

@@ -82,6 +82,9 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/report/delete', 'ReportController@destroy')->name('deleteReport');
 
             Route::get('/logs', 'UserController@logs');
+
+            Route::get('/trash', 'UserController@trash');
+            Route::post('/trash/undo', 'UserController@undo')->name('undo');
         });
     });
     Route::get('/ranking/{type}', 'UserController@showRanking');
